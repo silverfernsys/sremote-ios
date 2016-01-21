@@ -12,10 +12,12 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var serverEntryViewController: ServerEntryViewController?
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleSeverEntryViewControllerLoad:", name: Constants.ServerEntryViewController.Loaded, object: nil)
         return true
     }
 
@@ -27,6 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        serverEntryViewController?.performSegueWithIdentifier("HideServerEntry", sender: self)
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
@@ -35,12 +38,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        theme()
     }
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
+    
+    func handleSeverEntryViewControllerLoad(notification: NSNotification) {
+        serverEntryViewController = notification.object as? ServerEntryViewController
+        serverEntryViewController?.hello()
+    }
+    
+    func theme() {
+        dispatch_async(dispatch_get_main_queue(), {
+            let defaults = NSUserDefaults.standardUserDefaults()
+            let theme_preference = defaults.integerForKey("theme_preference")
+            
+            let theme: Theme = ThemeFactory.sharedInstance().themeWithPreference(theme_preference)
+            theme.styleNavigationController(self.window?.rootViewController as! UINavigationController)
+            theme.styleTableViewController((self.window?.rootViewController as! UINavigationController).viewControllers.first as! UITableViewController)
+        })
+    }
 }
-
