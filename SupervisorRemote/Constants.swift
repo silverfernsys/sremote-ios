@@ -25,4 +25,19 @@ struct Constants {
     struct ServerEntryViewController {
         static let Loaded = "ServerEntryViewController.Loaded"
     }
+    
+    struct ServerListViewController {
+        static let DeleteServer = "ServerListViewController.DeleteServer"
+    }
+    
+    struct ProcessStates {
+        static let STOPPED = 0
+        static let STARTING = 10
+        static let RUNNING = 20
+        static let BACKOFF = 30
+        static let STOPPING = 40
+        static let EXITED = 100
+        static let FATAL = 200
+        static let UNKNOWN = 1000
+    }
 }

@@ -8,28 +8,182 @@
 
 import UIKit
 
-class ServerListTableViewController: UITableViewController {
+class ServerListTableViewController: UITableViewController, UIGestureRecognizerDelegate {
     var servers:[ServerData] = serverData
+    
+    // For reordering cells
+    var snapshot: UIView? = nil
+    var sourceIndexPath: NSIndexPath? = nil
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        theme()
+        style()
         if (servers.count == 0) {
             dispatch_async(dispatch_get_main_queue()) {
                 self.performSegueWithIdentifier("ShowServerEntry", sender: self)
             }
         }
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        // http://www.raywenderlich.com/63089/cookbook-moving-table-view-cells-with-a-long-press-gesture
+        let longPress = UILongPressGestureRecognizer(target: self, action: Selector("handleLongPress:"))
+        tableView.addGestureRecognizer(longPress)
+        
+//        let tap = UITapGestureRecognizer(target: self, action: Selector("handleTap:"))
+//        tableView.addGestureRecognizer(tap)
+//        
+        let deleteRightSwipe = UISwipeGestureRecognizer(target: self, action: Selector("handleDeleteSwipe:"))
+        deleteRightSwipe.direction = .Right
+        tableView.addGestureRecognizer(deleteRightSwipe)
+        
+        let deleteLeftSwipe = UISwipeGestureRecognizer(target: self, action: Selector("handleDeleteSwipe:"))
+        deleteLeftSwipe.direction = .Left
+        tableView.addGestureRecognizer(deleteLeftSwipe)
+        
+        deleteRightSwipe.delegate = self
+        deleteLeftSwipe.delegate = self
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleServerDelete:", name: Constants.ServerListViewController.DeleteServer, object: nil)
+    }
+    /*
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    */
+    /*
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    */
+    
+    func handleServerDelete(notitification: NSNotification) {
+        let alertController = UIAlertController(title: "Delete Server", message: "Are you sure you want to delete this server?", preferredStyle: UIAlertControllerStyle.Alert)
+        let deleteAction = UIAlertAction(title: "Delete", style:UIAlertActionStyle.Destructive) { (action) in }
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: { (action) in })
+        alertController.addAction(deleteAction)
+        alertController.addAction(cancelAction)
+        self.presentViewController(alertController, animated: true) { }
+    }
+    
+    func handleTap(sender: UITapGestureRecognizer) {
+        print("handleTap")
+    }
+    
+    func handleLongPress(sender: UILongPressGestureRecognizer) {
+        let longPress: UILongPressGestureRecognizer = sender;
+        let state: UIGestureRecognizerState = longPress.state
+        
+        let location: CGPoint = longPress.locationInView(self.tableView)
+        let indexPath: NSIndexPath = tableView.indexPathForRowAtPoint(location)!
+        
+        switch state {
+        case UIGestureRecognizerState.Began:
+            sourceIndexPath = indexPath
+            let cell: UITableViewCell = self.tableView.cellForRowAtIndexPath(indexPath)!
+            snapshot = customSnapshotFromView(cell)
+            var center: CGPoint = cell.center
+            snapshot?.center = center
+            snapshot?.alpha = 0.0
+            self.tableView.addSubview(snapshot!)
+            UIView.animateWithDuration(0.25, animations: {
+                
+                // Offset for gesture location
+                center.y = location.y
+                self.snapshot?.center = center
+                self.snapshot?.transform = CGAffineTransformMakeScale(1.05, 1.05)
+                self.snapshot?.alpha = 0.98
+                
+                // Fade out
+                cell.alpha = 0.0
+                
+                }, completion: { finished in print("completion")
+                    cell.hidden = true
+            })
+            break
+        case UIGestureRecognizerState.Changed:
+            var center: CGPoint? = snapshot?.center
+            center?.y = location.y
+            snapshot?.center = center!
+            
+            if (!indexPath.isEqual(sourceIndexPath)) {
+                // ... update data source.
+                // [self.objects exchangeObjectAtIndex:indexPath.row withObjectAtIndex:sourceIndexPath.row];
+                // ... move the rows.
+                self.tableView.moveRowAtIndexPath(sourceIndexPath!, toIndexPath: indexPath)
+                // ... and update source so it is in sync with UI changes.
+                sourceIndexPath = indexPath
+            }
+            break
+        default:
+            let cell: UITableViewCell = self.tableView.cellForRowAtIndexPath(sourceIndexPath!)!
+            cell.hidden = false
+            cell.alpha = 0.0
+            UIView.animateWithDuration(0.25, animations: {
+                self.snapshot?.center = cell.center
+                self.snapshot?.transform = CGAffineTransformIdentity
+                self.snapshot?.alpha = 0.0
+                cell.alpha = 1.0
+                }, completion: {
+                    finish in print("completion")
+                    self.sourceIndexPath = nil
+                    self.snapshot?.removeFromSuperview()
+                    self.snapshot = nil
+            })
+            break
+        }
+    }
+    
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailByGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+    
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return false
+    }
+    
+    func handleDeleteSwipe(sender:UISwipeGestureRecognizer) {
+        print("frame: \(self.tableView.frame)")
+        let location: CGPoint = sender.locationInView(self.tableView)
+        let indexPath: NSIndexPath = tableView.indexPathForRowAtPoint(location)!
+        let cell : ServerCell = self.tableView.cellForRowAtIndexPath(indexPath) as! ServerCell
+        
+        if sender.direction == .Right {
+            cell.showDelete()
+        } else {
+            cell.hideDelete()
+        }
+    }
+    
+    func customSnapshotFromView(view: UIView) -> UIView {
+        // Make an image from the input view.
+        UIGraphicsBeginImageContextWithOptions(view.bounds.size, false, 0);
+        view.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        // Create an image view.
+        let snapshot: UIView = UIImageView(image: image)
+        snapshot.layer.masksToBounds = false;
+        snapshot.layer.cornerRadius = 0.0;
+        snapshot.layer.shadowOffset = CGSizeMake(-5.0, 0.0);
+        snapshot.layer.shadowRadius = 5.0;
+        snapshot.layer.shadowOpacity = 0.4;
+        
+        return snapshot
+    }
+    
+    func style() {
+        self.tableView.separatorStyle = .SingleLine
+        self.tableView.separatorInset = UIEdgeInsetsZero
+        self.tableView.layoutMargins = UIEdgeInsetsZero
+        self.tableView.cellLayoutMarginsFollowReadableWidth = false
+        ServerCell.appearance().layoutMargins = UIEdgeInsetsZero
+//        ServerCell.appearance().preservesSuperviewLayoutMargins = false
+//        ServerCell.appearance().separatorInset = UIEdgeInsetsZero
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-//        theme()
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,95 +213,35 @@ class ServerListTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("ServerCell", forIndexPath: indexPath) as! ServerCell
         let server = servers[indexPath.row] as ServerData
         cell.server = server
-
-        // Configure the cell...
-
+        cell.theme()
         return cell
     }
     
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
     // Override to support rearranging the table view.
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
+    
     }
-    */
-
-    /*
+    
     // Override to support conditional rearranging of the table view.
     override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
+    // Return false if you do not want the item to be re-orderable.
         return true
     }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
-    func theme() {
-        let defaults = NSUserDefaults.standardUserDefaults()
-        let theme_preference = defaults.integerForKey("theme_preference")
-        
-        if (theme_preference == Constants.Theme.LIGHT) {
-            lightTheme()
-        } else {
-            darkTheme()
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+        for cell in self.tableView.visibleCells as! [ServerCell] {
+            cell.positionViews()
         }
-        
-        self.view.setNeedsDisplay()
-        self.setNeedsStatusBarAppearanceUpdate()
-        self.navigationController?.navigationBar.setNeedsDisplay()
-        self.navigationController?.navigationController?.setNeedsStatusBarAppearanceUpdate()
-//        let nv = self.navigationController?.navigationBar
-        
-        print(theme_preference)
     }
     
-    func darkTheme() {
-        let tableViewCellAppearance: UITableViewCell = UITableViewCell.appearance()
-        tableViewCellAppearance.backgroundColor = UIColor.extraDarkGrey()
-        
-        let tableViewAppearance: UITableView = UITableView.appearance()
-        tableViewAppearance.backgroundColor = UIColor.extraDarkGrey()
-        
-        let navigationBarAppearance: UINavigationBar = UINavigationBar.appearance()
-        navigationBarAppearance.barStyle = UIBarStyle.BlackTranslucent
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        // nothing!
     }
     
-    func lightTheme() {
-        let tableViewCellAppearance: UITableViewCell = UITableViewCell.appearance()
-        tableViewCellAppearance.backgroundColor = UIColor.whiteColor()
-        
-        let tableViewAppearance: UITableView = UITableView.appearance()
-        tableViewAppearance.backgroundColor = UIColor.whiteColor()
-        
-        let navigationBarAppearance: UINavigationBar = UINavigationBar.appearance()
-        navigationBarAppearance.barStyle = UIBarStyle.Default
+    override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+//        print("willSelectRowAtIndexPath")
+        return nil
     }
+    //-(NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
+    
 }

@@ -32,10 +32,13 @@ class LightTheme: Theme {
         badgeLabelAppearance.textColor = UIColor.whiteColor()
         
         for cell in tableViewController.tableView.visibleCells {
-            (cell as! ThemeableCell).theme()
+            (cell as! Themeable).theme()
         }
         
         tableViewController.tableView.backgroundColor = UIColor.whiteColor()
+        tableViewController.tableView.reloadData()
+        tableViewController.tableView.setNeedsDisplay()
+        tableViewController.tableView.setNeedsLayout()
     }
     
     func cellSelectedBackgroundView() -> UIView? {

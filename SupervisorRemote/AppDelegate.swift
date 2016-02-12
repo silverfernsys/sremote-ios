@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import Starscream
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, WebSocketDelegate {
 
     var window: UIWindow?
     var serverEntryViewController: ServerEntryViewController?
@@ -18,6 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleSeverEntryViewControllerLoad:", name: Constants.ServerEntryViewController.Loaded, object: nil)
+        let socket = WebSocket(url: NSURL(string: "ws://localhost:8080/")!)
+        socket.delegate = self
+        socket.connect()
+        
         return true
     }
 
@@ -43,6 +48,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    func websocketDidConnect(socket: WebSocket) {
+        print("websocket is connected")
+    }
+    
+    func websocketDidDisconnect(socket: WebSocket, error: NSError?) {
+        print("websocket is disconnected: \(error?.localizedDescription)")
+    }
+    
+    func websocketDidReceiveMessage(socket: WebSocket, text: String) {
+        print("got some text: \(text)")
+    }
+    
+    func websocketDidReceiveData(socket: WebSocket, data: NSData) {
+        print("got some data: \(data.length)")
+    }
+    
+    func websocketDidReceivePong(socket: WebSocket) {
+        print("Got pong!")
     }
     
     func handleSeverEntryViewControllerLoad(notification: NSNotification) {

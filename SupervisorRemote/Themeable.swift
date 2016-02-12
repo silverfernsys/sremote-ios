@@ -8,6 +8,6 @@
 
 import UIKit
 
-protocol ThemeableCell {
+protocol Themeable {
     func theme()
 }

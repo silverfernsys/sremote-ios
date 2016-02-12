@@ -13,7 +13,7 @@
 		C56321631C500C0D00BBE4BE /* LightTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56321621C500C0D00BBE4BE /* LightTheme.swift */; };
 		C56321651C500C1900BBE4BE /* DarkTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56321641C500C1900BBE4BE /* DarkTheme.swift */; };
 		C56321671C500D9C00BBE4BE /* ThemeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56321661C500D9C00BBE4BE /* ThemeFactory.swift */; };
-		C56321691C502EEB00BBE4BE /* ThemeableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56321681C502EEB00BBE4BE /* ThemeableCell.swift */; };
+		C56321691C502EEB00BBE4BE /* Themeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56321681C502EEB00BBE4BE /* Themeable.swift */; };
 		C5653B961C30BC2700087D48 /* ServerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5653B951C30BC2700087D48 /* ServerData.swift */; };
 		C5653B981C30BF1300087D48 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5653B971C30BF1300087D48 /* SampleData.swift */; };
 		C5653B9A1C335A3700087D48 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5653B991C335A3700087D48 /* Constants.swift */; };
@@ -26,6 +26,12 @@
 		C5A2A4AB1C27539C00439FE7 /* SupervisorRemoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A2A4AA1C27539C00439FE7 /* SupervisorRemoteTests.swift */; };
 		C5A2A4B61C27539C00439FE7 /* SupervisorRemoteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A2A4B51C27539C00439FE7 /* SupervisorRemoteUITests.swift */; };
 		C5A2A4C41C27599D00439FE7 /* ServerEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A2A4C31C27599D00439FE7 /* ServerEntryViewController.swift */; };
+		C5A66E761C6D5C3F00473756 /* Freddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5A66E441C6D5B3300473756 /* Freddy.framework */; };
+		C5A66E771C6D5C4500473756 /* PKHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5A66E591C6D5B3E00473756 /* PKHUD.framework */; };
+		C5A66E781C6D5C4C00473756 /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5A66E641C6D5B4800473756 /* Starscream.framework */; };
+		C5A66E7A1C6D5C6500473756 /* Freddy.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C5A66E481C6D5B3300473756 /* Freddy.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C5A66E7D1C6D5C8100473756 /* PKHUD.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C5A66E591C6D5B3E00473756 /* PKHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C5A66E7E1C6D5C8500473756 /* Starscream.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C5A66E641C6D5B4800473756 /* Starscream.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C5F6867D1C276FF700FBC5DE /* ServerDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F6867C1C276FF700FBC5DE /* ServerDetailTableViewController.swift */; };
 		C5F6867F1C27731B00FBC5DE /* ServerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F6867E1C27731B00FBC5DE /* ServerCell.swift */; };
 /* End PBXBuildFile section */
@@ -45,7 +51,148 @@
 			remoteGlobalIDString = C5A2A4911C27539C00439FE7;
 			remoteInfo = SupervisorRemote;
 		};
+		C5A66E431C6D5B3300473756 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C5A66E391C6D5B3300473756 /* Freddy.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DB6ADF3E1C23612000D77BF1;
+			remoteInfo = Freddy;
+		};
+		C5A66E451C6D5B3300473756 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C5A66E391C6D5B3300473756 /* Freddy.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DB6ADF471C23612000D77BF1;
+			remoteInfo = FreddyTests;
+		};
+		C5A66E471C6D5B3300473756 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C5A66E391C6D5B3300473756 /* Freddy.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DB6ADF1F1C23610B00D77BF1;
+			remoteInfo = MobileFreddy;
+		};
+		C5A66E491C6D5B3300473756 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C5A66E391C6D5B3300473756 /* Freddy.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DB6ADF291C23610B00D77BF1;
+			remoteInfo = MobileFreddyTests;
+		};
+		C5A66E4B1C6D5B3300473756 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C5A66E391C6D5B3300473756 /* Freddy.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DB6ADF5A1C23612900D77BF1;
+			remoteInfo = TVFreddy;
+		};
+		C5A66E4D1C6D5B3300473756 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C5A66E391C6D5B3300473756 /* Freddy.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DB6ADF631C23612A00D77BF1;
+			remoteInfo = TVFreddyTests;
+		};
+		C5A66E4F1C6D5B3300473756 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C5A66E391C6D5B3300473756 /* Freddy.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DB6ADF761C23613200D77BF1;
+			remoteInfo = NanoFreddy;
+		};
+		C5A66E561C6D5B3E00473756 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C5A66E511C6D5B3D00473756 /* PKHUD.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F99631FC19514FAC001F73CA;
+			remoteInfo = "PKHUD Demo";
+		};
+		C5A66E581C6D5B3E00473756 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C5A66E511C6D5B3D00473756 /* PKHUD.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F996321E19514FD8001F73CA;
+			remoteInfo = PKHUD;
+		};
+		C5A66E631C6D5B4800473756 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C5A66E5A1C6D5B4800473756 /* Starscream.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6B3E79E619D48B7F006071F7;
+			remoteInfo = "Starscream iOS";
+		};
+		C5A66E651C6D5B4800473756 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C5A66E5A1C6D5B4800473756 /* Starscream.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6B3E79F119D48B7F006071F7;
+			remoteInfo = "Starscream iOSTests";
+		};
+		C5A66E671C6D5B4800473756 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C5A66E5A1C6D5B4800473756 /* Starscream.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D9C3E35F19E48FF1009FC285;
+			remoteInfo = "Starscream OSX";
+		};
+		C5A66E691C6D5B4800473756 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C5A66E5A1C6D5B4800473756 /* Starscream.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D9C3E36919E48FF1009FC285;
+			remoteInfo = "Starscream OSXTests";
+		};
+		C5A66E6B1C6D5B4800473756 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C5A66E5A1C6D5B4800473756 /* Starscream.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 091277971BD673A70003036D;
+			remoteInfo = "Starscream tvOS";
+		};
+		C5A66E6D1C6D5B4800473756 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C5A66E5A1C6D5B4800473756 /* Starscream.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 091277A01BD673A70003036D;
+			remoteInfo = "Starscream tvOSTests";
+		};
+		C5A66E701C6D5C2600473756 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C5A66E391C6D5B3300473756 /* Freddy.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = DB6ADF1E1C23610B00D77BF1;
+			remoteInfo = MobileFreddy;
+		};
+		C5A66E721C6D5C2B00473756 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C5A66E511C6D5B3D00473756 /* PKHUD.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F996321D19514FD8001F73CA;
+			remoteInfo = PKHUD;
+		};
+		C5A66E741C6D5C3100473756 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C5A66E5A1C6D5B4800473756 /* Starscream.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 6B3E79E519D48B7F006071F7;
+			remoteInfo = "Starscream iOS";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C5A66E6F1C6D5C1700473756 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C5A66E7A1C6D5C6500473756 /* Freddy.framework in CopyFiles */,
+				C5A66E7D1C6D5C8100473756 /* PKHUD.framework in CopyFiles */,
+				C5A66E7E1C6D5C8500473756 /* Starscream.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		C5173EF81C2A642500D6C0CB /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -54,7 +201,7 @@
 		C56321621C500C0D00BBE4BE /* LightTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightTheme.swift; sourceTree = "<group>"; };
 		C56321641C500C1900BBE4BE /* DarkTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DarkTheme.swift; sourceTree = "<group>"; };
 		C56321661C500D9C00BBE4BE /* ThemeFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeFactory.swift; sourceTree = "<group>"; };
-		C56321681C502EEB00BBE4BE /* ThemeableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeableCell.swift; sourceTree = "<group>"; };
+		C56321681C502EEB00BBE4BE /* Themeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Themeable.swift; sourceTree = "<group>"; };
 		C5653B951C30BC2700087D48 /* ServerData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerData.swift; sourceTree = "<group>"; };
 		C5653B971C30BF1300087D48 /* SampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		C5653B991C335A3700087D48 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -73,6 +220,9 @@
 		C5A2A4B51C27539C00439FE7 /* SupervisorRemoteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupervisorRemoteUITests.swift; sourceTree = "<group>"; };
 		C5A2A4B71C27539C00439FE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C5A2A4C31C27599D00439FE7 /* ServerEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerEntryViewController.swift; sourceTree = "<group>"; };
+		C5A66E391C6D5B3300473756 /* Freddy.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Freddy.xcodeproj; path = Freddy/Freddy.xcodeproj; sourceTree = "<group>"; };
+		C5A66E511C6D5B3D00473756 /* PKHUD.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PKHUD.xcodeproj; path = PKHUD/PKHUD.xcodeproj; sourceTree = "<group>"; };
+		C5A66E5A1C6D5B4800473756 /* Starscream.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Starscream.xcodeproj; path = Starscream/Starscream.xcodeproj; sourceTree = "<group>"; };
 		C5F6867C1C276FF700FBC5DE /* ServerDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerDetailTableViewController.swift; sourceTree = "<group>"; };
 		C5F6867E1C27731B00FBC5DE /* ServerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -82,6 +232,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5A66E761C6D5C3F00473756 /* Freddy.framework in Frameworks */,
+				C5A66E771C6D5C4500473756 /* PKHUD.framework in Frameworks */,
+				C5A66E781C6D5C4C00473756 /* Starscream.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,7 +262,7 @@
 				C56321621C500C0D00BBE4BE /* LightTheme.swift */,
 				C56321641C500C1900BBE4BE /* DarkTheme.swift */,
 				C56321661C500D9C00BBE4BE /* ThemeFactory.swift */,
-				C56321681C502EEB00BBE4BE /* ThemeableCell.swift */,
+				C56321681C502EEB00BBE4BE /* Themeable.swift */,
 			);
 			name = Themes;
 			sourceTree = "<group>";
@@ -117,6 +270,9 @@
 		C5A2A4891C27539C00439FE7 = {
 			isa = PBXGroup;
 			children = (
+				C5A66E391C6D5B3300473756 /* Freddy.xcodeproj */,
+				C5A66E511C6D5B3D00473756 /* PKHUD.xcodeproj */,
+				C5A66E5A1C6D5B4800473756 /* Starscream.xcodeproj */,
 				C5A2A4941C27539C00439FE7 /* SupervisorRemote */,
 				C5A2A4A91C27539C00439FE7 /* SupervisorRemoteTests */,
 				C5A2A4B41C27539C00439FE7 /* SupervisorRemoteUITests */,
@@ -175,6 +331,42 @@
 			path = SupervisorRemoteUITests;
 			sourceTree = "<group>";
 		};
+		C5A66E3A1C6D5B3300473756 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C5A66E441C6D5B3300473756 /* Freddy.framework */,
+				C5A66E461C6D5B3300473756 /* FreddyTests.xctest */,
+				C5A66E481C6D5B3300473756 /* Freddy.framework */,
+				C5A66E4A1C6D5B3300473756 /* MobileFreddyTests.xctest */,
+				C5A66E4C1C6D5B3300473756 /* Freddy.framework */,
+				C5A66E4E1C6D5B3300473756 /* TVFreddyTests.xctest */,
+				C5A66E501C6D5B3300473756 /* Freddy.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C5A66E521C6D5B3D00473756 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C5A66E571C6D5B3E00473756 /* PKHUD Demo.app */,
+				C5A66E591C6D5B3E00473756 /* PKHUD.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C5A66E5B1C6D5B4800473756 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C5A66E641C6D5B4800473756 /* Starscream.framework */,
+				C5A66E661C6D5B4800473756 /* Starscream iOSTests.xctest */,
+				C5A66E681C6D5B4800473756 /* Starscream.framework */,
+				C5A66E6A1C6D5B4800473756 /* Starscream OSXTests.xctest */,
+				C5A66E6C1C6D5B4800473756 /* Starscream.framework */,
+				C5A66E6E1C6D5B4800473756 /* Starscream tvOSTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -185,10 +377,14 @@
 				C5A2A48E1C27539C00439FE7 /* Sources */,
 				C5A2A48F1C27539C00439FE7 /* Frameworks */,
 				C5A2A4901C27539C00439FE7 /* Resources */,
+				C5A66E6F1C6D5C1700473756 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				C5A66E751C6D5C3100473756 /* PBXTargetDependency */,
+				C5A66E731C6D5C2B00473756 /* PBXTargetDependency */,
+				C5A66E711C6D5C2600473756 /* PBXTargetDependency */,
 			);
 			name = SupervisorRemote;
 			productName = SupervisorRemote;
@@ -268,6 +464,20 @@
 			mainGroup = C5A2A4891C27539C00439FE7;
 			productRefGroup = C5A2A4931C27539C00439FE7 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = C5A66E3A1C6D5B3300473756 /* Products */;
+					ProjectRef = C5A66E391C6D5B3300473756 /* Freddy.xcodeproj */;
+				},
+				{
+					ProductGroup = C5A66E521C6D5B3D00473756 /* Products */;
+					ProjectRef = C5A66E511C6D5B3D00473756 /* PKHUD.xcodeproj */;
+				},
+				{
+					ProductGroup = C5A66E5B1C6D5B4800473756 /* Products */;
+					ProjectRef = C5A66E5A1C6D5B4800473756 /* Starscream.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				C5A2A4911C27539C00439FE7 /* SupervisorRemote */,
@@ -276,6 +486,114 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		C5A66E441C6D5B3300473756 /* Freddy.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Freddy.framework;
+			remoteRef = C5A66E431C6D5B3300473756 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C5A66E461C6D5B3300473756 /* FreddyTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = FreddyTests.xctest;
+			remoteRef = C5A66E451C6D5B3300473756 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C5A66E481C6D5B3300473756 /* Freddy.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Freddy.framework;
+			remoteRef = C5A66E471C6D5B3300473756 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C5A66E4A1C6D5B3300473756 /* MobileFreddyTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = MobileFreddyTests.xctest;
+			remoteRef = C5A66E491C6D5B3300473756 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C5A66E4C1C6D5B3300473756 /* Freddy.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Freddy.framework;
+			remoteRef = C5A66E4B1C6D5B3300473756 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C5A66E4E1C6D5B3300473756 /* TVFreddyTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = TVFreddyTests.xctest;
+			remoteRef = C5A66E4D1C6D5B3300473756 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C5A66E501C6D5B3300473756 /* Freddy.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Freddy.framework;
+			remoteRef = C5A66E4F1C6D5B3300473756 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C5A66E571C6D5B3E00473756 /* PKHUD Demo.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "PKHUD Demo.app";
+			remoteRef = C5A66E561C6D5B3E00473756 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C5A66E591C6D5B3E00473756 /* PKHUD.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = PKHUD.framework;
+			remoteRef = C5A66E581C6D5B3E00473756 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C5A66E641C6D5B4800473756 /* Starscream.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Starscream.framework;
+			remoteRef = C5A66E631C6D5B4800473756 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C5A66E661C6D5B4800473756 /* Starscream iOSTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Starscream iOSTests.xctest";
+			remoteRef = C5A66E651C6D5B4800473756 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C5A66E681C6D5B4800473756 /* Starscream.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Starscream.framework;
+			remoteRef = C5A66E671C6D5B4800473756 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C5A66E6A1C6D5B4800473756 /* Starscream OSXTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Starscream OSXTests.xctest";
+			remoteRef = C5A66E691C6D5B4800473756 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C5A66E6C1C6D5B4800473756 /* Starscream.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Starscream.framework;
+			remoteRef = C5A66E6B1C6D5B4800473756 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C5A66E6E1C6D5B4800473756 /* Starscream tvOSTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Starscream tvOSTests.xctest";
+			remoteRef = C5A66E6D1C6D5B4800473756 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		C5A2A4901C27539C00439FE7 /* Resources */ = {
@@ -316,7 +634,7 @@
 				C5653B961C30BC2700087D48 /* ServerData.swift in Sources */,
 				C56321601C500B6100BBE4BE /* Theme.swift in Sources */,
 				C56321651C500C1900BBE4BE /* DarkTheme.swift in Sources */,
-				C56321691C502EEB00BBE4BE /* ThemeableCell.swift in Sources */,
+				C56321691C502EEB00BBE4BE /* Themeable.swift in Sources */,
 				C5A2A4961C27539C00439FE7 /* AppDelegate.swift in Sources */,
 				C5F6867F1C27731B00FBC5DE /* ServerCell.swift in Sources */,
 				C5F6867D1C276FF700FBC5DE /* ServerDetailTableViewController.swift in Sources */,
@@ -356,6 +674,21 @@
 			isa = PBXTargetDependency;
 			target = C5A2A4911C27539C00439FE7 /* SupervisorRemote */;
 			targetProxy = C5A2A4B21C27539C00439FE7 /* PBXContainerItemProxy */;
+		};
+		C5A66E711C6D5C2600473756 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MobileFreddy;
+			targetProxy = C5A66E701C6D5C2600473756 /* PBXContainerItemProxy */;
+		};
+		C5A66E731C6D5C2B00473756 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PKHUD;
+			targetProxy = C5A66E721C6D5C2B00473756 /* PBXContainerItemProxy */;
+		};
+		C5A66E751C6D5C3100473756 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Starscream iOS";
+			targetProxy = C5A66E741C6D5C3100473756 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

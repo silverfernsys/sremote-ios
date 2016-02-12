@@ -1,0 +1,9 @@
+[submodule "PKHUD"]
+	path = PKHUD
+	url = git://github.com/pkluz/PKHUD.git
+[submodule "Freddy"]
+	path = Freddy
+	url = git://github.com/bignerdranch/Freddy
+[submodule "Starscream"]
+	path = Starscream
+	url = git://github.com/daltoniam/Starscream

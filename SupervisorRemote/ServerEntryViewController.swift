@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PKHUD
 
 class ServerEntryViewController: UITableViewController {
 
@@ -38,6 +39,14 @@ class ServerEntryViewController: UITableViewController {
         
         NSNotificationCenter.defaultCenter().postNotificationName(Constants.ServerEntryViewController.Loaded, object: self)
         
+        PKHUD.sharedHUD.contentView = PKHUDProgressView()
+        PKHUD.sharedHUD.show()
+        
+        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(2.0 * Double(NSEC_PER_SEC)))
+        dispatch_after(delayTime, dispatch_get_main_queue()) {
+            PKHUD.sharedHUD.contentView = PKHUDSuccessView()
+            PKHUD.sharedHUD.hide(afterDelay: 2.0)
+        }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
