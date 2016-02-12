@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:SupervisorRemote.xcodeproj">
+      location = "self:/Users/marcwilson/src/sremote/sremote.xcodeproj">
    </FileRef>
 </Workspace>

@@ -7,9 +7,9 @@
 //
 
 import XCTest
-@testable import SupervisorRemote
+@testable import sremote
 
-class SupervisorRemoteTests: XCTestCase {
+class sremoteTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

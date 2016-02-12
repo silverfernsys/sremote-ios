@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C5A2A4911C27539C00439FE7"
-               BuildableName = "SupervisorRemote.app"
-               BlueprintName = "SupervisorRemote"
-               ReferencedContainer = "container:SupervisorRemote.xcodeproj">
+               BuildableName = "sremote.app"
+               BlueprintName = "sremote"
+               ReferencedContainer = "container:sremote.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C5A2A4A51C27539C00439FE7"
-               BuildableName = "SupervisorRemoteTests.xctest"
-               BlueprintName = "SupervisorRemoteTests"
-               ReferencedContainer = "container:SupervisorRemote.xcodeproj">
+               BuildableName = "sremote.xctest"
+               BlueprintName = "sremoteTests"
+               ReferencedContainer = "container:sremote.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C5A2A4B01C27539C00439FE7"
-               BuildableName = "SupervisorRemoteUITests.xctest"
-               BlueprintName = "SupervisorRemoteUITests"
-               ReferencedContainer = "container:SupervisorRemote.xcodeproj">
+               BuildableName = "sremote.xctest"
+               BlueprintName = "sremoteUITests"
+               ReferencedContainer = "container:sremote.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -53,9 +53,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C5A2A4911C27539C00439FE7"
-            BuildableName = "SupervisorRemote.app"
-            BlueprintName = "SupervisorRemote"
-            ReferencedContainer = "container:SupervisorRemote.xcodeproj">
+            BuildableName = "sremote.app"
+            BlueprintName = "sremote"
+            ReferencedContainer = "container:sremote.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C5A2A4911C27539C00439FE7"
-            BuildableName = "SupervisorRemote.app"
-            BlueprintName = "SupervisorRemote"
-            ReferencedContainer = "container:SupervisorRemote.xcodeproj">
+            BuildableName = "sremote.app"
+            BlueprintName = "sremote"
+            ReferencedContainer = "container:sremote.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -95,9 +95,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C5A2A4911C27539C00439FE7"
-            BuildableName = "SupervisorRemote.app"
-            BlueprintName = "SupervisorRemote"
-            ReferencedContainer = "container:SupervisorRemote.xcodeproj">
+            BuildableName = "sremote.app"
+            BlueprintName = "sremote"
+            ReferencedContainer = "container:sremote.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

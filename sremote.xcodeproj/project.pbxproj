@@ -23,8 +23,8 @@
 		C5A2A49B1C27539C00439FE7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5A2A4991C27539C00439FE7 /* Main.storyboard */; };
 		C5A2A49D1C27539C00439FE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5A2A49C1C27539C00439FE7 /* Assets.xcassets */; };
 		C5A2A4A01C27539C00439FE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5A2A49E1C27539C00439FE7 /* LaunchScreen.storyboard */; };
-		C5A2A4AB1C27539C00439FE7 /* SupervisorRemoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A2A4AA1C27539C00439FE7 /* SupervisorRemoteTests.swift */; };
-		C5A2A4B61C27539C00439FE7 /* SupervisorRemoteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A2A4B51C27539C00439FE7 /* SupervisorRemoteUITests.swift */; };
+		C5A2A4AB1C27539C00439FE7 /* sremoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A2A4AA1C27539C00439FE7 /* sremoteTests.swift */; };
+		C5A2A4B61C27539C00439FE7 /* sremoteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A2A4B51C27539C00439FE7 /* sremoteUITests.swift */; };
 		C5A2A4C41C27599D00439FE7 /* ServerEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A2A4C31C27599D00439FE7 /* ServerEntryViewController.swift */; };
 		C5A66E761C6D5C3F00473756 /* Freddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5A66E441C6D5B3300473756 /* Freddy.framework */; };
 		C5A66E771C6D5C4500473756 /* PKHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5A66E591C6D5B3E00473756 /* PKHUD.framework */; };
@@ -42,14 +42,14 @@
 			containerPortal = C5A2A48A1C27539C00439FE7 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = C5A2A4911C27539C00439FE7;
-			remoteInfo = SupervisorRemote;
+			remoteInfo = sremote;
 		};
 		C5A2A4B21C27539C00439FE7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C5A2A48A1C27539C00439FE7 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = C5A2A4911C27539C00439FE7;
-			remoteInfo = SupervisorRemote;
+			remoteInfo = sremote;
 		};
 		C5A66E431C6D5B3300473756 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -207,17 +207,17 @@
 		C5653B991C335A3700087D48 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C5653B9B1C3362D800087D48 /* UIColor+Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Colors.swift"; sourceTree = "<group>"; };
 		C59C6FE11C27660A00B082F6 /* ServerListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerListTableViewController.swift; sourceTree = "<group>"; };
-		C5A2A4921C27539C00439FE7 /* SupervisorRemote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SupervisorRemote.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C5A2A4921C27539C00439FE7 /* sremote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sremote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5A2A4951C27539C00439FE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C5A2A49A1C27539C00439FE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C5A2A49C1C27539C00439FE7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C5A2A49F1C27539C00439FE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C5A2A4A11C27539C00439FE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C5A2A4A61C27539C00439FE7 /* SupervisorRemoteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SupervisorRemoteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C5A2A4AA1C27539C00439FE7 /* SupervisorRemoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupervisorRemoteTests.swift; sourceTree = "<group>"; };
+		C5A2A4A61C27539C00439FE7 /* sremote.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = sremote.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C5A2A4AA1C27539C00439FE7 /* sremoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sremoteTests.swift; sourceTree = "<group>"; };
 		C5A2A4AC1C27539C00439FE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C5A2A4B11C27539C00439FE7 /* SupervisorRemoteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SupervisorRemoteUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C5A2A4B51C27539C00439FE7 /* SupervisorRemoteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupervisorRemoteUITests.swift; sourceTree = "<group>"; };
+		C5A2A4B11C27539C00439FE7 /* sremote.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = sremote.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C5A2A4B51C27539C00439FE7 /* sremoteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sremoteUITests.swift; sourceTree = "<group>"; };
 		C5A2A4B71C27539C00439FE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C5A2A4C31C27599D00439FE7 /* ServerEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerEntryViewController.swift; sourceTree = "<group>"; };
 		C5A66E391C6D5B3300473756 /* Freddy.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Freddy.xcodeproj; path = Freddy/Freddy.xcodeproj; sourceTree = "<group>"; };
@@ -273,9 +273,9 @@
 				C5A66E391C6D5B3300473756 /* Freddy.xcodeproj */,
 				C5A66E511C6D5B3D00473756 /* PKHUD.xcodeproj */,
 				C5A66E5A1C6D5B4800473756 /* Starscream.xcodeproj */,
-				C5A2A4941C27539C00439FE7 /* SupervisorRemote */,
-				C5A2A4A91C27539C00439FE7 /* SupervisorRemoteTests */,
-				C5A2A4B41C27539C00439FE7 /* SupervisorRemoteUITests */,
+				C5A2A4941C27539C00439FE7 /* sremote */,
+				C5A2A4A91C27539C00439FE7 /* sremoteTests */,
+				C5A2A4B41C27539C00439FE7 /* sremoteUITests */,
 				C5A2A4931C27539C00439FE7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -283,14 +283,14 @@
 		C5A2A4931C27539C00439FE7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C5A2A4921C27539C00439FE7 /* SupervisorRemote.app */,
-				C5A2A4A61C27539C00439FE7 /* SupervisorRemoteTests.xctest */,
-				C5A2A4B11C27539C00439FE7 /* SupervisorRemoteUITests.xctest */,
+				C5A2A4921C27539C00439FE7 /* sremote.app */,
+				C5A2A4A61C27539C00439FE7 /* sremote.xctest */,
+				C5A2A4B11C27539C00439FE7 /* sremote.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C5A2A4941C27539C00439FE7 /* SupervisorRemote */ = {
+		C5A2A4941C27539C00439FE7 /* sremote */ = {
 			isa = PBXGroup;
 			children = (
 				C56321611C500BF900BBE4BE /* Themes */,
@@ -310,25 +310,28 @@
 				C5653B9B1C3362D800087D48 /* UIColor+Colors.swift */,
 				C52311F31C404A4B001AD21A /* BadgeLabel.swift */,
 			);
-			path = SupervisorRemote;
+			name = sremote;
+			path = sremote;
 			sourceTree = "<group>";
 		};
-		C5A2A4A91C27539C00439FE7 /* SupervisorRemoteTests */ = {
+		C5A2A4A91C27539C00439FE7 /* sremoteTests */ = {
 			isa = PBXGroup;
 			children = (
-				C5A2A4AA1C27539C00439FE7 /* SupervisorRemoteTests.swift */,
+				C5A2A4AA1C27539C00439FE7 /* sremoteTests.swift */,
 				C5A2A4AC1C27539C00439FE7 /* Info.plist */,
 			);
-			path = SupervisorRemoteTests;
+			name = sremoteTests;
+			path = sremoteTests;
 			sourceTree = "<group>";
 		};
-		C5A2A4B41C27539C00439FE7 /* SupervisorRemoteUITests */ = {
+		C5A2A4B41C27539C00439FE7 /* sremoteUITests */ = {
 			isa = PBXGroup;
 			children = (
-				C5A2A4B51C27539C00439FE7 /* SupervisorRemoteUITests.swift */,
+				C5A2A4B51C27539C00439FE7 /* sremoteUITests.swift */,
 				C5A2A4B71C27539C00439FE7 /* Info.plist */,
 			);
-			path = SupervisorRemoteUITests;
+			name = sremoteUITests;
+			path = sremoteUITests;
 			sourceTree = "<group>";
 		};
 		C5A66E3A1C6D5B3300473756 /* Products */ = {
@@ -370,9 +373,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C5A2A4911C27539C00439FE7 /* SupervisorRemote */ = {
+		C5A2A4911C27539C00439FE7 /* sremote */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C5A2A4BA1C27539C00439FE7 /* Build configuration list for PBXNativeTarget "SupervisorRemote" */;
+			buildConfigurationList = C5A2A4BA1C27539C00439FE7 /* Build configuration list for PBXNativeTarget "sremote" */;
 			buildPhases = (
 				C5A2A48E1C27539C00439FE7 /* Sources */,
 				C5A2A48F1C27539C00439FE7 /* Frameworks */,
@@ -386,14 +389,14 @@
 				C5A66E731C6D5C2B00473756 /* PBXTargetDependency */,
 				C5A66E711C6D5C2600473756 /* PBXTargetDependency */,
 			);
-			name = SupervisorRemote;
-			productName = SupervisorRemote;
-			productReference = C5A2A4921C27539C00439FE7 /* SupervisorRemote.app */;
+			name = sremote;
+			productName = sremote;
+			productReference = C5A2A4921C27539C00439FE7 /* sremote.app */;
 			productType = "com.apple.product-type.application";
 		};
-		C5A2A4A51C27539C00439FE7 /* SupervisorRemoteTests */ = {
+		C5A2A4A51C27539C00439FE7 /* sremoteTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C5A2A4BD1C27539C00439FE7 /* Build configuration list for PBXNativeTarget "SupervisorRemoteTests" */;
+			buildConfigurationList = C5A2A4BD1C27539C00439FE7 /* Build configuration list for PBXNativeTarget "sremoteTests" */;
 			buildPhases = (
 				C5A2A4A21C27539C00439FE7 /* Sources */,
 				C5A2A4A31C27539C00439FE7 /* Frameworks */,
@@ -404,14 +407,14 @@
 			dependencies = (
 				C5A2A4A81C27539C00439FE7 /* PBXTargetDependency */,
 			);
-			name = SupervisorRemoteTests;
-			productName = SupervisorRemoteTests;
-			productReference = C5A2A4A61C27539C00439FE7 /* SupervisorRemoteTests.xctest */;
+			name = sremoteTests;
+			productName = sremoteTests;
+			productReference = C5A2A4A61C27539C00439FE7 /* sremote.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		C5A2A4B01C27539C00439FE7 /* SupervisorRemoteUITests */ = {
+		C5A2A4B01C27539C00439FE7 /* sremoteUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C5A2A4C01C27539C00439FE7 /* Build configuration list for PBXNativeTarget "SupervisorRemoteUITests" */;
+			buildConfigurationList = C5A2A4C01C27539C00439FE7 /* Build configuration list for PBXNativeTarget "sremoteUITests" */;
 			buildPhases = (
 				C5A2A4AD1C27539C00439FE7 /* Sources */,
 				C5A2A4AE1C27539C00439FE7 /* Frameworks */,
@@ -422,9 +425,9 @@
 			dependencies = (
 				C5A2A4B31C27539C00439FE7 /* PBXTargetDependency */,
 			);
-			name = SupervisorRemoteUITests;
-			productName = SupervisorRemoteUITests;
-			productReference = C5A2A4B11C27539C00439FE7 /* SupervisorRemoteUITests.xctest */;
+			name = sremoteUITests;
+			productName = sremoteUITests;
+			productReference = C5A2A4B11C27539C00439FE7 /* sremote.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -453,7 +456,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C5A2A48D1C27539C00439FE7 /* Build configuration list for PBXProject "SupervisorRemote" */;
+			buildConfigurationList = C5A2A48D1C27539C00439FE7 /* Build configuration list for PBXProject "sremote" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -480,9 +483,9 @@
 			);
 			projectRoot = "";
 			targets = (
-				C5A2A4911C27539C00439FE7 /* SupervisorRemote */,
-				C5A2A4A51C27539C00439FE7 /* SupervisorRemoteTests */,
-				C5A2A4B01C27539C00439FE7 /* SupervisorRemoteUITests */,
+				C5A2A4911C27539C00439FE7 /* sremote */,
+				C5A2A4A51C27539C00439FE7 /* sremoteTests */,
+				C5A2A4B01C27539C00439FE7 /* sremoteUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -650,7 +653,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C5A2A4AB1C27539C00439FE7 /* SupervisorRemoteTests.swift in Sources */,
+				C5A2A4AB1C27539C00439FE7 /* sremoteTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -658,7 +661,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C5A2A4B61C27539C00439FE7 /* SupervisorRemoteUITests.swift in Sources */,
+				C5A2A4B61C27539C00439FE7 /* sremoteUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -667,12 +670,12 @@
 /* Begin PBXTargetDependency section */
 		C5A2A4A81C27539C00439FE7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C5A2A4911C27539C00439FE7 /* SupervisorRemote */;
+			target = C5A2A4911C27539C00439FE7 /* sremote */;
 			targetProxy = C5A2A4A71C27539C00439FE7 /* PBXContainerItemProxy */;
 		};
 		C5A2A4B31C27539C00439FE7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C5A2A4911C27539C00439FE7 /* SupervisorRemote */;
+			target = C5A2A4911C27539C00439FE7 /* sremote */;
 			targetProxy = C5A2A4B21C27539C00439FE7 /* PBXContainerItemProxy */;
 		};
 		C5A66E711C6D5C2600473756 /* PBXTargetDependency */ = {
@@ -797,10 +800,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = SupervisorRemote/Info.plist;
+				INFOPLIST_FILE = sremote/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.silverfern.SupervisorRemote;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = io.silverfern.sremote;
+				PRODUCT_NAME = sremote;
 			};
 			name = Debug;
 		};
@@ -808,10 +811,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = SupervisorRemote/Info.plist;
+				INFOPLIST_FILE = sremote/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.silverfern.SupervisorRemote;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = io.silverfern.sremote;
+				PRODUCT_NAME = sremote;
 			};
 			name = Release;
 		};
@@ -819,11 +822,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = SupervisorRemoteTests/Info.plist;
+				INFOPLIST_FILE = sremoteTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.silverfern.SupervisorRemoteTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SupervisorRemote.app/SupervisorRemote";
+				PRODUCT_BUNDLE_IDENTIFIER = io.silverfern.sremoteTests;
+				PRODUCT_NAME = sremote;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/sremote.app/sremote";
 			};
 			name = Debug;
 		};
@@ -831,22 +834,22 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = SupervisorRemoteTests/Info.plist;
+				INFOPLIST_FILE = sremoteTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.silverfern.SupervisorRemoteTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SupervisorRemote.app/SupervisorRemote";
+				PRODUCT_BUNDLE_IDENTIFIER = io.silverfern.sremoteTests;
+				PRODUCT_NAME = sremote;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/sremote.app/sremote";
 			};
 			name = Release;
 		};
 		C5A2A4C11C27539C00439FE7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = SupervisorRemoteUITests/Info.plist;
+				INFOPLIST_FILE = sremoteUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.silverfern.SupervisorRemoteUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = SupervisorRemote;
+				PRODUCT_BUNDLE_IDENTIFIER = io.silverfern.sremoteUITests;
+				PRODUCT_NAME = sremote;
+				TEST_TARGET_NAME = sremote;
 				USES_XCTRUNNER = YES;
 			};
 			name = Debug;
@@ -854,11 +857,11 @@
 		C5A2A4C21C27539C00439FE7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = SupervisorRemoteUITests/Info.plist;
+				INFOPLIST_FILE = sremoteUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.silverfern.SupervisorRemoteUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = SupervisorRemote;
+				PRODUCT_BUNDLE_IDENTIFIER = io.silverfern.sremoteUITests;
+				PRODUCT_NAME = sremote;
+				TEST_TARGET_NAME = sremote;
 				USES_XCTRUNNER = YES;
 			};
 			name = Release;
@@ -866,7 +869,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C5A2A48D1C27539C00439FE7 /* Build configuration list for PBXProject "SupervisorRemote" */ = {
+		C5A2A48D1C27539C00439FE7 /* Build configuration list for PBXProject "sremote" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C5A2A4B81C27539C00439FE7 /* Debug */,
@@ -875,7 +878,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C5A2A4BA1C27539C00439FE7 /* Build configuration list for PBXNativeTarget "SupervisorRemote" */ = {
+		C5A2A4BA1C27539C00439FE7 /* Build configuration list for PBXNativeTarget "sremote" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C5A2A4BB1C27539C00439FE7 /* Debug */,
@@ -884,7 +887,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C5A2A4BD1C27539C00439FE7 /* Build configuration list for PBXNativeTarget "SupervisorRemoteTests" */ = {
+		C5A2A4BD1C27539C00439FE7 /* Build configuration list for PBXNativeTarget "sremoteTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C5A2A4BE1C27539C00439FE7 /* Debug */,
@@ -893,7 +896,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C5A2A4C01C27539C00439FE7 /* Build configuration list for PBXNativeTarget "SupervisorRemoteUITests" */ = {
+		C5A2A4C01C27539C00439FE7 /* Build configuration list for PBXNativeTarget "sremoteUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C5A2A4C11C27539C00439FE7 /* Debug */,
