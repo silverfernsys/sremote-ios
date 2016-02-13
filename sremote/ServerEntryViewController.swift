@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import PKHUD
+import Freddy
 
 class ServerEntryViewController: UITableViewController {
 
@@ -23,39 +23,93 @@ class ServerEntryViewController: UITableViewController {
         serverNameLabel.autocapitalizationType = UITextAutocapitalizationType.None
         serverNameLabel.autocorrectionType = UITextAutocorrectionType.No
         serverNameLabel.keyboardType = UIKeyboardType.Default
+        var str = NSAttributedString(string: "address", attributes: [NSForegroundColorAttributeName:UIColor.lightGrayColor()])
+        serverNameLabel.attributedPlaceholder = str
         
         serverPortLabel.autocapitalizationType = UITextAutocapitalizationType.None
         serverPortLabel.autocorrectionType = UITextAutocorrectionType.No
         serverPortLabel.keyboardType = UIKeyboardType.NumberPad
+        str = NSAttributedString(string: "port", attributes: [NSForegroundColorAttributeName:UIColor.lightGrayColor()])
+        serverPortLabel.attributedPlaceholder = str
         
         usernameLabel.autocapitalizationType = UITextAutocapitalizationType.None
         usernameLabel.autocorrectionType = UITextAutocorrectionType.No
-        serverNameLabel.keyboardType = UIKeyboardType.Default
+        usernameLabel.keyboardType = UIKeyboardType.Default
+        str = NSAttributedString(string: "username", attributes: [NSForegroundColorAttributeName:UIColor.lightGrayColor()])
+        usernameLabel.attributedPlaceholder = str
         
         passwordLabel.autocapitalizationType = UITextAutocapitalizationType.None
         passwordLabel.autocorrectionType = UITextAutocorrectionType.No
-        serverNameLabel.keyboardType = UIKeyboardType.Default
+        passwordLabel.keyboardType = UIKeyboardType.Default
         passwordLabel.secureTextEntry = true
+        str = NSAttributedString(string: "password", attributes: [NSForegroundColorAttributeName:UIColor.lightGrayColor()])
+        passwordLabel.attributedPlaceholder = str
         
         NSNotificationCenter.defaultCenter().postNotificationName(Constants.ServerEntryViewController.Loaded, object: self)
-        
-        PKHUD.sharedHUD.contentView = PKHUDProgressView()
-        PKHUD.sharedHUD.show()
-        
-        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(2.0 * Double(NSEC_PER_SEC)))
-        dispatch_after(delayTime, dispatch_get_main_queue()) {
-            PKHUD.sharedHUD.contentView = PKHUDSuccessView()
-            PKHUD.sharedHUD.hide(afterDelay: 2.0)
-        }
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        positionLables()
     }
     
+    func positionLabel(label: UITextField) {
+        label.frame = CGRectMake(label.frame.origin.x,
+            label.frame.origin.y, self.view.frame.width - (2.0 * label.frame.origin.x), label.frame.size.height)
+    }
+    
+    func positionLables() {
+        positionLabel(serverNameLabel)
+        positionLabel(serverPortLabel)
+        positionLabel(usernameLabel)
+        positionLabel(passwordLabel)
+    }
+    
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+        positionLables()
+    }
+
     func hello() -> Void {
         print("Hello from ServerEntryViewController!")
+    }
+    
+    @IBAction func handleSave(sender: UIButton) {
+        print("handleSave")
+        let serverName = serverNameLabel.text!
+        let serverPort = serverPortLabel.text!
+        let username = usernameLabel.text
+        let password = passwordLabel.text
+        
+        let url = NSURL(string: "http://\(serverName):\(serverPort)/")
+        
+        let task = NSURLSession.sharedSession().dataTaskWithURL(url!) { (data, response, error) in
+            print("data: \(data)")
+            print("response: \(response)")
+            print("error: \(error)")
+            
+            do {
+                let json = try JSON(data: data!)
+                let version = try json.double("version")
+                print("version: \(version)")
+                
+                // Now try signing in!
+                let tokenUrl = NSURL(string: "http://\(serverName):\(serverPort)/token/")
+                let tokenRequest = NSMutableURLRequest(URL: tokenUrl!)
+                tokenRequest.setValue(username, forHTTPHeaderField: "username")
+                tokenRequest.setValue(password, forHTTPHeaderField: "password")
+
+                let signInTask = NSURLSession.sharedSession().dataTaskWithRequest(tokenRequest) { (data, response, error) in
+                    do {
+                        let tokenJson = try JSON(data: data!)
+                        let token = try tokenJson.string("token")
+                        print("token: \(token)")
+                        self.performSegueWithIdentifier("hideServerEntry", sender: nil)
+                    } catch {
+                        
+                    }
+                }
+                signInTask.resume()
+            } catch {
+//                 do something with the error
+            }
+        }
+        task.resume()
     }
 
     override func didReceiveMemoryWarning() {

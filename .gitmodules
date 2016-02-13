@@ -7,3 +7,6 @@
 [submodule "Starscream"]
 	path = Starscream
 	url = git://github.com/daltoniam/Starscream
+[submodule "Locksmith"]
+	path = Locksmith
+	url = git://github.com/matthewpalmer/Locksmith.git

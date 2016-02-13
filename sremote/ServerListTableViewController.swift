@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PKHUD
 
 class ServerListTableViewController: UITableViewController, UIGestureRecognizerDelegate {
     var servers:[ServerData] = serverData
@@ -194,8 +195,33 @@ class ServerListTableViewController: UITableViewController, UIGestureRecognizerD
     @IBAction func cancelToServerListViewController(segue:UIStoryboardSegue) {
     }
     
-    @IBAction func saveServerEntry(segue:UIStoryboardSegue) {
-    }
+//    @IBAction func saveServerEntry(segue:UIStoryboardSegue) {
+//        print("saveServerEntry")
+        // This is where we're going to put a blocking call to the network
+        // to prevent the segue from running until after we've determined
+//        PKHUD.sharedHUD.contentView = PKHUDStatusProgressView(title: "Connecting...", subtitle: "Finding server...")
+//        PKHUD.sharedHUD.show()
+//        PKHUD.sharedHUD.hide(afterDelay: 2.0)
+//        
+//        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(2.0 * Double(NSEC_PER_SEC)))
+//        dispatch_after(delayTime, dispatch_get_main_queue()) {
+//            PKHUD.sharedHUD.contentView = PKHUDSuccessView()
+//            PKHUD.sharedHUD.hide(afterDelay: 2.0)
+//        }
+    
+//        sleep(2)
+        
+//        PKHUD.sharedHUD.contentView = PKHUDStatusProgressView(title: "Connecting...", subtitle: "Authorizing...")
+//        PKHUD.sharedHUD.show()
+//        PKHUD.sharedHUD.hide(afterDelay: 2.0)
+//        sleep(2)
+//        PKHUD.sharedHUD.contentView = PKHUDSuccessView()
+//        PKHUD.sharedHUD.hide(afterDelay: 2.0)
+//    }
+    
+//    func delay(delay:Double, closure:()->()) {
+//        dispatch_after(dispatch_time( DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), closure)
+//    }
 
     // MARK: - Table view data source
 
