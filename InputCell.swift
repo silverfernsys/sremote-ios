@@ -9,9 +9,6 @@
 import UIKit
 
 class InputCell: UITableViewCell, Themeable {
-    
-    @IBOutlet weak var textField: UITextField!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.clipsToBounds = true

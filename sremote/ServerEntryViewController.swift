@@ -9,7 +9,7 @@
 import UIKit
 import Freddy
 
-class ServerEntryViewController: UITableViewController {
+class ServerEntryViewController: UITableViewController, UITextFieldDelegate {
 
     @IBOutlet weak var serverNameLabel: UITextField!
     @IBOutlet weak var serverPortLabel: UITextField!
@@ -47,6 +47,11 @@ class ServerEntryViewController: UITableViewController {
         
         NSNotificationCenter.defaultCenter().postNotificationName(Constants.ServerEntryViewController.Loaded, object: self)
         positionLables()
+        
+        serverNameLabel.delegate = self
+        serverPortLabel.delegate = self
+        usernameLabel.delegate = self
+        passwordLabel.delegate = self
     }
     
     func positionLabel(label: UITextField) {
@@ -69,47 +74,133 @@ class ServerEntryViewController: UITableViewController {
         print("Hello from ServerEntryViewController!")
     }
     
-    @IBAction func handleSave(sender: UIButton) {
-        print("handleSave")
-        let serverName = serverNameLabel.text!
-        let serverPort = serverPortLabel.text!
-        let username = usernameLabel.text
-        let password = passwordLabel.text
-        
-        let url = NSURL(string: "http://\(serverName):\(serverPort)/")
+    func showAlert(message:String) {
+        let alertController = UIAlertController(title: message, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        let okAction = UIAlertAction(title: "OK", style:UIAlertActionStyle.Destructive) { (action) in }
+        alertController.addAction(okAction)
+        self.presentViewController(alertController, animated: true) { }
+    }
+    
+    func showConnectionAlert() {
+        let alertController = UIAlertController(title: "Connecting to server...", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+        self.presentViewController(alertController, animated: true) { }
+    }
+    
+    func showConnectionErrorAlert() {
+        let alertController = UIAlertController(title: "Could not connect to server", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+        let okAction = UIAlertAction(title: "OK", style:UIAlertActionStyle.Destructive) { (action) in }
+        alertController.addAction(okAction)
+        self.presentViewController(alertController, animated: true) { }
+    }
+    
+    func showServerConfigErrorAlert() {
+        let alertController = UIAlertController(title: "Server not configured", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+        let okAction = UIAlertAction(title: "OK", style:UIAlertActionStyle.Destructive) { (action) in }
+        alertController.addAction(okAction)
+        self.presentViewController(alertController, animated: true) { }
+    }
+    
+    func showAuthenticationErrorAlert() {
+        let alertController = UIAlertController(title: "Authentication failed", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+        let okAction = UIAlertAction(title: "OK", style:UIAlertActionStyle.Destructive) { (action) in }
+        alertController.addAction(okAction)
+        self.presentViewController(alertController, animated: true) { }
+    }
+    
+    func connect(server:String, port:String, username:String, password:String) {
+        let url = NSURL(string: "http://\(server):\(port)/")
+        showConnectionAlert()
         
         let task = NSURLSession.sharedSession().dataTaskWithURL(url!) { (data, response, error) in
-            print("data: \(data)")
-            print("response: \(response)")
-            print("error: \(error)")
-            
-            do {
-                let json = try JSON(data: data!)
-                let version = try json.double("version")
-                print("version: \(version)")
-                
-                // Now try signing in!
-                let tokenUrl = NSURL(string: "http://\(serverName):\(serverPort)/token/")
-                let tokenRequest = NSMutableURLRequest(URL: tokenUrl!)
-                tokenRequest.setValue(username, forHTTPHeaderField: "username")
-                tokenRequest.setValue(password, forHTTPHeaderField: "password")
-
-                let signInTask = NSURLSession.sharedSession().dataTaskWithRequest(tokenRequest) { (data, response, error) in
-                    do {
-                        let tokenJson = try JSON(data: data!)
-                        let token = try tokenJson.string("token")
-                        print("token: \(token)")
-                        self.performSegueWithIdentifier("hideServerEntry", sender: nil)
-                    } catch {
-                        
+            if error != nil {
+                print("error: \(error)")
+                dispatch_async(dispatch_get_main_queue(),{
+                    self.dismissViewControllerAnimated(false, completion: {
+                        self.showConnectionErrorAlert()
+                    })
+                })
+            } else {
+                print("data: \(data)")
+                print("response: \(response)")
+                do {
+                    let json = try JSON(data: data!)
+                    let version = try json.double("version")
+                    print("version: \(version)")
+                    
+                    // Now try signing in!
+                    let tokenUrl = NSURL(string: "http://\(server):\(port)/token/")
+                    let tokenRequest = NSMutableURLRequest(URL: tokenUrl!)
+                    tokenRequest.setValue(username, forHTTPHeaderField: "username")
+                    tokenRequest.setValue(password, forHTTPHeaderField: "password")
+                    
+                    let signInTask = NSURLSession.sharedSession().dataTaskWithRequest(tokenRequest) { (data, response, error) in
+                        if error != nil {
+                            print("error: \(error)")
+                            dispatch_async(dispatch_get_main_queue(),{
+                                self.dismissViewControllerAnimated(false, completion: {
+                                    self.showAuthenticationErrorAlert()
+                                })
+                            })
+                        } else {
+                            do {
+                                let tokenJson = try JSON(data: data!)
+                                let token = try tokenJson.string("token")
+                                print("token: \(token)")
+                                self.performSegueWithIdentifier("hideServerEntry", sender: nil)
+                            } catch {
+                                dispatch_async(dispatch_get_main_queue(),{
+                                    self.dismissViewControllerAnimated(false, completion: {
+                                        self.showAuthenticationErrorAlert()
+                                    })
+                                })
+                            }
+                        }
                     }
+                    signInTask.resume()
+                } catch {
+                    dispatch_async(dispatch_get_main_queue(),{
+                        self.dismissViewControllerAnimated(false, completion: {
+                            self.showServerConfigErrorAlert()
+                        })
+                    })
                 }
-                signInTask.resume()
-            } catch {
-//                 do something with the error
             }
         }
         task.resume()
+    }
+    
+    @IBAction func handleSave(sender: UIButton) {
+        print("handleSave")
+        var shouldShowAlert = false
+        var alertMessage = ""
+        
+        if serverNameLabel.text!.isEmpty {
+            shouldShowAlert = true
+            alertMessage = "Missing server address"
+        } else if serverPortLabel.text!.isEmpty {
+            shouldShowAlert = true
+            alertMessage = "Missing port number"
+        } else if usernameLabel.text!.isEmpty {
+            shouldShowAlert = true
+            alertMessage = "Missing username"
+        } else if passwordLabel.text!.isEmpty {
+            shouldShowAlert = true
+            alertMessage = "Missing password"
+        }
+        
+        if shouldShowAlert {
+            showAlert(alertMessage)
+        } else {
+            connect(serverNameLabel.text!,
+                port: serverPortLabel.text!,
+                username: usernameLabel.text!,
+                password: passwordLabel.text!)
+        }
+    }
+    
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        textField.textColor = ThemeFactory.sharedInstance().theme.cellPrimaryTextColor()
+        return true
     }
 
     override func didReceiveMemoryWarning() {
