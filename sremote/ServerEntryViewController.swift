@@ -106,66 +106,104 @@ class ServerEntryViewController: UITableViewController, UITextFieldDelegate {
         alertController.addAction(okAction)
         self.presentViewController(alertController, animated: true) { }
     }
-    
-    func connect(server:String, port:String, username:String, password:String) {
-        let url = NSURL(string: "http://\(server):\(port)/")
-        showConnectionAlert()
+
+    func getToken(server:String, port:String, username:String, password:String, scheme:String) -> Void {
+        let url = NSURL(string: "\(scheme)://\(server):\(port)/token/")
+        let request = NSMutableURLRequest(URL: url!)
+        request.setValue(username, forHTTPHeaderField: "username")
+        request.setValue(password, forHTTPHeaderField: "password")
         
-        let task = NSURLSession.sharedSession().dataTaskWithURL(url!) { (data, response, error) in
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) in
             if error != nil {
-                print("error: \(error)")
                 dispatch_async(dispatch_get_main_queue(),{
                     self.dismissViewControllerAnimated(false, completion: {
-                        self.showConnectionErrorAlert()
+                        self.showAuthenticationErrorAlert()
                     })
                 })
             } else {
-                print("data: \(data)")
-                print("response: \(response)")
                 do {
-                    let json = try JSON(data: data!)
-                    let version = try json.double("version")
-                    print("version: \(version)")
-                    
-                    // Now try signing in!
-                    let tokenUrl = NSURL(string: "http://\(server):\(port)/token/")
-                    let tokenRequest = NSMutableURLRequest(URL: tokenUrl!)
-                    tokenRequest.setValue(username, forHTTPHeaderField: "username")
-                    tokenRequest.setValue(password, forHTTPHeaderField: "password")
-                    
-                    let signInTask = NSURLSession.sharedSession().dataTaskWithRequest(tokenRequest) { (data, response, error) in
-                        if error != nil {
-                            print("error: \(error)")
-                            dispatch_async(dispatch_get_main_queue(),{
-                                self.dismissViewControllerAnimated(false, completion: {
-                                    self.showAuthenticationErrorAlert()
-                                })
-                            })
-                        } else {
-                            do {
-                                let tokenJson = try JSON(data: data!)
-                                let token = try tokenJson.string("token")
-                                print("token: \(token)")
-                                self.performSegueWithIdentifier("hideServerEntry", sender: nil)
-                            } catch {
-                                dispatch_async(dispatch_get_main_queue(),{
-                                    self.dismissViewControllerAnimated(false, completion: {
-                                        self.showAuthenticationErrorAlert()
-                                    })
-                                })
-                            }
-                        }
-                    }
-                    signInTask.resume()
+                    let tokenJson = try JSON(data: data!)
+                    let token = try tokenJson.string("token")
+                    print("token: \(token)")
+                    dispatch_async(dispatch_get_main_queue(),{
+                        self.dismissViewControllerAnimated(false, completion: {
+                            self.performSegueWithIdentifier("hideServerEntry", sender: nil)
+                        })
+                    })
                 } catch {
                     dispatch_async(dispatch_get_main_queue(),{
                         self.dismissViewControllerAnimated(false, completion: {
-                            self.showServerConfigErrorAlert()
+                            self.showAuthenticationErrorAlert()
                         })
                     })
                 }
             }
         }
+        task.resume()
+    }
+    
+    func handleHttpResponse(data: NSData?, response: NSURLResponse?, error: NSError?, server:String, port:String, username:String, password:String) -> Void {
+        if error != nil {
+            dispatch_async(dispatch_get_main_queue(),{
+                self.dismissViewControllerAnimated(false, completion: {
+                    self.showConnectionErrorAlert()
+                })
+            })
+        } else {
+            do {
+                let json = try JSON(data: data!)
+                let version = try json.double("version")
+                print("version: \(version)")
+                getToken(server, port: port, username: username, password: password, scheme: "http")
+            } catch {
+                dispatch_async(dispatch_get_main_queue(),{
+                    self.dismissViewControllerAnimated(false, completion: {
+                        self.showServerConfigErrorAlert()
+                    })
+                })
+            }
+        }
+    }
+    
+    func handleHttpsResponse(data: NSData?, response: NSURLResponse?, error: NSError?, server:String, port:String, username:String, password:String) {
+        let urlconfig = NSURLSessionConfiguration.defaultSessionConfiguration()
+        urlconfig.timeoutIntervalForRequest = 6
+        urlconfig.timeoutIntervalForResource = 6
+        
+        if error != nil {
+            let url = NSURL(string: "http://\(server):\(port)/")
+            let task = NSURLSession(configuration: urlconfig).dataTaskWithURL(url!) { (data, response, error) -> Void in
+                self.handleHttpResponse(data, response:response, error:error, server:server, port:port, username: username, password: password)
+            }
+            task.resume()
+        } else {
+            do {
+                let json = try JSON(data: data!)
+                let version = try json.double("version")
+                print("version: \(version)")
+                getToken(server, port: port, username: username, password: password, scheme: "https")
+            } catch {
+                dispatch_async(dispatch_get_main_queue(),{
+                    self.dismissViewControllerAnimated(false, completion: {
+                        self.showServerConfigErrorAlert()
+                    })
+                })
+            }
+        }
+    }
+
+    func connect(server:String, port:String, username:String, password:String) {
+        let url = NSURL(string: "https://\(server):\(port)/")
+        showConnectionAlert()
+        // Make connection timeout quickly for testing purposes.
+        let urlconfig = NSURLSessionConfiguration.defaultSessionConfiguration()
+        urlconfig.timeoutIntervalForRequest = 6
+        urlconfig.timeoutIntervalForResource = 6
+        
+        let task = NSURLSession(configuration: urlconfig).dataTaskWithURL(url!, completionHandler: { (data, response, error) -> Void in
+            self.handleHttpsResponse(data, response: response, error: error, server: server, port: port, username: username, password: password)
+        })
+        
         task.resume()
     }
     
@@ -187,6 +225,8 @@ class ServerEntryViewController: UITableViewController, UITextFieldDelegate {
             shouldShowAlert = true
             alertMessage = "Missing password"
         }
+        
+        self.view.endEditing(true)
         
         if shouldShowAlert {
             showAlert(alertMessage)
