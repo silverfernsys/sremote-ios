@@ -51,7 +51,15 @@ class ServerListTableViewController: UITableViewController, UIGestureRecognizerD
     
     func handleServerDelete(notitification: NSNotification) {
         let alertController = UIAlertController(title: "Delete Server", message: "Are you sure you want to delete this server?", preferredStyle: UIAlertControllerStyle.Alert)
-        let deleteAction = UIAlertAction(title: "Delete", style:UIAlertActionStyle.Destructive) { (action) in }
+        let deleteAction = UIAlertAction(title: "Delete", style:UIAlertActionStyle.Destructive) { (action) in
+            let cell = notitification.object as! ServerCell
+            cell.hideDelete(true)
+            let indexPath = self.tableView.indexPathForCell(cell)
+            let server = self.servers[indexPath!.row]
+            self.servers.removeAtIndex(indexPath!.row)
+            server.delete()
+            self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Automatic)
+        }
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: { (action) in })
         alertController.addAction(deleteAction)
         alertController.addAction(cancelAction)
@@ -269,7 +277,7 @@ class ServerListTableViewController: UITableViewController, UIGestureRecognizerD
         print("willSelectRowAtIndexPath")
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! ServerCell
         cell.hideDelete(false)
-        return nil
+        return indexPath
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -294,4 +302,14 @@ class ServerListTableViewController: UITableViewController, UIGestureRecognizerD
 //            // do something with your currentPoint
 //        }
 //    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "ShowProcessList" {
+            print("prepareForSegue")
+            let processTableViewController = segue.destinationViewController as! ProcessTableViewController
+            processTableViewController.processes = processData
+        }
+        
+    }
 }

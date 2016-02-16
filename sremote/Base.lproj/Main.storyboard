@@ -313,7 +313,7 @@
                                     <outlet property="unknownCountLabel" destination="fDf-O3-dSl" id="2pr-Op-dWc"/>
                                     <outlet property="unknownLabel" destination="YoK-uB-AdR" id="fJV-OH-aJw"/>
                                     <outlet property="unknownView" destination="h5Z-Cx-FQW" id="1vf-N1-BH9"/>
-                                    <segue destination="bIc-5Z-yKD" kind="push" id="o3S-nf-rae"/>
+                                    <segue destination="bIc-5Z-yKD" kind="push" identifier="ShowProcessList" id="o3S-nf-rae"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -493,17 +493,17 @@
             </objects>
             <point key="canvasLocation" x="425" y="-144"/>
         </scene>
-        <!--Server Details-->
+        <!--Process-->
         <scene sceneID="IRC-Hy-vEg">
             <objects>
-                <tableViewController id="bIc-5Z-yKD" customClass="ServerDetailTableViewController" customModule="sremote" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="bIc-5Z-yKD" userLabel="Process" customClass="ProcessTableViewController" customModule="sremote" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="eoc-QS-J9Z">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ServerDetailCell" id="Jzf-Fi-i7T">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProcessCell" id="Jzf-Fi-i7T" customClass="ProcessCell" customModule="sremote" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Jzf-Fi-i7T" id="A1j-cz-Im9">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -516,7 +516,7 @@
                             <outlet property="delegate" destination="bIc-5Z-yKD" id="Alk-dT-TRd"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Server Details" id="aUA-ad-kS5"/>
+                    <navigationItem key="navigationItem" title="Processes" id="aUA-ad-kS5"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nCb-0U-lcr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -524,6 +524,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Gn5-hj-YKQ"/>
+        <segue reference="YqH-8s-xVM"/>
     </inferredMetricsTieBreakers>
 </document>

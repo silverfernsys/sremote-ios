@@ -8,8 +8,9 @@
 
 import UIKit
 
-class ServerDetailTableViewController: UITableViewController {
-
+class ProcessTableViewController: UITableViewController {
+    var processes:[Process] = processData
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,11 +35,11 @@ class ServerDetailTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return processData.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ServerDetailCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("ProcessCell", forIndexPath: indexPath) as! ProcessCell
 
         // Configure the cell...
 
@@ -89,5 +90,4 @@ class ServerDetailTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }

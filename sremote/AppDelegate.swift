@@ -27,8 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WebSocketDelegate {
         // Create database connection here
         let db = ConnectionManager.instance.get("default")!
         let m = Migrations(db: db)
-        m.run(Migrations.Direction.Up)
-        
+        m.run(Migrations.Direction.Down)
+        /*
         let s = Server(id: nil, sort_id: nil, ip: "192.168.33.25", port: 8082, hostname: "V64", connection_scheme: "https", num_cores: 8, num_stopped: 5, num_starting: 1, num_running: 18, num_backoff: 0, num_stopping: 2, num_exited: 1, num_fatal: 3, num_unknown: 0)
         s.save()
         
@@ -51,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WebSocketDelegate {
         for p in Process.processes.all() {
             print(p)
         }
-        
+        */
         return true
     }
 

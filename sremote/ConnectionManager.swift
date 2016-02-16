@@ -14,7 +14,6 @@ class ConnectionManager {
     var connections = Dictionary<String, Connection>()
     
     init() {
-        
         let documents = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
         let path = (documents as NSString).stringByAppendingPathComponent("db.sqlite")
         do {

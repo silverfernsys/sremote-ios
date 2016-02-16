@@ -8,7 +8,7 @@
 
 import XCTest
 
-class ServerDataProcessDataTests: XCTestCase {
+class ServerProcessTests: XCTestCase {
     var sampleData:NSData!
     
     override func setUp() {

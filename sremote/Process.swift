@@ -133,8 +133,8 @@ class Process: JSONDecodable, CustomStringConvertible {
         }
     }
     
-    init(id: Int64?, sort_id: Int64?, group: String, name: String, pid: Int64, state: Int64,
-        start: Double, cpu:[[Double]]?, memory:[[Double]]?, server_id: Int64) {
+    init(id: Int64?, sort_id: Int64?, group: String, name: String, pid: Int64?, state: Int64,
+        start: Double, cpu:[[Double]]?, memory:[[Double]]?, server_id: Int64?) {
             self.id = id
             self.sort_id = sort_id
             self.group = group
