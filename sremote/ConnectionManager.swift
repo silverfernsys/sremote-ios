@@ -23,11 +23,13 @@ class ConnectionManager {
         } catch {
             print("ConnectionManager.init ERROR: \(error)")
         }
-        
     }
     
     func get(name: String) -> Connection? {
         return connections[name]
     }
     
+    func add(name: String, db: Connection) {
+        connections[name] = db
+    }
 }

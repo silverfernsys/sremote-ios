@@ -61,6 +61,37 @@ class ServerManager {
         }
     }
     
+    func get(id: Int64) -> Server? {
+        do {
+            for row in try db.prepare("SELECT * FROM server WHERE id=?", [id]).run() {
+//                print("row: \(row)")
+                let id = row[0] as! Int64
+                let sort_id = row[1] as! Int64
+                let ip = row[2] as! String
+                let port = row[3] as! Int64
+                let hostname = row[4] as! String
+                let connection_scheme = row[5] as! String
+                let num_cores = row[6] as! Int64
+                
+                let num_stopped = row[7] as! Int64
+                let num_starting = row[8] as! Int64
+                let num_running = row[9] as! Int64
+                let num_backoff = row[10] as! Int64
+                let num_stopping = row[11] as! Int64
+                let num_exited = row[12] as! Int64
+                let num_fatal = row[13] as! Int64
+                let num_unknown = row[14] as! Int64
+                
+                return Server(id: id, sort_id: sort_id, ip: ip, port: port, hostname: hostname, connection_scheme: connection_scheme, num_cores: num_cores, num_stopped: num_stopped, num_starting: num_starting, num_running: num_running, num_backoff: num_backoff, num_stopping: num_stopping, num_exited: num_exited, num_fatal: num_fatal, num_unknown: num_unknown)
+            }
+        } catch {
+            print("ServerManager.all() ERROR: \(error)")
+            return nil
+        }
+        
+        return nil
+    }
+    
     func all() -> [Server] {
         var results = [Server]()
         
@@ -202,7 +233,7 @@ class Server: JSONDecodable, Persist, CustomStringConvertible {
                     print("Table '\(row)' exists.")
                 } else {
                     // Table 'server' doesn't exist. So create it.
-                    let stmt = try db.prepare("CREATE TABLE server (id INTEGER PRIMARY KEY AUTOINCREMENT, sort_id INTEGER, ip TEXT, port INTEGER, hostname TEXT, connection_scheme TEXT, num_cores INTEGER, num_stopped INTEGER, num_starting INTEGER, num_running INTEGER, num_backoff INTEGER, num_stopping INTEGER, num_exited INTEGER, num_fatal INTEGER, num_unknown INTEGER, created TIMESTAMP, UNIQUE(ip, port))")
+                    let stmt = try db.prepare("CREATE TABLE server (id INTEGER PRIMARY KEY AUTOINCREMENT, sort_id INTEGER, ip TEXT, port INTEGER, hostname TEXT, connection_scheme TEXT, num_cores INTEGER, num_stopped INTEGER, num_starting INTEGER, num_running INTEGER, num_backoff INTEGER, num_stopping INTEGER, num_exited INTEGER, num_fatal INTEGER, num_unknown INTEGER, created TIMESTAMP DEFAULT CURRENT_TIMESTAMP, UNIQUE(ip, port))")
                     try stmt.run()
                 }
             } catch {
