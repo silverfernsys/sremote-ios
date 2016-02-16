@@ -202,7 +202,7 @@ class Server: JSONDecodable, Persist, CustomStringConvertible {
                     print("Table '\(row)' exists.")
                 } else {
                     // Table 'server' doesn't exist. So create it.
-                    let stmt = try db.prepare("CREATE TABLE server (id INTEGER PRIMARY KEY AUTOINCREMENT, sort_id INTEGER, ip TEXT, port INTEGER, hostname TEXT, connection_scheme TEXT, num_cores INTEGER, num_stopped INTEGER, num_starting INTEGER, num_running INTEGER, num_backoff INTEGER, num_stopping INTEGER, num_exited INTEGER, num_fatal INTEGER, num_unknown INTEGER, created TIMESTAMP, UNIQUE(sort_id), UNIQUE(ip, port))")
+                    let stmt = try db.prepare("CREATE TABLE server (id INTEGER PRIMARY KEY AUTOINCREMENT, sort_id INTEGER, ip TEXT, port INTEGER, hostname TEXT, connection_scheme TEXT, num_cores INTEGER, num_stopped INTEGER, num_starting INTEGER, num_running INTEGER, num_backoff INTEGER, num_stopping INTEGER, num_exited INTEGER, num_fatal INTEGER, num_unknown INTEGER, created TIMESTAMP, UNIQUE(ip, port))")
                     try stmt.run()
                 }
             } catch {
@@ -221,7 +221,7 @@ class Server: JSONDecodable, Persist, CustomStringConvertible {
         }
     }
     
-    func processes() -> [ProcessData] {
+    func processes() -> [Process] {
         return []
     }
     

@@ -16,6 +16,10 @@
 //"unknown": 0
 
 let serverData = [
+    Server(id: nil, sort_id: nil, ip: "192.168.33.10", port: 8080, hostname: "v64", connection_scheme: "http", num_cores: 8, num_stopped: 4, num_starting: 2, num_running: 9, num_backoff: 1, num_stopping: 2, num_exited: 3, num_fatal: 2, num_unknown: 0)
+]
+/*
+let serverData = [
     ServerData(ip: "163.128.0.1", port: "8080", stats:
         ["stopped": 4,
             "starting": 2,
@@ -107,3 +111,4 @@ let serverData = [
             "fatal": 2,
             "unknown": 0])
 ]
+*/

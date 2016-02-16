@@ -19,7 +19,7 @@ class ProcessManager {
     }
 }
 
-class ProcessData: JSONDecodable {
+class Process: JSONDecodable {
     static var processes = ProcessManager()
     
     var id: Int?
@@ -72,5 +72,39 @@ class ProcessData: JSONDecodable {
     func save() -> Bool {
         // Persist to database and populate id and sort_id fields
         return true
+    }
+    
+    func delete() -> Bool {
+        return false
+    }
+    
+    static func migrate(db:Connection, direction: Migrations.Direction) {
+        switch direction {
+        case Migrations.Direction.Up:
+            do {
+                let table_exists_stmt = try db.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name=?")
+                if let row = table_exists_stmt.scalar(["process"]) {
+                    print("Table '\(row)' exists.")
+                } else {
+                    // Table 'server' doesn't exist. So create it.
+                    let stmt = try db.prepare("CREATE TABLE process (id INTEGER PRIMARY KEY AUTOINCREMENT, server_id INTEGER, sort_id INTEGER, groupname TEXT, name TEXT, pid INTEGER, state INTEGER, start TIMESTAMP, UNIQUE(server_id, groupname, name))")
+                    try stmt.run()
+                    // Create databases for cpu and mem usage.
+                    // These will be named <server_id>_<group>_<name>/cpu.sqlite and <server_id>_<group>_<name>/mem.sqlite
+                }
+            } catch {
+                print("caught: \(error)")
+                print("Error creating 'process' table.")
+            }
+            break
+        case Migrations.Direction.Down:
+            do {
+                let stmt = try db.prepare("DROP TABLE process")
+                try stmt.run()
+            } catch {
+                print("caught: \(error)")
+                print("Error dropping 'process' table.")
+            }
+        }
     }
 }

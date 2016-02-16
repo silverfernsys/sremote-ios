@@ -12,11 +12,11 @@
 		C52355BC1C713A260090AD91 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C52355AF1C7139EB0090AD91 /* SQLite.framework */; };
 		C52355BD1C713A360090AD91 /* SQLite.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C52355AF1C7139EB0090AD91 /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C52355C11C71A6C70090AD91 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52355C01C71A6C70090AD91 /* Server.swift */; };
-		C52355C31C726B190090AD91 /* ProcessData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52355C21C726B190090AD91 /* ProcessData.swift */; };
+		C52355C31C726B190090AD91 /* Process.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52355C21C726B190090AD91 /* Process.swift */; };
 		C52355C61C7275870090AD91 /* sample.JSON in Resources */ = {isa = PBXBuildFile; fileRef = C52355C51C7275870090AD91 /* sample.JSON */; };
 		C52355C81C7277160090AD91 /* ServerDataProcessDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52355C71C7277160090AD91 /* ServerDataProcessDataTests.swift */; };
 		C52355CB1C727F390090AD91 /* Persist.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52355CA1C727F390090AD91 /* Persist.swift */; };
-		C52355CD1C7280420090AD91 /* Migration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52355CC1C7280420090AD91 /* Migration.swift */; };
+		C52355CD1C7280420090AD91 /* Migrations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52355CC1C7280420090AD91 /* Migrations.swift */; };
 		C52355CF1C72A1000090AD91 /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52355CE1C72A1000090AD91 /* ConnectionManager.swift */; };
 		C55A02B71C6D949D002B68DA /* InputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55A02B61C6D949D002B68DA /* InputCell.swift */; };
 		C56321601C500B6100BBE4BE /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C563215F1C500B6100BBE4BE /* Theme.swift */; };
@@ -24,7 +24,6 @@
 		C56321651C500C1900BBE4BE /* DarkTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56321641C500C1900BBE4BE /* DarkTheme.swift */; };
 		C56321671C500D9C00BBE4BE /* ThemeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56321661C500D9C00BBE4BE /* ThemeFactory.swift */; };
 		C56321691C502EEB00BBE4BE /* Themeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56321681C502EEB00BBE4BE /* Themeable.swift */; };
-		C5653B961C30BC2700087D48 /* ServerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5653B951C30BC2700087D48 /* ServerData.swift */; };
 		C5653B981C30BF1300087D48 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5653B971C30BF1300087D48 /* SampleData.swift */; };
 		C5653B9A1C335A3700087D48 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5653B991C335A3700087D48 /* Constants.swift */; };
 		C5653B9C1C3362D800087D48 /* UIColor+Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5653B9B1C3362D800087D48 /* UIColor+Colors.swift */; };
@@ -311,11 +310,11 @@
 		C52311F31C404A4B001AD21A /* BadgeLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgeLabel.swift; sourceTree = "<group>"; };
 		C52355A51C7139EB0090AD91 /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = SQLite/SQLite.xcodeproj; sourceTree = "<group>"; };
 		C52355C01C71A6C70090AD91 /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
-		C52355C21C726B190090AD91 /* ProcessData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessData.swift; sourceTree = "<group>"; };
+		C52355C21C726B190090AD91 /* Process.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Process.swift; sourceTree = "<group>"; };
 		C52355C51C7275870090AD91 /* sample.JSON */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sample.JSON; sourceTree = "<group>"; };
 		C52355C71C7277160090AD91 /* ServerDataProcessDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerDataProcessDataTests.swift; sourceTree = "<group>"; };
 		C52355CA1C727F390090AD91 /* Persist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persist.swift; sourceTree = "<group>"; };
-		C52355CC1C7280420090AD91 /* Migration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Migration.swift; sourceTree = "<group>"; };
+		C52355CC1C7280420090AD91 /* Migrations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Migrations.swift; sourceTree = "<group>"; };
 		C52355CE1C72A1000090AD91 /* ConnectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
 		C55A02B61C6D949D002B68DA /* InputCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InputCell.swift; path = ../InputCell.swift; sourceTree = "<group>"; };
 		C563215F1C500B6100BBE4BE /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -323,7 +322,6 @@
 		C56321641C500C1900BBE4BE /* DarkTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DarkTheme.swift; sourceTree = "<group>"; };
 		C56321661C500D9C00BBE4BE /* ThemeFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeFactory.swift; sourceTree = "<group>"; };
 		C56321681C502EEB00BBE4BE /* Themeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Themeable.swift; sourceTree = "<group>"; };
-		C5653B951C30BC2700087D48 /* ServerData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerData.swift; sourceTree = "<group>"; };
 		C5653B971C30BF1300087D48 /* SampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		C5653B991C335A3700087D48 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C5653B9B1C3362D800087D48 /* UIColor+Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Colors.swift"; sourceTree = "<group>"; };
@@ -400,16 +398,16 @@
 			name = Fixtures;
 			sourceTree = "<group>";
 		};
-		C52355C91C727F0F0090AD91 /* Persistance */ = {
+		C52355C91C727F0F0090AD91 /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
 				C52355C01C71A6C70090AD91 /* Server.swift */,
-				C52355C21C726B190090AD91 /* ProcessData.swift */,
+				C52355C21C726B190090AD91 /* Process.swift */,
 				C52355CA1C727F390090AD91 /* Persist.swift */,
-				C52355CC1C7280420090AD91 /* Migration.swift */,
+				C52355CC1C7280420090AD91 /* Migrations.swift */,
 				C52355CE1C72A1000090AD91 /* ConnectionManager.swift */,
 			);
-			name = Persistance;
+			name = Persistence;
 			sourceTree = "<group>";
 		};
 		C56321611C500BF900BBE4BE /* Themes */ = {
@@ -452,7 +450,7 @@
 		C5A2A4941C27539C00439FE7 /* sremote */ = {
 			isa = PBXGroup;
 			children = (
-				C52355C91C727F0F0090AD91 /* Persistance */,
+				C52355C91C727F0F0090AD91 /* Persistence */,
 				C56321611C500BF900BBE4BE /* Themes */,
 				C5A2A4951C27539C00439FE7 /* AppDelegate.swift */,
 				C5A2A4991C27539C00439FE7 /* Main.storyboard */,
@@ -465,7 +463,6 @@
 				C5F6867C1C276FF700FBC5DE /* ServerDetailTableViewController.swift */,
 				C5F6867E1C27731B00FBC5DE /* ServerCell.swift */,
 				C55A02B61C6D949D002B68DA /* InputCell.swift */,
-				C5653B951C30BC2700087D48 /* ServerData.swift */,
 				C5173EF81C2A642500D6C0CB /* Settings.bundle */,
 				C5653B991C335A3700087D48 /* Constants.swift */,
 				C5653B9B1C3362D800087D48 /* UIColor+Colors.swift */,
@@ -899,12 +896,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C52355CD1C7280420090AD91 /* Migration.swift in Sources */,
+				C52355CD1C7280420090AD91 /* Migrations.swift in Sources */,
 				C59C6FE21C27660A00B082F6 /* ServerListTableViewController.swift in Sources */,
 				C5A2A4C41C27599D00439FE7 /* ServerEntryViewController.swift in Sources */,
 				C52311F41C404A4B001AD21A /* BadgeLabel.swift in Sources */,
-				C52355C31C726B190090AD91 /* ProcessData.swift in Sources */,
-				C5653B961C30BC2700087D48 /* ServerData.swift in Sources */,
+				C52355C31C726B190090AD91 /* Process.swift in Sources */,
 				C56321601C500B6100BBE4BE /* Theme.swift in Sources */,
 				C52355CB1C727F390090AD91 /* Persist.swift in Sources */,
 				C56321651C500C1900BBE4BE /* DarkTheme.swift in Sources */,

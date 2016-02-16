@@ -10,7 +10,7 @@ import UIKit
 import PKHUD
 
 class ServerListTableViewController: UITableViewController, UIGestureRecognizerDelegate {
-    var servers:[ServerData] = serverData
+    var servers:[Server] = serverData
     
     // For reordering cells
     var snapshot: UIView? = nil
@@ -238,7 +238,7 @@ class ServerListTableViewController: UITableViewController, UIGestureRecognizerD
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ServerCell", forIndexPath: indexPath) as! ServerCell
-        let server = servers[indexPath.row] as ServerData
+        let server = servers[indexPath.row] as Server
         cell.server = server
         cell.theme()
         return cell

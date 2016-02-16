@@ -63,19 +63,19 @@ class ServerCell: UITableViewCell, Themeable {
     
     var deleteButton: DeleteButton!
     
-    var server: ServerData! {
+    var server: Server! {
         didSet {
-            serverAddressLabel.text = server.ip
-            serverPortLabel.text = server.port
+            serverAddressLabel.text = server.ip!
+            serverPortLabel.text = String(server.port!)
             
-            stoppedCountLabel.text = String(server.stats!["stopped"] as Int!)
-            startingCountLabel.text = String(server.stats!["starting"] as Int!)
-            runningCountLabel.text = String(server.stats!["running"] as Int!)
-            backoffCountLabel.text = String(server.stats!["backoff"] as Int!)
-            stoppingCountLabel.text = String(server.stats!["stopping"] as Int!)
-            exitedCountLabel.text = String(server.stats!["exited"] as Int!)
-            fatalCountLabel.text = String(server.stats!["fatal"] as Int!)
-            unknownCountLabel.text = String(server.stats!["unknown"] as Int!)
+            stoppedCountLabel.text = String(server.num_stopped)
+            startingCountLabel.text = String(server.num_starting)
+            runningCountLabel.text = String(server.num_running)
+            backoffCountLabel.text = String(server.num_backoff)
+            stoppingCountLabel.text = String(server.num_stopping)
+            exitedCountLabel.text = String(server.num_exited)
+            fatalCountLabel.text = String(server.num_fatal)
+            unknownCountLabel.text = String(server.num_unknown)
             
             let padding:CGFloat = 2.0
             layoutCountView(stoppedView, title: stoppedLabel, count: stoppedCountLabel, color: UIColor(red: 1, green: 0, blue: 0, alpha: 0.5), padding: padding)

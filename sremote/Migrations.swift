@@ -22,6 +22,6 @@ class Migrations {
     
     func run(direction: Direction = Migrations.Direction.Up) {
         Server.migrate(self.db, direction: direction)
-//        ProcessData.migrate(self.db, direction: direction)
+        Process.migrate(self.db, direction: direction)
     }
 }
