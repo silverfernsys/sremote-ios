@@ -258,8 +258,14 @@ class Server: JSONDecodable, Persist, CustomStringConvertible {
         }
     }
     
-    func processes() -> [Process] {
-        return []
+    var processes: [Process] {
+        get {
+            if let id = self.id {
+                return Process.processes.filter(id)
+            } else {
+                return []
+            }
+        }
     }
     
     var description: String {
