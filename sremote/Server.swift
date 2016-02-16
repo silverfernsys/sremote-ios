@@ -61,10 +61,17 @@ class ServerManager {
         }
     }
     
+    func processes(server: Server) -> [Process] {
+        if let id = server.id {
+            return Process.processes.filter(id)
+        } else {
+            return [Process]()
+        }
+    }
+    
     func get(id: Int64) -> Server? {
         do {
             for row in try db.prepare("SELECT * FROM server WHERE id=?", [id]).run() {
-//                print("row: \(row)")
                 let id = row[0] as! Int64
                 let sort_id = row[1] as! Int64
                 let ip = row[2] as! String
@@ -120,7 +127,6 @@ class ServerManager {
         } catch {
             print("ServerManager.all() ERROR: \(error)")
         }
-        
         
         return results
     }

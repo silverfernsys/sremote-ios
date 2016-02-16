@@ -29,19 +29,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WebSocketDelegate {
         let m = Migrations(db: db)
         m.run(Migrations.Direction.Up)
         
-        let s = Server(id: nil, sort_id: nil, ip: "192.168.33.21", port: 8082, hostname: "V64", connection_scheme: "https", num_cores: 8, num_stopped: 5, num_starting: 1, num_running: 18, num_backoff: 0, num_stopping: 2, num_exited: 1, num_fatal: 3, num_unknown: 0)
+        let s = Server(id: nil, sort_id: nil, ip: "192.168.33.25", port: 8082, hostname: "V64", connection_scheme: "https", num_cores: 8, num_stopped: 5, num_starting: 1, num_running: 18, num_backoff: 0, num_stopping: 2, num_exited: 1, num_fatal: 3, num_unknown: 0)
         s.save()
         
-        if let ns = Server.servers.get(8) {
-            print("ns: \(ns)")
+        if let ns = Server.servers.get(6) {
+            if let id = ns.id {
+                let p = Process(id: nil, sort_id: nil, group: "asdf", name: "wert", pid: 1, state: 10, start: 1234.123421, cpu: nil, memory: nil, server_id: id)
+                p.save()
+            } else {
+                print("server has no id")
+            }
+            
         } else {
-            print("No server at index 8.")
+            print("No server at index 5.")
         }
         
-        let all = Server.servers.all()
-        for a in all {
+        for a in Server.servers.all() {
             print(a)
         }
+        
+        for p in Process.processes.all() {
+            print(p)
+        }
+        
         return true
     }
 

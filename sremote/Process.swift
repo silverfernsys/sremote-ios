@@ -26,7 +26,7 @@ class ProcessManager {
             } else {
                 guard let server_id = process.server_id else { return false }
                 let stmt = try db.prepare("INSERT INTO process (id, server_id, sort_id, groupname, name, pid, state, start) VALUES (?,?,?,?,?,?,?,?)")
-                let sort_id = Process.processes.count() + 1 // ******** BUG ********** should be filtering count by server_id
+                let sort_id = Process.processes.count(server_id) + 1 // ******** BUG ********** should be filtering count by server_id
                 try stmt.run([nil, server_id, sort_id, process.group, process.name, process.pid, process.state, process.start])
                 let id = db.lastInsertRowid
                 process.sort_id = sort_id
@@ -55,6 +55,29 @@ class ProcessManager {
         }
     }
     
+    func filter(server_id: Int64) -> [Process] {
+        var results = [Process]()
+        
+        do {
+            for row in try db.prepare("SELECT * FROM process WHERE server_id=?", [server_id]) {
+                let id = row[0] as! Int64
+                let server_id = row[1] as! Int64
+                let sort_id = row[2] as! Int64
+                let group = row[3] as! String
+                let name = row[4] as! String
+                let pid = row[5] as! Int64
+                let state = row[6] as! Int64
+                let start = row[7] as! Double
+                let process = Process(id: id, sort_id: sort_id, group: group, name: name, pid: pid, state: state, start: start, cpu: nil, memory: nil, server_id: server_id)
+                results.append(process)
+            }
+        } catch {
+            print("ProcessManager.all() ERROR: \(error)")
+        }
+        
+        return results
+    }
+    
     func all() -> [Process] {
         var results = [Process]()
         
@@ -81,9 +104,13 @@ class ProcessManager {
     func count() -> Int64 {
         return db.scalar("SELECT count(*) FROM process") as! Int64
     }
+    
+    func count(server_id: Int64) -> Int64 {
+        return db.scalar("SELECT count(*) FROM process WHERE server_id=?", [server_id]) as! Int64
+    }
 }
 
-class Process: JSONDecodable {
+class Process: JSONDecodable, CustomStringConvertible {
     static var processes = ProcessManager()
     
     var id: Int64?
@@ -106,7 +133,7 @@ class Process: JSONDecodable {
         }
     }
     
-    init(id: Int64, sort_id: Int64, group: String, name: String, pid: Int64, state: Int64,
+    init(id: Int64?, sort_id: Int64?, group: String, name: String, pid: Int64, state: Int64,
         start: Double, cpu:[[Double]]?, memory:[[Double]]?, server_id: Int64) {
             self.id = id
             self.sort_id = sort_id
@@ -143,12 +170,11 @@ class Process: JSONDecodable {
     }
     
     func save() -> Bool {
-        // Persist to database and populate id and sort_id fields
-        return true
+        return Process.processes.save(self)
     }
     
     func delete() -> Bool {
-        return false
+        return Process.processes.delete(self)
     }
     
     static func migrate(db:Connection, direction: Migrations.Direction) {
@@ -178,6 +204,12 @@ class Process: JSONDecodable {
                 print("caught: \(error)")
                 print("Error dropping 'process' table.")
             }
+        }
+    }
+    
+    var description: String {
+        get {
+            return "<Process: id: \(self.id!), sort_id: \(self.sort_id!), server_id: \(self.server_id!), group: \(self.group), name: \(self.name), pid: \(self.pid!), state: \(self.state), start: \(self.start!), cpu: \(self.cpu), mem: \(self.memory)>"
         }
     }
 }
