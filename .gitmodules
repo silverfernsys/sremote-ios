@@ -10,3 +10,6 @@
 [submodule "Locksmith"]
 	path = Locksmith
 	url = git://github.com/matthewpalmer/Locksmith.git
+[submodule "SQLite"]
+	path = SQLite
+	url = git://github.com/stephencelis/SQLite.swift.git

@@ -24,6 +24,7 @@ struct Constants {
     
     struct ServerEntryViewController {
         static let Loaded = "ServerEntryViewController.Loaded"
+        static let ServerAdded = "ServerEntryViewController.ServerAdded"
     }
     
     struct ServerListViewController {
@@ -39,5 +40,10 @@ struct Constants {
         static let EXITED = 100
         static let FATAL = 200
         static let UNKNOWN = 1000
+    }
+    
+    struct ConnectionScheme {
+        static let HTTP = "HTTP"
+        static let HTTPS = "HTTPS"
     }
 }

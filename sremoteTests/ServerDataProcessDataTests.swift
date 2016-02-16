@@ -1,15 +1,14 @@
 //
-//  SupervisorRemoteTests.swift
-//  SupervisorRemoteTests
+//  ServerDataProcessDataTests.swift
+//  sremote
 //
-//  Created by Marc Wilson on 12/20/15.
-//  Copyright © 2015 SilverFern Systems, Inc. All rights reserved.
+//  Created by Marc Wilson on 2/15/16.
+//  Copyright © 2016 SilverFern Systems, Inc. All rights reserved.
 //
 
 import XCTest
-//@testable import sremote
 
-class sremoteTests: XCTestCase {
+class ServerDataProcessDataTests: XCTestCase {
     var sampleData:NSData!
     
     override func setUp() {
@@ -39,5 +38,4 @@ class sremoteTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-    
 }

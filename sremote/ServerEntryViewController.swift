@@ -8,6 +8,7 @@
 
 import UIKit
 import Freddy
+import Locksmith
 
 class ServerEntryViewController: UITableViewController, UITextFieldDelegate {
 
@@ -106,6 +107,13 @@ class ServerEntryViewController: UITableViewController, UITextFieldDelegate {
         alertController.addAction(okAction)
         self.presentViewController(alertController, animated: true) { }
     }
+    
+    func showServerExistsAlert(server: String, port: String) {
+        let alertController = UIAlertController(title: "\(server):\(port) already exists", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+        let okAction = UIAlertAction(title: "OK", style:UIAlertActionStyle.Destructive) { (action) in }
+        alertController.addAction(okAction)
+        self.presentViewController(alertController, animated: true) { }
+    }
 
     func getToken(server:String, port:String, username:String, password:String, scheme:String) -> Void {
         let url = NSURL(string: "\(scheme)://\(server):\(port)/token/")
@@ -124,9 +132,19 @@ class ServerEntryViewController: UITableViewController, UITextFieldDelegate {
                 do {
                     let tokenJson = try JSON(data: data!)
                     let token = try tokenJson.string("token")
-                    print("token: \(token)")
+                    // print("token: \(token)")
+                    // Now write to keychain using Locksmith and write to the SQLite database
+                    do {
+                        // Server(server, port, scheme, created).save()
+                        // Also have ServerListTableViewController reload it's data.
+                        NSNotificationCenter.defaultCenter().postNotificationName(Constants.ServerEntryViewController.ServerAdded, object: self)
+                        try Locksmith.saveData(["\(server):\(port)": token], forUserAccount: "sremote")
+                    } catch {
+                        print("Error saving with Locksmith.")
+                    }
+                    
                     dispatch_async(dispatch_get_main_queue(),{
-                        self.dismissViewControllerAnimated(false, completion: {
+                        self.dismissViewControllerAnimated(true, completion: {
                             self.performSegueWithIdentifier("hideServerEntry", sender: nil)
                         })
                     })
@@ -207,6 +225,10 @@ class ServerEntryViewController: UITableViewController, UITextFieldDelegate {
         task.resume()
     }
     
+    func serverExists(server: String, port: String) -> Bool {
+        return false
+    }
+    
     @IBAction func handleSave(sender: UIButton) {
         print("handleSave")
         var shouldShowAlert = false
@@ -231,10 +253,15 @@ class ServerEntryViewController: UITableViewController, UITextFieldDelegate {
         if shouldShowAlert {
             showAlert(alertMessage)
         } else {
-            connect(serverNameLabel.text!,
-                port: serverPortLabel.text!,
-                username: usernameLabel.text!,
-                password: passwordLabel.text!)
+            // Check to see if this server/port combination has already been added to the database
+            if serverExists(serverNameLabel.text!, port:serverPortLabel.text!) {
+                self.showServerExistsAlert(serverNameLabel.text!, port:serverPortLabel.text!)
+            } else {
+                connect(serverNameLabel.text!,
+                    port: serverPortLabel.text!,
+                    username: usernameLabel.text!,
+                    password: passwordLabel.text!)
+            }
         }
     }
     

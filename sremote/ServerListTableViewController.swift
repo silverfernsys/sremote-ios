@@ -45,17 +45,9 @@ class ServerListTableViewController: UITableViewController, UIGestureRecognizerD
         deleteLeftSwipe.delegate = self
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleServerDelete:", name: Constants.ServerListViewController.DeleteServer, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleSeverEntryViewControllerServerAdded:", name: Constants.ServerEntryViewController.ServerAdded, object: nil)
+        self.tableView.delegate = self
     }
-    /*
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    */
-    /*
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    */
     
     func handleServerDelete(notitification: NSNotification) {
         let alertController = UIAlertController(title: "Delete Server", message: "Are you sure you want to delete this server?", preferredStyle: UIAlertControllerStyle.Alert)
@@ -64,6 +56,10 @@ class ServerListTableViewController: UITableViewController, UIGestureRecognizerD
         alertController.addAction(deleteAction)
         alertController.addAction(cancelAction)
         self.presentViewController(alertController, animated: true) { }
+    }
+    
+    func handleSeverEntryViewControllerServerAdded(notification: NSNotification) {
+        self.tableView.reloadData()
     }
     
     func handleTap(sender: UITapGestureRecognizer) {
@@ -76,11 +72,15 @@ class ServerListTableViewController: UITableViewController, UIGestureRecognizerD
         
         let location: CGPoint = longPress.locationInView(self.tableView)
         let indexPath: NSIndexPath = tableView.indexPathForRowAtPoint(location)!
-        
         switch state {
+        case UIGestureRecognizerState.Possible:
+            let cell: ServerCell = self.tableView.cellForRowAtIndexPath(indexPath)! as! ServerCell
+            cell.hideDelete(false)
+            break
         case UIGestureRecognizerState.Began:
             sourceIndexPath = indexPath
-            let cell: UITableViewCell = self.tableView.cellForRowAtIndexPath(indexPath)!
+            let cell: ServerCell = self.tableView.cellForRowAtIndexPath(indexPath)! as! ServerCell
+            cell.hideDelete(false)
             snapshot = customSnapshotFromView(cell)
             var center: CGPoint = cell.center
             snapshot?.center = center
@@ -97,7 +97,7 @@ class ServerListTableViewController: UITableViewController, UIGestureRecognizerD
                 // Fade out
                 cell.alpha = 0.0
                 
-                }, completion: { finished in print("completion")
+                }, completion: { (finished) in
                     cell.hidden = true
             })
             break
@@ -124,11 +124,12 @@ class ServerListTableViewController: UITableViewController, UIGestureRecognizerD
                 self.snapshot?.transform = CGAffineTransformIdentity
                 self.snapshot?.alpha = 0.0
                 cell.alpha = 1.0
-                }, completion: {
-                    finish in print("completion")
+                }, completion: { (finish) in
                     self.sourceIndexPath = nil
                     self.snapshot?.removeFromSuperview()
                     self.snapshot = nil
+                    cell.hidden = false
+                    cell.alpha = 1.0
             })
             break
         }
@@ -151,7 +152,7 @@ class ServerListTableViewController: UITableViewController, UIGestureRecognizerD
         if sender.direction == .Right {
             cell.showDelete()
         } else {
-            cell.hideDelete()
+            cell.hideDelete(true)
         }
     }
     
@@ -261,13 +262,36 @@ class ServerListTableViewController: UITableViewController, UIGestureRecognizerD
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        // nothing!
+        print("didSelectRowAtIndexPath")
     }
     
     override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-//        print("willSelectRowAtIndexPath")
+        print("willSelectRowAtIndexPath")
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! ServerCell
+        cell.hideDelete(false)
         return nil
     }
-    //-(NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
     
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        if let touch = touches.first {
+            let location = touch.locationInView(self.view)
+            let indexPath: NSIndexPath = tableView.indexPathForRowAtPoint(location)!
+            let cell : ServerCell = self.tableView.cellForRowAtIndexPath(indexPath) as! ServerCell
+            cell.hideDelete(false)
+            // do something with your currentPoint
+        }
+    }
+//    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+//        if let touch = touches.first {
+//            let currentPoint = touch.locationInView(self.tableView)
+//            // do something with your currentPoint
+//        }
+//    }
+//    
+//    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+//        if let touch = touches.first {
+//            let currentPoint = touch.locationInView(self.tableView)
+//            // do something with your currentPoint
+//        }
+//    }
 }

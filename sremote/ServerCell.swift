@@ -83,9 +83,11 @@ class ServerCell: UITableViewCell, Themeable {
             layoutCountView(runningView, title: runningLabel, count: runningCountLabel, color: UIColor(red: 0, green: 1, blue: 0, alpha: 0.5), padding: padding)
             layoutCountView(backoffView, title: backoffLabel, count: backoffCountLabel, color: UIColor(red: 0, green: 1, blue: 1, alpha: 0.5), padding: padding)
             layoutCountView(stoppingView, title: stoppingLabel, count: stoppingCountLabel, color:  UIColor(red: 1, green: 0.5, blue: 0, alpha: 0.5), padding: padding)
-            layoutCountView(exitedView, title: exitedLabel, count: exitedCountLabel, color: UIColor(red: 0, green: 1, blue: 0, alpha: 0.5), padding: padding)
-            layoutCountView(fatalView, title: fatalLabel, count: fatalCountLabel, color: UIColor(red: 0, green: 1, blue: 1, alpha: 0.5), padding: padding)
-            layoutCountView(unknownView, title: unknownLabel, count: unknownCountLabel, color:  UIColor(red: 1, green: 0.5, blue: 0, alpha: 0.5), padding: padding)
+            layoutCountView(exitedView, title: exitedLabel, count: exitedCountLabel, color: UIColor(red: 1, green: 0, blue: 1, alpha: 0.5), padding: padding)
+            
+            // 153,50,204
+            layoutCountView(fatalView, title: fatalLabel, count: fatalCountLabel, color: UIColor(red: (153.0 / 255.0), green: (50.0 / 255.0), blue: (204.0 / 255.0), alpha: 0.5), padding: padding)
+            layoutCountView(unknownView, title: unknownLabel, count: unknownCountLabel, color:  UIColor(red: (190.0 / 255.0), green: (190.0 / 255.0), blue: (190.0 / 255.0), alpha: 0.5), padding: padding)
             
             positionCountViews([stoppedView, startingView, runningView, backoffView, stoppingView, exitedView, fatalView, unknownView])
         }
@@ -108,9 +110,9 @@ class ServerCell: UITableViewCell, Themeable {
         createCountView(runningView, title: runningLabel, count: runningCountLabel, color: UIColor(red: 0, green: 1, blue: 0, alpha: 0.5), padding: padding)
         createCountView(backoffView, title: backoffLabel, count: backoffCountLabel, color: UIColor(red: 0, green: 1, blue: 1, alpha: 0.5), padding: padding)
         createCountView(stoppingView, title: stoppingLabel, count: stoppingCountLabel, color:  UIColor(red: 1, green: 0.5, blue: 0, alpha: 0.5), padding: padding)
-        createCountView(exitedView, title: exitedLabel, count: exitedCountLabel, color: UIColor(red: 0, green: 1, blue: 0, alpha: 0.5), padding: padding)
-        createCountView(fatalView, title: fatalLabel, count: fatalCountLabel, color: UIColor(red: 0, green: 1, blue: 1, alpha: 0.5), padding: padding)
-        createCountView(unknownView, title: unknownLabel, count: unknownCountLabel, color:  UIColor(red: 1, green: 0.5, blue: 0, alpha: 0.5), padding: padding)
+        createCountView(exitedView, title: exitedLabel, count: exitedCountLabel, color: UIColor(red: 1, green: 0, blue: 1, alpha: 0.5), padding: padding)
+        createCountView(fatalView, title: fatalLabel, count: fatalCountLabel, color: UIColor(red: (153.0 / 255.0), green: (50.0 / 255.0), blue: (204.0 / 255.0), alpha: 0.5), padding: padding)
+        createCountView(unknownView, title: unknownLabel, count: unknownCountLabel, color:  UIColor(red: (190.0 / 255.0), green: (190.0 / 255.0), blue: (190.0 / 255.0), alpha: 0.5), padding: padding)
         
         positionCountViews([stoppedView, startingView, runningView, backoffView, stoppingView, exitedView, fatalView, unknownView])
         
@@ -119,6 +121,7 @@ class ServerCell: UITableViewCell, Themeable {
         deleteButton = deleteBtn
         deleteButton.addTarget(self, action: Selector("handleDelete:"), forControlEvents: UIControlEvents.TouchUpInside)
         deleteButton.maskWithRect(CGRect(x: 0, y: 0, width: 0, height: self.frame.height))
+        deleteButton.enabled = false
     }
     
     func positionViews() {
@@ -176,16 +179,24 @@ class ServerCell: UITableViewCell, Themeable {
             self.setNeedsDisplay()
             }, completion: {
                 finish in print("complete")
+                self.deleteButton.enabled = true
         })
     }
     
-    func hideDelete() {
-        UIView.animateWithDuration(0.15, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+    func hideDelete(animated: Bool) {
+        if animated {
+            UIView.animateWithDuration(0.15, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+                self.deleteButton.enabled = false
+                self.deleteButton.maskView?.frame = CGRect(x: 0, y: 0, width: 0, height: self.frame.height)
+                self.container.frame = CGRect(x: 0, y: 0, width: self.container.frame.width, height: self.container.frame.height)
+                }, completion: {
+                    finish in print("complete")
+            })
+        } else {
+            self.deleteButton.enabled = false
             self.deleteButton.maskView?.frame = CGRect(x: 0, y: 0, width: 0, height: self.frame.height)
             self.container.frame = CGRect(x: 0, y: 0, width: self.container.frame.width, height: self.container.frame.height)
-            }, completion: {
-                finish in print("complete")
-        })
+        }
     }
     
     func handleDelete(sender: UIButton) {

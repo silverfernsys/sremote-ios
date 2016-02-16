@@ -8,6 +8,7 @@
 
 import UIKit
 import Starscream
+import SQLite
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, WebSocketDelegate {
@@ -23,6 +24,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WebSocketDelegate {
         socket.delegate = self
         socket.connect()
         
+        // Create database connection here
+        let db = ConnectionManager.instance.get("default")!
+        let m = Migrations(db: db)
+        m.run(Migrations.Direction.Up)
+        
+        let s = Server(id: nil, sort_id: nil, ip: "192.168.33.14", port: "8080", hostname: "V64", num_cores: 8, num_stopped: 5, num_starting: 1, num_running: 18, num_backoff: 0, num_stopping: 2, num_exited: 1, num_fatal: 3, num_unknown: 0)
+        s.save()
+        s.sort_id = 8
+        s.save()
+        print("s.id: \(s.id), s.sort_id: \(s.sort_id)")
         return true
     }
 
