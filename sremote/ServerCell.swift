@@ -79,7 +79,7 @@ class ServerCell: UITableViewCell, Themeable {
             
             let padding:CGFloat = 2.0
             layoutCountView(stoppedView, title: stoppedLabel, count: stoppedCountLabel, color: UIColor(red: 1, green: 0, blue: 0, alpha: 0.5), padding: padding)
-            layoutCountView(startingView, title: startingLabel, count: startingCountLabel, color: UIColor(red: 0, green: 0, blue: 1, alpha: 0.5), padding: padding)
+            layoutCountView(startingView, title: startingLabel, count: startingCountLabel, color: UIColor.midBlue(), padding: padding)
             layoutCountView(runningView, title: runningLabel, count: runningCountLabel, color: UIColor(red: 0, green: 1, blue: 0, alpha: 0.5), padding: padding)
             layoutCountView(backoffView, title: backoffLabel, count: backoffCountLabel, color: UIColor(red: 0, green: 1, blue: 1, alpha: 0.5), padding: padding)
             layoutCountView(stoppingView, title: stoppingLabel, count: stoppingCountLabel, color:  UIColor(red: 1, green: 0.5, blue: 0, alpha: 0.5), padding: padding)

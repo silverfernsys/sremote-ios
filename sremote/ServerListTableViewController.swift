@@ -19,6 +19,7 @@ class ServerListTableViewController: UITableViewController, UIGestureRecognizerD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.tableFooterView = UIView()
         style()
         if (servers.count == 0) {
             dispatch_async(dispatch_get_main_queue()) {
@@ -310,6 +311,5 @@ class ServerListTableViewController: UITableViewController, UIGestureRecognizerD
             let processTableViewController = segue.destinationViewController as! ProcessTableViewController
             processTableViewController.processes = processData
         }
-        
     }
 }

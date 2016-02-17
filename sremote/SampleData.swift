@@ -25,10 +25,11 @@ let serverData = [
 
 let processData = [
     Process(id: nil, sort_id: nil, group: "sremote", name: "sremote", pid: nil, state: Int64(Constants.ProcessStates.BACKOFF), start: 1234.1234, cpu: nil, memory: nil, server_id: nil),
-    Process(id: nil, sort_id: nil, group: "sremote", name: "sremote", pid: nil, state: Int64(Constants.ProcessStates.BACKOFF), start: 1234.1234, cpu: nil, memory: nil, server_id: nil),
-    Process(id: nil, sort_id: nil, group: "sremote", name: "sremote", pid: nil, state: Int64(Constants.ProcessStates.BACKOFF), start: 1234.1234, cpu: nil, memory: nil, server_id: nil),
-    Process(id: nil, sort_id: nil, group: "sremote", name: "sremote", pid: nil, state: Int64(Constants.ProcessStates.BACKOFF), start: 1234.1234, cpu: nil, memory: nil, server_id: nil),
-    Process(id: nil, sort_id: nil, group: "sremote", name: "sremote", pid: nil, state: Int64(Constants.ProcessStates.BACKOFF), start: 1234.1234, cpu: nil, memory: nil, server_id: nil),
-    Process(id: nil, sort_id: nil, group: "sremote", name: "sremote", pid: nil, state: Int64(Constants.ProcessStates.BACKOFF), start: 1234.1234, cpu: nil, memory: nil, server_id: nil),
-    Process(id: nil, sort_id: nil, group: "sremote", name: "sremote", pid: nil, state: Int64(Constants.ProcessStates.BACKOFF), start: 1234.1234, cpu: nil, memory: nil, server_id: nil)
+    Process(id: nil, sort_id: nil, group: "qwerqwerqwerqwerqwerqqwer", name: "qwerqwerqwerqwerqwerqqwer", pid: nil, state: Int64(Constants.ProcessStates.EXITED), start: 1234.1234, cpu: nil, memory: nil, server_id: nil),
+    Process(id: nil, sort_id: nil, group: "edgeserv", name: "edgeserv", pid: nil, state: Int64(Constants.ProcessStates.FATAL), start: nil, cpu: nil, memory: nil, server_id: nil),
+    Process(id: nil, sort_id: nil, group: "token_auth", name: "token_auth", pid: nil, state: Int64(Constants.ProcessStates.RUNNING), start: 1234.1234, cpu: nil, memory: nil, server_id: nil),
+    Process(id: nil, sort_id: nil, group: "postgres", name: "postgres", pid: nil, state: Int64(Constants.ProcessStates.STARTING), start: nil, cpu: nil, memory: nil, server_id: nil),
+    Process(id: nil, sort_id: nil, group: "rabbitmq", name: "rabbitmq", pid: nil, state: Int64(Constants.ProcessStates.STOPPED), start: 12341234.1234, cpu: nil, memory: nil, server_id: nil),
+    Process(id: nil, sort_id: nil, group: "celeryd", name: "celeryd", pid: nil, state: Int64(Constants.ProcessStates.STOPPING), start: nil, cpu: nil, memory: nil, server_id: nil),
+    Process(id: nil, sort_id: nil, group: "soffice", name: "soffice", pid: nil, state: Int64(Constants.ProcessStates.UNKNOWN), start: nil, cpu: nil, memory: nil, server_id: nil)
 ]

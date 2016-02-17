@@ -13,6 +13,8 @@ class ProcessTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.tableFooterView = UIView()
+        self.style()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -40,10 +42,29 @@ class ProcessTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ProcessCell", forIndexPath: indexPath) as! ProcessCell
-
-        // Configure the cell...
-
+        cell.process = processData[indexPath.row]
+        cell.theme()
         return cell
+    }
+    
+    func style() {
+        self.tableView.separatorStyle = .SingleLine
+        self.tableView.separatorInset = UIEdgeInsetsZero
+        self.tableView.layoutMargins = UIEdgeInsetsZero
+        self.tableView.cellLayoutMarginsFollowReadableWidth = false
+        ProcessCell.appearance().layoutMargins = UIEdgeInsetsZero
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ShowProcessDetail" {
+            if let row = self.tableView.indexPathForSelectedRow {
+                let process = processData[row.row]
+                let processDetailViewController = segue.destinationViewController //as! ProcessTableViewController
+                processDetailViewController.title = process.name
+            } else {
+                print("Error!")
+            }
+        }
     }
 
     /*

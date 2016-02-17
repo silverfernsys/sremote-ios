@@ -9,182 +9,122 @@
 import UIKit
 
 class ProcessCell: UITableViewCell, Themeable {
-    
-//    @IBOutlet weak var serverPortLabel: UILabel!
-//    @IBOutlet weak var serverAddressLabel: UILabel!
-//    
-//    @IBOutlet weak var stoppedCountLabel: BadgeLabel!
-//    @IBOutlet weak var startingCountLabel: BadgeLabel!
-//    @IBOutlet weak var runningCountLabel: BadgeLabel!
-//    @IBOutlet weak var backoffCountLabel: BadgeLabel!
-//    @IBOutlet weak var stoppingCountLabel: BadgeLabel!
-//    @IBOutlet weak var exitedCountLabel: BadgeLabel!
-//    @IBOutlet weak var fatalCountLabel: BadgeLabel!
-//    @IBOutlet weak var unknownCountLabel: BadgeLabel!
-//    
-//    @IBOutlet weak var stoppedLabel: BadgeLabel!
-//    @IBOutlet weak var startingLabel: BadgeLabel!
-//    @IBOutlet weak var runningLabel: BadgeLabel!
-//    @IBOutlet weak var backoffLabel: BadgeLabel!
-//    @IBOutlet weak var stoppingLabel: BadgeLabel!
-//    @IBOutlet weak var exitedLabel: BadgeLabel!
-//    @IBOutlet weak var fatalLabel: BadgeLabel!
-//    @IBOutlet weak var unknownLabel: BadgeLabel!
-//    
-//    @IBOutlet weak var stoppedView: UIView!
-//    @IBOutlet weak var startingView: UIView!
-//    @IBOutlet weak var runningView: UIView!
-//    @IBOutlet weak v\ar backoffView: UIView!
-//    @IBOutlet weak var stoppingView: UIView!
-//    @IBOutlet weak var exitedView: UIView!
-//    @IBOutlet weak var fatalView: UIView!
-//    @IBOutlet weak var unknownView: UIView!
-//    var container: UIView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var statusView: BadgeLabel!
+    @IBOutlet weak var uptimeLabel: UILabel!
+    weak var roundedRect: UIImageView!
     
     var process: Process! {
         didSet {
-            /*
-            serverAddressLabel.text = server.ip!
-            serverPortLabel.text = String(server.port!)
-            
-            stoppedCountLabel.text = String(server.num_stopped)
-            startingCountLabel.text = String(server.num_starting)
-            runningCountLabel.text = String(server.num_running)
-            backoffCountLabel.text = String(server.num_backoff)
-            stoppingCountLabel.text = String(server.num_stopping)
-            exitedCountLabel.text = String(server.num_exited)
-            fatalCountLabel.text = String(server.num_fatal)
-            unknownCountLabel.text = String(server.num_unknown)
-            
             let padding:CGFloat = 2.0
-            layoutCountView(stoppedView, title: stoppedLabel, count: stoppedCountLabel, color: UIColor(red: 1, green: 0, blue: 0, alpha: 0.5), padding: padding)
-            layoutCountView(startingView, title: startingLabel, count: startingCountLabel, color: UIColor(red: 0, green: 0, blue: 1, alpha: 0.5), padding: padding)
-            layoutCountView(runningView, title: runningLabel, count: runningCountLabel, color: UIColor(red: 0, green: 1, blue: 0, alpha: 0.5), padding: padding)
-            layoutCountView(backoffView, title: backoffLabel, count: backoffCountLabel, color: UIColor(red: 0, green: 1, blue: 1, alpha: 0.5), padding: padding)
-            layoutCountView(stoppingView, title: stoppingLabel, count: stoppingCountLabel, color:  UIColor(red: 1, green: 0.5, blue: 0, alpha: 0.5), padding: padding)
-            layoutCountView(exitedView, title: exitedLabel, count: exitedCountLabel, color: UIColor(red: 1, green: 0, blue: 1, alpha: 0.5), padding: padding)
+            var color = UIColor(red: 1, green: 0, blue: 0, alpha: 0.5)
             
-            // 153,50,204
-            layoutCountView(fatalView, title: fatalLabel, count: fatalCountLabel, color: UIColor(red: (153.0 / 255.0), green: (50.0 / 255.0), blue: (204.0 / 255.0), alpha: 0.5), padding: padding)
-            layoutCountView(unknownView, title: unknownLabel, count: unknownCountLabel, color:  UIColor(red: (190.0 / 255.0), green: (190.0 / 255.0), blue: (190.0 / 255.0), alpha: 0.5), padding: padding)
+            switch Int(process.state) {
+            case Constants.ProcessStates.BACKOFF:
+                color = Constants.ProcessStateColors.BACKOFF
+                statusLabel.text = "BACKOFF"
+                break
+            case Constants.ProcessStates.EXITED:
+                color = Constants.ProcessStateColors.EXITED
+                statusLabel.text = "EXITED"
+                break
+            case Constants.ProcessStates.FATAL:
+                color = Constants.ProcessStateColors.FATAL
+                statusLabel.text = "FATAL"
+                break
+            case Constants.ProcessStates.RUNNING:
+                color = Constants.ProcessStateColors.RUNNING
+                statusLabel.text = "RUNNING"
+                break
+            case Constants.ProcessStates.STARTING:
+                color = Constants.ProcessStateColors.STARTING
+                statusLabel.text = "STARTING"
+                break
+            case Constants.ProcessStates.STOPPED:
+                color = Constants.ProcessStateColors.STOPPED
+                statusLabel.text = "STOPPED"
+                break
+            case Constants.ProcessStates.STOPPING:
+                color = Constants.ProcessStateColors.STOPPING
+                statusLabel.text = "STOPPING"
+                break
+            case Constants.ProcessStates.UNKNOWN:
+                color = Constants.ProcessStateColors.UNKNOWN
+                statusLabel.text = "UNKNOWN"
+                break
+            default:
+                break
+            }
             
-            positionCountViews([stoppedView, startingView, runningView, backoffView, stoppingView, exitedView, fatalView, unknownView])
-*/
+            nameLabel.text = process.name
+            
+            if let uptime = process.start {
+                uptimeLabel.text = timestampFormat(uptime)
+            } else {
+                uptimeLabel.text = "--:--:--"
+            }
+            
+            layoutStatusView(statusView, title: statusLabel, color: color, padding: padding)
+            positionViews()
         }
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        self.clipsToBounds = true
-        self.autoresizesSubviews = false
-        self.layoutMargins.left = 0
-        /*
-        let padding:CGFloat = 2.0
-        container = UIView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
-        container.backgroundColor = UIColor.clearColor()
-        container.addSubview(serverAddressLabel)
-        container.addSubview(serverPortLabel)
+    var _stateBackgroundWidth: CGFloat?
+    let padding: CGFloat = 2.0
+    
+    var stateBackgroundWidth: CGFloat {
+        get {
+            if let s = _stateBackgroundWidth {
+                return s
+            } else {
+                let l = UILabel()
+                l.font = UIFont.systemFontOfSize(20)
+                let stateNames = [
+                    "BACKOFF", "EXITED", "FATAL", "RUNNING", "STARTING", "STOPPED", "STOPPING", "UNKNOWN"
+                ]
+                var maxWidth: CGFloat = 0.0
+                for stateName in stateNames {
+                    l.text = stateName
+                    l.sizeToFit()
+                    maxWidth = max(l.frame.width + 2.0 * padding, maxWidth)
+                }
+                _stateBackgroundWidth = maxWidth
+                return _stateBackgroundWidth!
+            }
+        }
+    }
+    
+    func timestampFormat(timestamp: Double) -> String {
+        let milliseconds: Int64 = Int64(timestamp * 1000.0) % 1000
+        let seconds: Int64 = Int64(timestamp) % 60
+        let minutes: Int64 = Int64(timestamp) / 60 % 60
+        let hours: Int64 = Int64(timestamp) / (60 * 60) % 60
+        let days: Int64 = Int64(timestamp) / (60 * 60 * 24) % 60
         
-        self.addSubview(container)
-        createCountView(stoppedView, title: stoppedLabel, count: stoppedCountLabel, color: UIColor(red: 1, green: 0, blue: 0, alpha: 0.5), padding: padding)
-        createCountView(startingView, title: startingLabel, count: startingCountLabel, color: UIColor.midBlue(), padding: padding)
-        createCountView(runningView, title: runningLabel, count: runningCountLabel, color: UIColor(red: 0, green: 1, blue: 0, alpha: 0.5), padding: padding)
-        createCountView(backoffView, title: backoffLabel, count: backoffCountLabel, color: UIColor(red: 0, green: 1, blue: 1, alpha: 0.5), padding: padding)
-        createCountView(stoppingView, title: stoppingLabel, count: stoppingCountLabel, color:  UIColor(red: 1, green: 0.5, blue: 0, alpha: 0.5), padding: padding)
-        createCountView(exitedView, title: exitedLabel, count: exitedCountLabel, color: UIColor(red: 1, green: 0, blue: 1, alpha: 0.5), padding: padding)
-        createCountView(fatalView, title: fatalLabel, count: fatalCountLabel, color: UIColor(red: (153.0 / 255.0), green: (50.0 / 255.0), blue: (204.0 / 255.0), alpha: 0.5), padding: padding)
-        createCountView(unknownView, title: unknownLabel, count: unknownCountLabel, color:  UIColor(red: (190.0 / 255.0), green: (190.0 / 255.0), blue: (190.0 / 255.0), alpha: 0.5), padding: padding)
-        
-        positionCountViews([stoppedView, startingView, runningView, backoffView, stoppingView, exitedView, fatalView, unknownView])
-        
-        let deleteBtn : DeleteButton = DeleteButton(frame: CGRect(x: 0, y: 0, width: 80, height: self.frame.height))
-        self.addSubview(deleteBtn)
-        deleteButton = deleteBtn
-        deleteButton.addTarget(self, action: Selector("handleDelete:"), forControlEvents: UIControlEvents.TouchUpInside)
-        deleteButton.maskWithRect(CGRect(x: 0, y: 0, width: 0, height: self.frame.height))
-        deleteButton.enabled = false
-        */
-    }
-    
-    func positionViews() {
-//        positionCountViews([stoppedView, startingView, runningView, backoffView, stoppingView, exitedView, fatalView, unknownView])
-    }
-    
-    func theme() {
-        let theme: Theme = ThemeFactory.sharedInstance().theme
-        self.selectedBackgroundView = theme.cellSelectedBackgroundView()
-        self.backgroundColor = theme.cellBackgroundColor()
-        /*
-        serverAddressLabel.textColor = theme.cellPrimaryTextColor()
-        serverPortLabel.textColor = theme.cellPrimaryTextColor()
-        
-        stoppedCountLabel.textColor = theme.cellSecondaryTextColor()
-        startingCountLabel.textColor = theme.cellSecondaryTextColor()
-        runningCountLabel.textColor = theme.cellSecondaryTextColor()
-        backoffCountLabel.textColor = theme.cellSecondaryTextColor()
-        stoppingCountLabel.textColor = theme.cellSecondaryTextColor()
-        exitedCountLabel.textColor = theme.cellSecondaryTextColor()
-        fatalCountLabel.textColor = theme.cellSecondaryTextColor()
-        unknownCountLabel.textColor = theme.cellSecondaryTextColor()
-        
-        stoppedLabel.textColor = theme.cellSecondaryTextColor()
-        startingLabel.textColor = theme.cellSecondaryTextColor()
-        runningLabel.textColor = theme.cellSecondaryTextColor()
-        backoffLabel.textColor = theme.cellSecondaryTextColor()
-        stoppingLabel.textColor = theme.cellSecondaryTextColor()
-        exitedLabel.textColor = theme.cellSecondaryTextColor()
-        fatalLabel.textColor = theme.cellSecondaryTextColor()
-        unknownLabel.textColor = theme.cellSecondaryTextColor()
-*/
-    }
-    
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        // Configure the view for the selected state
-    }
-    
-    /*
-    -(void)maskWithCircle:(UIImageView*)imgView{
-    
-    CAShapeLayer *aCircle=[CAShapeLayer layer];
-    aCircle.path=[UIBezierPath bezierPathWithRoundedRect:imgView.bounds cornerRadius:imgView.frame.size.height/2].CGPath; // Considering the ImageView is square in Shape
-    
-    aCircle.fillColor=[UIColor blackColor].CGColor;
-    imgView.layer.mask=aCircle;
-    
-    }
-    */
-    /*
-    func showDelete() {
-        UIView.animateWithDuration(0.15, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
-            self.deleteButton.maskView?.frame = CGRectMake(0, 0, (CGFloat)(DeleteButton.kDeleteButtonWidth), self.frame.height)
-            self.container.frame = CGRect(x: 80, y: 0, width: self.container.frame.width, height: self.container.frame.height)
-            self.setNeedsDisplay()
-            }, completion: {
-                finish in print("complete")
-                self.deleteButton.enabled = true
-        })
-    }
-    
-    func hideDelete(animated: Bool) {
-        if animated {
-            UIView.animateWithDuration(0.15, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
-                self.deleteButton.enabled = false
-                self.deleteButton.maskView?.frame = CGRect(x: 0, y: 0, width: 0, height: self.frame.height)
-                self.container.frame = CGRect(x: 0, y: 0, width: self.container.frame.width, height: self.container.frame.height)
-                }, completion: {
-                    finish in print("complete")
-            })
+        var millisecondsStr = ""
+
+        if milliseconds > 99 {
+            millisecondsStr = "\(milliseconds)"
+        } else if milliseconds > 9 {
+            millisecondsStr = "0\(milliseconds)"
         } else {
-            self.deleteButton.enabled = false
-            self.deleteButton.maskView?.frame = CGRect(x: 0, y: 0, width: 0, height: self.frame.height)
-            self.container.frame = CGRect(x: 0, y: 0, width: self.container.frame.width, height: self.container.frame.height)
+            millisecondsStr = "00\(milliseconds)"
         }
-    }
-    
-    func handleDelete(sender: UIButton) {
-        print("handleDelete")
-        NSNotificationCenter.defaultCenter().postNotificationName(Constants.ServerListViewController.DeleteServer, object: self)
+        
+        if days > 0 {
+            return "\(days):\(hours):\(minutes):\(seconds):\(millisecondsStr)"
+        } else if hours > 0 {
+            return "\(hours):\(minutes):\(seconds):\(millisecondsStr)"
+        } else if minutes > 0 {
+            return "\(minutes):\(seconds):\(millisecondsStr)"
+        } else if seconds > 0 {
+            return "\(seconds):\(millisecondsStr)"
+        } else if milliseconds > 0 {
+            return "\(millisecondsStr)"
+        } else {
+            return "--:--:--"
+        }
     }
     
     func drawRoundedRect(size: CGSize, color: UIColor) -> UIImage {
@@ -203,58 +143,80 @@ class ProcessCell: UITableViewCell, Themeable {
         return image
     }
     
-    func positionCountViews(views: [UIView]) {
-        var countViewsWidth: CGFloat = 0.0
-        for view in views {
-            countViewsWidth += view.frame.width
+    func createStatusView(view: UIView, title: UILabel, color: UIColor, padding: CGFloat) {
+        title.font = UIFont.systemFontOfSize(20)
+        title.sizeToFit()
+        
+        
+        let size: CGSize = CGSize(width: self.stateBackgroundWidth, height: title.intrinsicContentSize().height + padding * 2)
+        view.frame.size = size
+        title.frame.origin = CGPoint(x: (self.stateBackgroundWidth - title.intrinsicContentSize().width) / 2.0, y: padding)
+        
+        if let oldRoundedRect = roundedRect {
+            oldRoundedRect.removeFromSuperview()
         }
         
-        let leftPadding: CGFloat = 5
-        let rightPadding: CGFloat = 5
-        
-        let spacing: CGFloat = (self.frame.width - countViewsWidth - leftPadding - rightPadding) / (CGFloat(views.count - 1))
-        
-        for i in 0..<views.count {
-            if (i == 0) {
-                let v: UIView = views[i]
-                v.frame.origin.x = leftPadding
-            } else {
-                let prev: UIView = views[i - 1]
-                let curr: UIView = views[i]
-                curr.frame.origin.x = prev.frame.origin.x + prev.frame.size.width + spacing
-            }
-        }
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
+        view.addSubview(imageView)
+        roundedRect = imageView
+        imageView.image = drawRoundedRect(view.frame.size, color: color)
+        view.sendSubviewToBack(imageView)
+        view.backgroundColor = UIColor.clearColor()
+        view.addSubview(title)
     }
     
-    func createCountView(view: UIView, title: UILabel, count: UILabel, color: UIColor, padding: CGFloat) {
-        title.font = UIFont.systemFontOfSize(10)
+    func layoutStatusView(view: UIView, title: UILabel, color: UIColor, padding: CGFloat) {
         title.sizeToFit()
-        count.sizeToFit()
         
-        let width: CGFloat = ceil(max(title.intrinsicContentSize().width, count.intrinsicContentSize().width) + padding * 2)
-        view.frame.size.width = width
-        title.frame.origin = CGPoint(x: padding, y: padding)
-        count.frame.origin = CGPoint(x: padding, y: padding)
-        count.center = CGPoint(x: floor(width / 2), y: floor(view.frame.size.height / 2) + 6)
+        let size: CGSize = CGSize(width: self.stateBackgroundWidth, height: title.intrinsicContentSize().height + padding * 2)
+        view.frame.size = size
+        title.frame.origin = CGPoint(x: (self.stateBackgroundWidth - title.intrinsicContentSize().width) / 2.0, y: padding)
+        
+        if let oldRoundedRect = roundedRect {
+            oldRoundedRect.removeFromSuperview()
+        }
         
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
         view.addSubview(imageView)
         imageView.image = drawRoundedRect(view.frame.size, color: color)
         view.sendSubviewToBack(imageView)
-        
-        container.addSubview(view)
+        view.backgroundColor = UIColor.clearColor()
+        view.addSubview(title)
+        roundedRect = imageView
     }
     
-    func layoutCountView(view: UIView, title: UILabel, count: UILabel, color: UIColor, padding: CGFloat) {
-        title.font = UIFont.systemFontOfSize(10)
-        title.sizeToFit()
-        count.sizeToFit()
-        
-        let width: CGFloat = ceil(max(title.intrinsicContentSize().width, count.intrinsicContentSize().width) + padding * 2)
-        view.frame.size.width = width
-        title.frame.origin = CGPoint(x: padding, y: padding)
-        count.frame.origin = CGPoint(x: padding, y: padding)
-        count.center = CGPoint(x: floor(width / 2), y: floor(view.frame.size.height / 2) + 6)
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.clipsToBounds = true
+        self.autoresizesSubviews = false
+        self.layoutMargins.left = 0
+        let padding:CGFloat = 2.0
+        createStatusView(statusView, title: self.statusLabel, color: UIColor.redColor(), padding: padding)
+        positionViews()
     }
-    */
+    
+    func positionViews() {
+        statusView.frame.origin = CGPoint(x: statusView.frame.origin.x + 10.0, y: (self.frame.size.height - statusView.frame.size.height) / 2.0)
+        nameLabel.frame.size = CGSize(width:statusView.frame.origin.x - nameLabel.frame.origin.x - 6, height: nameLabel.frame.size.height)
+        nameLabel.adjustsFontSizeToFitWidth = true
+        nameLabel.minimumScaleFactor = 0.2
+        uptimeLabel.font = UIFont.systemFontOfSize(10)
+        uptimeLabel.sizeToFit()
+        uptimeLabel.frame.origin = CGPoint(x: self.frame.size.width - uptimeLabel.frame.size.width - 6.0, y: (self.frame.size.height - uptimeLabel.frame.size.height) / 2.0)
+    }
+    
+    func theme() {
+        let theme: Theme = ThemeFactory.sharedInstance().theme
+        self.selectedBackgroundView = theme.cellSelectedBackgroundView()
+        self.backgroundColor = theme.cellBackgroundColor()
+        
+        nameLabel.textColor = theme.cellPrimaryTextColor()
+        uptimeLabel.textColor = theme.cellPrimaryTextColor()
+        statusLabel.textColor = theme.cellSecondaryTextColor()
+    }
+    
+    override func setSelected(selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        // Configure the view for the selected state
+    }
 }

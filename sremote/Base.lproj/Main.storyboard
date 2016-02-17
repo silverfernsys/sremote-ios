@@ -502,13 +502,48 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProcessCell" id="Jzf-Fi-i7T" customClass="ProcessCell" customModule="sremote" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProcessCell" focusStyle="custom" id="Jzf-Fi-i7T" customClass="ProcessCell" customModule="sremote" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Jzf-Fi-i7T" id="A1j-cz-Im9">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="I3l-ek-7DK">
+                                            <rect key="frame" x="8" y="11" width="42" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <view contentMode="scaleToFill" id="pUx-35-j63">
+                                            <rect key="frame" x="171" y="0.5" width="85" height="35.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wqK-v4-J6D" customClass="BadgeLabel" customModule="sremote" customModuleProvider="target">
+                                            <rect key="frame" x="192" y="11" width="42" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EV9-1N-RA1">
+                                            <rect key="frame" x="325" y="11" width="42" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="nameLabel" destination="I3l-ek-7DK" id="irc-X3-7OW"/>
+                                    <outlet property="statusLabel" destination="wqK-v4-J6D" id="3nN-Tx-LEU"/>
+                                    <outlet property="statusView" destination="pUx-35-j63" id="l3j-Gs-3ko"/>
+                                    <outlet property="uptimeLabel" destination="EV9-1N-RA1" id="eI6-GS-Qrq"/>
+                                    <segue destination="0CT-BJ-X7Y" kind="push" identifier="ShowProcessDetail" id="5pz-W3-sEi"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -521,6 +556,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nCb-0U-lcr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-133.5" y="1114.5"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Y9o-y7-cco">
+            <objects>
+                <viewController id="0CT-BJ-X7Y" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZyP-Ns-eyP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="2kw-wg-5O4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rWP-YV-Mhv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-133.5" y="1882.5"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
