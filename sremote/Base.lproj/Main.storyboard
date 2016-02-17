@@ -557,10 +557,10 @@
             </objects>
             <point key="canvasLocation" x="-133.5" y="1114.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Process Detail View Controller-->
         <scene sceneID="Y9o-y7-cco">
             <objects>
-                <viewController id="0CT-BJ-X7Y" sceneMemberID="viewController">
+                <viewController id="0CT-BJ-X7Y" customClass="ProcessDetailViewController" customModule="sremote" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZyP-Ns-eyP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

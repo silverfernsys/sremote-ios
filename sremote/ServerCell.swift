@@ -244,8 +244,9 @@ class ServerCell: UITableViewCell, Themeable {
     }
     
     func createCountView(view: UIView, title: UILabel, count: UILabel, color: UIColor, padding: CGFloat) {
-        title.font = UIFont.systemFontOfSize(10)
+        title.font = UIFont(name: "BankGothicBold", size: 8.0)//UIFont.systemFontOfSize(10)
         title.sizeToFit()
+        count.font = UIFont(name: "BankGothicBold", size: 24.0)
         count.sizeToFit()
         
         let width: CGFloat = ceil(max(title.intrinsicContentSize().width, count.intrinsicContentSize().width) + padding * 2)
@@ -263,7 +264,6 @@ class ServerCell: UITableViewCell, Themeable {
     }
     
     func layoutCountView(view: UIView, title: UILabel, count: UILabel, color: UIColor, padding: CGFloat) {
-        title.font = UIFont.systemFontOfSize(10)
         title.sizeToFit()
         count.sizeToFit()
         

@@ -11,6 +11,7 @@ import UIKit
 protocol Theme {
     func styleNavigationController(navController: UINavigationController) -> Void
     func styleTableViewController(tableViewController: UITableViewController) -> Void
+    func styleViewController(viewController: UIViewController) -> Void
     func cellSelectedBackgroundView() -> UIView?
     func cellBackgroundColor() -> UIColor
     func cellPrimaryTextColor() -> UIColor

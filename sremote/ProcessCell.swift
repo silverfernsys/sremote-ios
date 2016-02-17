@@ -57,15 +57,19 @@ class ProcessCell: UITableViewCell, Themeable {
                 break
             }
             
+            statusLabel.font = UIFont(name: "BankGothicBold", size: 20.0)
+            statusLabel.backgroundColor = UIColor.clearColor()
             nameLabel.text = process.name
+            uptimeLabel.font = UIFont(name: "BankGothicBold", size: 10.0)
             
             if let uptime = process.start {
                 uptimeLabel.text = timestampFormat(uptime)
             } else {
-                uptimeLabel.text = "--:--:--"
+                uptimeLabel.text = ""
             }
             
-            layoutStatusView(statusView, title: statusLabel, color: color, padding: padding)
+            
+            layoutStatusView(statusView, title: statusLabel, subtitle: uptimeLabel, color: color, padding: padding)
             positionViews()
         }
     }
@@ -79,7 +83,7 @@ class ProcessCell: UITableViewCell, Themeable {
                 return s
             } else {
                 let l = UILabel()
-                l.font = UIFont.systemFontOfSize(20)
+                l.font = UIFont(name: "BankGothicBold", size: 20.0)
                 let stateNames = [
                     "BACKOFF", "EXITED", "FATAL", "RUNNING", "STARTING", "STOPPED", "STOPPING", "UNKNOWN"
                 ]
@@ -89,7 +93,7 @@ class ProcessCell: UITableViewCell, Themeable {
                     l.sizeToFit()
                     maxWidth = max(l.frame.width + 2.0 * padding, maxWidth)
                 }
-                _stateBackgroundWidth = maxWidth
+                _stateBackgroundWidth = ceil(maxWidth)
                 return _stateBackgroundWidth!
             }
         }
@@ -143,34 +147,24 @@ class ProcessCell: UITableViewCell, Themeable {
         return image
     }
     
-    func createStatusView(view: UIView, title: UILabel, color: UIColor, padding: CGFloat) {
-        title.font = UIFont.systemFontOfSize(20)
+    func layoutStatusView(view: UIView, title: UILabel, subtitle: UILabel, color: UIColor, padding: CGFloat) {
         title.sizeToFit()
+        subtitle.sizeToFit()
         
-        
-        let size: CGSize = CGSize(width: self.stateBackgroundWidth, height: title.intrinsicContentSize().height + padding * 2)
-        view.frame.size = size
-        title.frame.origin = CGPoint(x: (self.stateBackgroundWidth - title.intrinsicContentSize().width) / 2.0, y: padding)
-        
-        if let oldRoundedRect = roundedRect {
-            oldRoundedRect.removeFromSuperview()
+        var size: CGSize
+        if let text = subtitle.text {
+            if text.characters.count > 0 {
+                size = CGSize(width: self.stateBackgroundWidth, height: ceil(title.intrinsicContentSize().height + subtitle.intrinsicContentSize().height + padding * 2))
+            } else {
+                size = CGSize(width: self.stateBackgroundWidth, height: ceil(title.intrinsicContentSize().height + padding * 2))
+            }
+        } else {
+            size = CGSize(width: self.stateBackgroundWidth, height: ceil(title.intrinsicContentSize().height + padding * 2))
         }
         
-        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
-        view.addSubview(imageView)
-        roundedRect = imageView
-        imageView.image = drawRoundedRect(view.frame.size, color: color)
-        view.sendSubviewToBack(imageView)
-        view.backgroundColor = UIColor.clearColor()
-        view.addSubview(title)
-    }
-    
-    func layoutStatusView(view: UIView, title: UILabel, color: UIColor, padding: CGFloat) {
-        title.sizeToFit()
-        
-        let size: CGSize = CGSize(width: self.stateBackgroundWidth, height: title.intrinsicContentSize().height + padding * 2)
         view.frame.size = size
         title.frame.origin = CGPoint(x: (self.stateBackgroundWidth - title.intrinsicContentSize().width) / 2.0, y: padding)
+        subtitle.frame.origin = CGPoint(x: (self.stateBackgroundWidth - subtitle.intrinsicContentSize().width) / 2.0, y: size.height - (subtitle.frame.size.height + padding))
         
         if let oldRoundedRect = roundedRect {
             oldRoundedRect.removeFromSuperview()
@@ -182,6 +176,7 @@ class ProcessCell: UITableViewCell, Themeable {
         view.sendSubviewToBack(imageView)
         view.backgroundColor = UIColor.clearColor()
         view.addSubview(title)
+        view.addSubview(subtitle)
         roundedRect = imageView
     }
     
@@ -191,18 +186,15 @@ class ProcessCell: UITableViewCell, Themeable {
         self.autoresizesSubviews = false
         self.layoutMargins.left = 0
         let padding:CGFloat = 2.0
-        createStatusView(statusView, title: self.statusLabel, color: UIColor.redColor(), padding: padding)
+        layoutStatusView(statusView, title: self.statusLabel, subtitle: self.uptimeLabel, color: UIColor.redColor(), padding: padding)
         positionViews()
     }
     
     func positionViews() {
-        statusView.frame.origin = CGPoint(x: statusView.frame.origin.x + 10.0, y: (self.frame.size.height - statusView.frame.size.height) / 2.0)
+        statusView.frame.origin = CGPoint(x: self.frame.size.width - statusView.frame.size.width - 6.0, y: (self.frame.size.height - statusView.frame.size.height) / 2.0)
         nameLabel.frame.size = CGSize(width:statusView.frame.origin.x - nameLabel.frame.origin.x - 6, height: nameLabel.frame.size.height)
         nameLabel.adjustsFontSizeToFitWidth = true
         nameLabel.minimumScaleFactor = 0.2
-        uptimeLabel.font = UIFont.systemFontOfSize(10)
-        uptimeLabel.sizeToFit()
-        uptimeLabel.frame.origin = CGPoint(x: self.frame.size.width - uptimeLabel.frame.size.width - 6.0, y: (self.frame.size.height - uptimeLabel.frame.size.height) / 2.0)
     }
     
     func theme() {
@@ -211,7 +203,7 @@ class ProcessCell: UITableViewCell, Themeable {
         self.backgroundColor = theme.cellBackgroundColor()
         
         nameLabel.textColor = theme.cellPrimaryTextColor()
-        uptimeLabel.textColor = theme.cellPrimaryTextColor()
+        uptimeLabel.textColor = theme.cellSecondaryTextColor()
         statusLabel.textColor = theme.cellSecondaryTextColor()
     }
     

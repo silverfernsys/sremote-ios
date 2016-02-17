@@ -27,6 +27,8 @@
 		C5653B981C30BF1300087D48 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5653B971C30BF1300087D48 /* SampleData.swift */; };
 		C5653B9A1C335A3700087D48 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5653B991C335A3700087D48 /* Constants.swift */; };
 		C5653B9C1C3362D800087D48 /* UIColor+Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5653B9B1C3362D800087D48 /* UIColor+Colors.swift */; };
+		C57C60F91C74C41D00B03657 /* ProcessDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57C60F81C74C41D00B03657 /* ProcessDetailViewController.swift */; };
+		C57C61111C74F63600B03657 /* BankGothicBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C57C61101C74F63600B03657 /* BankGothicBold.ttf */; };
 		C58453711C73CDB100EFD7CE /* ProcessCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58453701C73CDB100EFD7CE /* ProcessCell.swift */; };
 		C59C6FE21C27660A00B082F6 /* ServerListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59C6FE11C27660A00B082F6 /* ServerListTableViewController.swift */; };
 		C5A2A4961C27539C00439FE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A2A4951C27539C00439FE7 /* AppDelegate.swift */; };
@@ -326,6 +328,8 @@
 		C5653B971C30BF1300087D48 /* SampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		C5653B991C335A3700087D48 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C5653B9B1C3362D800087D48 /* UIColor+Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Colors.swift"; sourceTree = "<group>"; };
+		C57C60F81C74C41D00B03657 /* ProcessDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessDetailViewController.swift; sourceTree = "<group>"; };
+		C57C61101C74F63600B03657 /* BankGothicBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BankGothicBold.ttf; sourceTree = "<group>"; };
 		C58453701C73CDB100EFD7CE /* ProcessCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessCell.swift; sourceTree = "<group>"; };
 		C59C6FE11C27660A00B082F6 /* ServerListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerListTableViewController.swift; sourceTree = "<group>"; };
 		C5A2A4921C27539C00439FE7 /* sremote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sremote.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -424,6 +428,14 @@
 			name = Themes;
 			sourceTree = "<group>";
 		};
+		C57C61121C74F64400B03657 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				C57C61101C74F63600B03657 /* BankGothicBold.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
 		C5A2A4891C27539C00439FE7 = {
 			isa = PBXGroup;
 			children = (
@@ -452,6 +464,7 @@
 		C5A2A4941C27539C00439FE7 /* sremote */ = {
 			isa = PBXGroup;
 			children = (
+				C57C61121C74F64400B03657 /* Fonts */,
 				C52355C91C727F0F0090AD91 /* Persistence */,
 				C56321611C500BF900BBE4BE /* Themes */,
 				C5A2A4951C27539C00439FE7 /* AppDelegate.swift */,
@@ -463,6 +476,7 @@
 				C5A2A4C31C27599D00439FE7 /* ServerEntryViewController.swift */,
 				C59C6FE11C27660A00B082F6 /* ServerListTableViewController.swift */,
 				C5F6867C1C276FF700FBC5DE /* ProcessTableViewController.swift */,
+				C57C60F81C74C41D00B03657 /* ProcessDetailViewController.swift */,
 				C5F6867E1C27731B00FBC5DE /* ServerCell.swift */,
 				C58453701C73CDB100EFD7CE /* ProcessCell.swift */,
 				C55A02B61C6D949D002B68DA /* InputCell.swift */,
@@ -872,6 +886,7 @@
 			files = (
 				C5173EF91C2A642500D6C0CB /* Settings.bundle in Resources */,
 				C5A2A4A01C27539C00439FE7 /* LaunchScreen.storyboard in Resources */,
+				C57C61111C74F63600B03657 /* BankGothicBold.ttf in Resources */,
 				C5A2A49D1C27539C00439FE7 /* Assets.xcassets in Resources */,
 				C5A2A49B1C27539C00439FE7 /* Main.storyboard in Resources */,
 			);
@@ -916,6 +931,7 @@
 				C5653B9C1C3362D800087D48 /* UIColor+Colors.swift in Sources */,
 				C5653B981C30BF1300087D48 /* SampleData.swift in Sources */,
 				C58453711C73CDB100EFD7CE /* ProcessCell.swift in Sources */,
+				C57C60F91C74C41D00B03657 /* ProcessDetailViewController.swift in Sources */,
 				C56321631C500C0D00BBE4BE /* LightTheme.swift in Sources */,
 				C52355C11C71A6C70090AD91 /* Server.swift in Sources */,
 				C5653B9A1C335A3700087D48 /* Constants.swift in Sources */,

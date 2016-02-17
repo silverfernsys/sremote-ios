@@ -41,6 +41,10 @@ class DarkTheme: Theme {
         tableViewController.tableView.setNeedsLayout()
     }
     
+    func styleViewController(viewController: UIViewController) -> Void {
+        viewController.view.backgroundColor = UIColor.extraDarkGrey()
+    }
+    
     func cellSelectedBackgroundView() -> UIView? {
         let view = UIView()
         view.backgroundColor = UIColor.extraDarkGreyLight()

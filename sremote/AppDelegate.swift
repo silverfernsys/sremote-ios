@@ -52,6 +52,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WebSocketDelegate {
             print(p)
         }
         */
+//        for name in UIFont.familyNames() {
+//            print(name)
+//            print(UIFont.fontNamesForFamilyName(name))
+//        }
+        
         return true
     }
 

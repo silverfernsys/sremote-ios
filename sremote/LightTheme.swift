@@ -41,6 +41,10 @@ class LightTheme: Theme {
         tableViewController.tableView.setNeedsLayout()
     }
     
+    func styleViewController(viewController: UIViewController) -> Void {
+        viewController.view.backgroundColor = UIColor.whiteColor()
+    }
+    
     func cellSelectedBackgroundView() -> UIView? {
         return nil
     }
