@@ -195,6 +195,9 @@ class ServerListTableViewController: UITableViewController, UIGestureRecognizerD
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        for cell in self.tableView.visibleCells as! [ServerCell] {
+            cell.positionViews()
+        }
     }
 
     override func didReceiveMemoryWarning() {

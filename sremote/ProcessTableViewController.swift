@@ -27,6 +27,13 @@ class ProcessTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        for cell in self.tableView.visibleCells as! [ProcessCell] {
+            cell.positionViews()
+        }
+    }
 
     // MARK: - Table view data source
 
@@ -64,6 +71,12 @@ class ProcessTableViewController: UITableViewController {
             } else {
                 print("Error!")
             }
+        }
+    }
+    
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+        for cell in self.tableView.visibleCells as! [ProcessCell] {
+            cell.positionViews()
         }
     }
 
