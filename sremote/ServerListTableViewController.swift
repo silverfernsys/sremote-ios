@@ -193,6 +193,13 @@ class ServerListTableViewController: UITableViewController, UIGestureRecognizerD
 //        ServerCell.appearance().separatorInset = UIEdgeInsetsZero
     }
     
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+        for cell in self.tableView.visibleCells as! [ServerCell] {
+            cell.positionViews(size)
+        }
+    }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         for cell in self.tableView.visibleCells as! [ServerCell] {

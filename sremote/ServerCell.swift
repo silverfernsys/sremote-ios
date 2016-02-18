@@ -128,6 +128,10 @@ class ServerCell: UITableViewCell, Themeable {
         positionCountViews([stoppedView, startingView, runningView, backoffView, stoppingView, exitedView, fatalView, unknownView])
     }
     
+    func positionViews(size: CGSize) {
+        positionCountViews([stoppedView, startingView, runningView, backoffView, stoppingView, exitedView, fatalView, unknownView], size: size)
+    }
+    
     func theme() {
         let theme: Theme = ThemeFactory.sharedInstance().theme
         self.selectedBackgroundView = theme.cellSelectedBackgroundView()
@@ -230,6 +234,29 @@ class ServerCell: UITableViewCell, Themeable {
         let rightPadding: CGFloat = 5
         
         let spacing: CGFloat = (self.frame.width - countViewsWidth - leftPadding - rightPadding) / (CGFloat(views.count - 1))
+        
+        for i in 0..<views.count {
+            if (i == 0) {
+                let v: UIView = views[i]
+                v.frame.origin.x = leftPadding
+            } else {
+                let prev: UIView = views[i - 1]
+                let curr: UIView = views[i]
+                curr.frame.origin.x = prev.frame.origin.x + prev.frame.size.width + spacing
+            }
+        }
+    }
+    
+    func positionCountViews(views: [UIView], size: CGSize) {
+        var countViewsWidth: CGFloat = 0.0
+        for view in views {
+            countViewsWidth += view.frame.width
+        }
+        
+        let leftPadding: CGFloat = 5
+        let rightPadding: CGFloat = 5
+        
+        let spacing: CGFloat = (size.width - countViewsWidth - leftPadding - rightPadding) / (CGFloat(views.count - 1))
         
         for i in 0..<views.count {
             if (i == 0) {

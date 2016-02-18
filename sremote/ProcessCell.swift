@@ -14,6 +14,8 @@ class ProcessCell: UITableViewCell, Themeable {
     @IBOutlet weak var statusView: BadgeLabel!
     @IBOutlet weak var uptimeLabel: UILabel!
     weak var roundedRect: UIImageView!
+    weak var cpuGraph: ThumbnailGraph!
+    weak var memGraph: ThumbnailGraph!
     
     var process: Process! {
         didSet {
@@ -186,12 +188,28 @@ class ProcessCell: UITableViewCell, Themeable {
         self.autoresizesSubviews = false
         self.layoutMargins.left = 0
         let padding:CGFloat = 2.0
+        
+        let cpu = ThumbnailGraph(frame: CGRect(x: 0, y: 44, width: self.frame.width / 2, height: 44), color: UIColor.midBlue())
+        let mem = ThumbnailGraph(frame: CGRect(x: self.frame.width / 2 + 1, y: 44, width: self.frame.width / 2, height: 44), color: UIColor.midRed())
+        
+        self.addSubview(cpu)
+        self.addSubview(mem)
+        
+        cpuGraph = cpu
+        memGraph = mem
         layoutStatusView(statusView, title: self.statusLabel, subtitle: self.uptimeLabel, color: UIColor.redColor(), padding: padding)
         positionViews()
     }
     
     func positionViews() {
-        statusView.frame.origin = CGPoint(x: self.frame.size.width - statusView.frame.size.width - 6.0, y: (self.frame.size.height - statusView.frame.size.height) / 2.0)
+        statusView.frame.origin = CGPoint(x: self.frame.size.width - statusView.frame.size.width - 6.0, y: (44.0 - statusView.frame.size.height) / 2.0)
+        nameLabel.frame.size = CGSize(width:statusView.frame.origin.x - nameLabel.frame.origin.x - 6, height: nameLabel.frame.size.height)
+        nameLabel.adjustsFontSizeToFitWidth = true
+        nameLabel.minimumScaleFactor = 0.2
+    }
+    
+    func positionViews(size: CGSize) {
+        statusView.frame.origin = CGPoint(x: size.width - statusView.frame.size.width - 6.0, y: (44.0 - statusView.frame.size.height) / 2.0)
         nameLabel.frame.size = CGSize(width:statusView.frame.origin.x - nameLabel.frame.origin.x - 6, height: nameLabel.frame.size.height)
         nameLabel.adjustsFontSizeToFitWidth = true
         nameLabel.minimumScaleFactor = 0.2

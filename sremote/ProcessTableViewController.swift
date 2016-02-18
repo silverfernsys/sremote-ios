@@ -28,10 +28,10 @@ class ProcessTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
         for cell in self.tableView.visibleCells as! [ProcessCell] {
-            cell.positionViews()
+            cell.positionViews(size)
         }
     }
 
