@@ -29,7 +29,6 @@ class DeleteButton: UIButton {
 }
 
 class ServerCell: UITableViewCell, Themeable {
-
     @IBOutlet weak var serverPortLabel: UILabel!
     @IBOutlet weak var serverAddressLabel: UILabel!
     
@@ -85,12 +84,8 @@ class ServerCell: UITableViewCell, Themeable {
             layoutCountView(backoffView, title: backoffLabel, count: backoffCountLabel, color: UIColor(red: 0, green: 1, blue: 1, alpha: 0.5), padding: padding)
             layoutCountView(stoppingView, title: stoppingLabel, count: stoppingCountLabel, color:  UIColor(red: 1, green: 0.5, blue: 0, alpha: 0.5), padding: padding)
             layoutCountView(exitedView, title: exitedLabel, count: exitedCountLabel, color: UIColor(red: 1, green: 0, blue: 1, alpha: 0.5), padding: padding)
-            
-            // 153,50,204
             layoutCountView(fatalView, title: fatalLabel, count: fatalCountLabel, color: UIColor(red: (153.0 / 255.0), green: (50.0 / 255.0), blue: (204.0 / 255.0), alpha: 0.5), padding: padding)
             layoutCountView(unknownView, title: unknownLabel, count: unknownCountLabel, color:  UIColor(red: (190.0 / 255.0), green: (190.0 / 255.0), blue: (190.0 / 255.0), alpha: 0.5), padding: padding)
-            
-            positionCountViews([stoppedView, startingView, runningView, backoffView, stoppingView, exitedView, fatalView, unknownView])
         }
     }
     
@@ -115,8 +110,6 @@ class ServerCell: UITableViewCell, Themeable {
         layoutCountView(fatalView, title: fatalLabel, count: fatalCountLabel, color: UIColor(red: (153.0 / 255.0), green: (50.0 / 255.0), blue: (204.0 / 255.0), alpha: 0.5), padding: padding)
         layoutCountView(unknownView, title: unknownLabel, count: unknownCountLabel, color:  UIColor(red: (190.0 / 255.0), green: (190.0 / 255.0), blue: (190.0 / 255.0), alpha: 0.5), padding: padding)
         
-        positionCountViews([stoppedView, startingView, runningView, backoffView, stoppingView, exitedView, fatalView, unknownView])
-        
         let deleteBtn : DeleteButton = DeleteButton(frame: CGRect(x: 0, y: 0, width: 80, height: self.frame.height))
         self.addSubview(deleteBtn)
         deleteButton = deleteBtn
@@ -126,35 +119,12 @@ class ServerCell: UITableViewCell, Themeable {
     }
     
     // START OF LAYOUT CODE
-    func positionViews(size: CGSize) {
+    func layoutPortrait(size: CGSize) {
         positionCountViews([stoppedView, startingView, runningView, backoffView, stoppingView, exitedView, fatalView, unknownView], size: size)
     }
     
-    func positionLandscapeViews(size: CGSize) {
+    func layoutLandscape(size: CGSize) {
         positionLandscapeCountViews([stoppedView, startingView, runningView, backoffView, stoppingView, exitedView, fatalView, unknownView], size: size)
-    }
-    
-    func positionCountViews(views: [UIView]) {
-        var countViewsWidth: CGFloat = 0.0
-        for view in views {
-            countViewsWidth += view.frame.width
-        }
-        
-        let leftPadding: CGFloat = 5
-        let rightPadding: CGFloat = 5
-        
-        let spacing: CGFloat = (self.frame.width - countViewsWidth - leftPadding - rightPadding) / (CGFloat(views.count - 1))
-        
-        for i in 0..<views.count {
-            if (i == 0) {
-                let v: UIView = views[i]
-                v.frame.origin.x = leftPadding
-            } else {
-                let prev: UIView = views[i - 1]
-                let curr: UIView = views[i]
-                curr.frame.origin.x = prev.frame.origin.x + prev.frame.size.width + spacing
-            }
-        }
     }
     
     func positionCountViews(views: [UIView], size: CGSize) {
@@ -162,11 +132,11 @@ class ServerCell: UITableViewCell, Themeable {
         let halfChunk = ceil(chunk / 2.0)
         
         for i in 0..<(views.count / 2) {
-            views[i].center = CGPoint(x: halfChunk + CGFloat(i) * chunk, y: self.frame.size.height / 2 + 10)
+            views[i].center = CGPoint(x: halfChunk + CGFloat(i) * chunk, y: size.height / 2.0)// + 2.0)
         }
         
         for i in 0..<(views.count / 2) {
-            views[views.count / 2 + i].center = CGPoint(x: halfChunk + CGFloat(i) * chunk, y: self.frame.size.height / 2 + 58)
+            views[views.count / 2 + i].center = CGPoint(x: halfChunk + CGFloat(i) * chunk, y: size.height / 2.0 + 46.0)
         }
     }
     
@@ -175,7 +145,7 @@ class ServerCell: UITableViewCell, Themeable {
         let halfChunk = ceil(chunk / 2.0)
         
         for i in 0..<views.count {
-            views[i].center = CGPoint(x: halfChunk + CGFloat(i) * chunk, y: self.frame.size.height / 2 + 10)
+            views[i].center = CGPoint(x: halfChunk + CGFloat(i) * chunk, y: size.height / 2.0 + 20.0)
         }
     }
     

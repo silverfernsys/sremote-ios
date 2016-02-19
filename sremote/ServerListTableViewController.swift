@@ -12,6 +12,9 @@ import PKHUD
 class ServerListTableViewController: UITableViewController, UIGestureRecognizerDelegate {
     var servers:[Server] = serverData
     
+    let landscapeHeight:CGFloat = 100.0
+    let portraitHeight:CGFloat = 144.0
+    
     // For reordering cells
     var snapshot: UIView? = nil
     var sourceIndexPath: NSIndexPath? = nil
@@ -189,8 +192,6 @@ class ServerListTableViewController: UITableViewController, UIGestureRecognizerD
         self.tableView.layoutMargins = UIEdgeInsetsZero
         self.tableView.cellLayoutMarginsFollowReadableWidth = false
         ServerCell.appearance().layoutMargins = UIEdgeInsetsZero
-//        ServerCell.appearance().preservesSuperviewLayoutMargins = false
-//        ServerCell.appearance().separatorInset = UIEdgeInsetsZero
     }
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
@@ -198,14 +199,15 @@ class ServerListTableViewController: UITableViewController, UIGestureRecognizerD
         // This controller's view takes up the entire screen, so
         // size.width > size.height: landscape.
         // size.height > size.width: portrait.
-//        tableView.reloadData()
         if size.height > size.width {
+            let cellSize = CGSize(width: size.width, height: portraitHeight)
             for cell in self.tableView.visibleCells as! [ServerCell] {
-                cell.positionViews(size)
+                cell.layoutPortrait(cellSize)
             }
         } else {
+            let cellSize = CGSize(width: size.width, height: landscapeHeight)
             for cell in self.tableView.visibleCells as! [ServerCell] {
-                cell.positionLandscapeViews(size)
+                cell.layoutLandscape(cellSize)
             }
         }
     }
@@ -217,16 +219,9 @@ class ServerListTableViewController: UITableViewController, UIGestureRecognizerD
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if UIDevice.currentDevice().orientation.isLandscape.boolValue {
-            return 110.0
+            return landscapeHeight
         } else {
-            return 140.0
-        }
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        for cell in self.tableView.visibleCells as! [ServerCell] {
-            cell.positionViews(self.tableView.frame.size)
+            return portraitHeight
         }
     }
 
@@ -236,6 +231,7 @@ class ServerListTableViewController: UITableViewController, UIGestureRecognizerD
     }
     
     @IBAction func cancelToServerListViewController(segue:UIStoryboardSegue) {
+        
     }
     
 //    @IBAction func saveServerEntry(segue:UIStoryboardSegue) {
@@ -269,12 +265,10 @@ class ServerListTableViewController: UITableViewController, UIGestureRecognizerD
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return servers.count
     }
     
@@ -282,6 +276,13 @@ class ServerListTableViewController: UITableViewController, UIGestureRecognizerD
         let cell = tableView.dequeueReusableCellWithIdentifier("ServerCell", forIndexPath: indexPath) as! ServerCell
         let server = servers[indexPath.row] as Server
         cell.server = server
+        
+        if UIDevice.currentDevice().orientation.isLandscape.boolValue {
+            cell.layoutLandscape(CGSize(width: self.tableView.frame.size.width, height: landscapeHeight))
+        } else {
+            cell.layoutPortrait(CGSize(width: self.tableView.frame.size.width, height: portraitHeight))
+        }
+        
         cell.theme()
         return cell
     }
@@ -297,13 +298,6 @@ class ServerListTableViewController: UITableViewController, UIGestureRecognizerD
         return true
     }
     
-    /*
-    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
-        for cell in self.tableView.visibleCells as! [ServerCell] {
-            cell.positionViews()
-        }
-    }
-    */
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         print("didSelectRowAtIndexPath")
     }
@@ -339,7 +333,6 @@ class ServerListTableViewController: UITableViewController, UIGestureRecognizerD
 //    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
         if segue.identifier == "ShowProcessList" {
             print("prepareForSegue")
             let processTableViewController = segue.destinationViewController as! ProcessTableViewController
