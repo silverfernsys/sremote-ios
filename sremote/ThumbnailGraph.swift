@@ -16,6 +16,7 @@ class ThumbnailGraph: UIView {
         super.init(frame: frame)
         self.color = color
         self.backgroundColor = UIColor.clearColor()
+//        self.backgroundColor = UIColor.yellowColor()
     }
     
     convenience init(color: UIColor) {

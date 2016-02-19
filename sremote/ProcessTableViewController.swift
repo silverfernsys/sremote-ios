@@ -30,8 +30,9 @@ class ProcessTableViewController: UITableViewController {
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+        // We know the height of the cell from the storyboard is 88.0, so pass that height along with the new width to the cells.
         for cell in self.tableView.visibleCells as! [ProcessCell] {
-            cell.positionViews(size)
+            cell.positionViews(CGSize(width: size.width, height: 88.0))
         }
     }
 

@@ -214,8 +214,13 @@ class ProcessCell: UITableViewCell, Themeable {
     }
     
     func positionViews(size: CGSize) {
-        statusView.frame.origin = CGPoint(x: size.width - statusView.frame.size.width - 6.0, y: (44.0 - statusView.frame.size.height) / 2.0)
-        nameLabel.frame.size = CGSize(width:statusView.frame.origin.x - nameLabel.frame.origin.x - 6, height: nameLabel.frame.size.height)
+        nameLabel.frame.size = CGSize(width:size.width - nameLabel.frame.origin.x - 6, height: nameLabel.frame.size.height)
+        statusView.frame.origin = CGPoint(x: nameLabel.frame.origin.x, y: nameLabel.frame.origin.y + nameLabel.frame.size.height + padding + 2.0)
+        let itemPadding: CGFloat = 6.0
+        cpuGraph.frame = CGRect(x: statusView.frame.origin.x + statusView.frame.size.width + itemPadding, y: statusView.frame.origin.y, width: size.width - (statusView.frame.origin.x + statusView.frame.size.width + 2 * itemPadding) , height: size.height - itemPadding - statusView.frame.origin.y)
+        cpuGraph.setNeedsDisplay()
+        memGraph.frame = CGRect(x: statusView.frame.origin.x + statusView.frame.size.width + itemPadding, y: statusView.frame.origin.y, width: size.width - (statusView.frame.origin.x + statusView.frame.size.width + 2 * itemPadding) , height: size.height - itemPadding - statusView.frame.origin.y)
+        memGraph.setNeedsDisplay()
     }
     
     func theme() {
