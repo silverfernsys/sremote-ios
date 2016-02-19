@@ -74,11 +74,11 @@ class ProcessTableViewController: UITableViewController {
         }
     }
     
-    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
-        for cell in self.tableView.visibleCells as! [ProcessCell] {
-            cell.positionViews()
-        }
-    }
+//    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+//        for cell in self.tableView.visibleCells as! [ProcessCell] {
+//            cell.positionViews()
+//        }
+//    }
 
     /*
     // Override to support conditional editing of the table view.

@@ -10,6 +10,7 @@ import UIKit
 
 class ThumbnailGraph: UIView {
     var color: UIColor?
+    var points: [CGPoint]?
     
     init(frame: CGRect, color: UIColor) {
         super.init(frame: frame)
@@ -263,17 +264,13 @@ class ThumbnailGraph: UIView {
     }
 */
     override func drawRect(rect: CGRect) {
-        if let graphColor = color {
+        guard let graphColor = color else { return }
+        if let graphPoints = points {
             let myLineWidth: CGFloat = 3.0
             let context = UIGraphicsGetCurrentContext()
             let path = CGPathCreateMutable()
             
-            var points = [CGPoint]()
-            for i in 0..<200 {
-                points.append(CGPoint(x: Double(i), y: 21.0 * sin(Double(i) * M_PI * 2.0 / 100.0) + 22.0))
-            }
-            
-            CGPathAddLines(path, nil, points, points.count)
+            CGPathAddLines(path, nil, graphPoints, graphPoints.count)
             CGContextSetFillColorWithColor(context, graphColor.CGColor)
             CGContextSetLineWidth(context, myLineWidth)
             CGContextSetLineCap(context, CGLineCap.Round)

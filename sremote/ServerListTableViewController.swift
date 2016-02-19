@@ -195,15 +195,38 @@ class ServerListTableViewController: UITableViewController, UIGestureRecognizerD
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
-        for cell in self.tableView.visibleCells as! [ServerCell] {
-            cell.positionViews(size)
+        // This controller's view takes up the entire screen, so
+        // size.width > size.height: landscape.
+        // size.height > size.width: portrait.
+//        tableView.reloadData()
+        if size.height > size.width {
+            for cell in self.tableView.visibleCells as! [ServerCell] {
+                cell.positionViews(size)
+            }
+        } else {
+            for cell in self.tableView.visibleCells as! [ServerCell] {
+                cell.positionLandscapeViews(size)
+            }
+        }
+    }
+    
+    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+        self.tableView.beginUpdates()
+        self.tableView.endUpdates()
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if UIDevice.currentDevice().orientation.isLandscape.boolValue {
+            return 110.0
+        } else {
+            return 140.0
         }
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         for cell in self.tableView.visibleCells as! [ServerCell] {
-            cell.positionViews()
+            cell.positionViews(self.tableView.frame.size)
         }
     }
 
@@ -274,12 +297,13 @@ class ServerListTableViewController: UITableViewController, UIGestureRecognizerD
         return true
     }
     
+    /*
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
         for cell in self.tableView.visibleCells as! [ServerCell] {
             cell.positionViews()
         }
     }
-    
+    */
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         print("didSelectRowAtIndexPath")
     }

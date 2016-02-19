@@ -30,6 +30,7 @@
 		C57C60F91C74C41D00B03657 /* ProcessDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57C60F81C74C41D00B03657 /* ProcessDetailViewController.swift */; };
 		C57C61111C74F63600B03657 /* BankGothicBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C57C61101C74F63600B03657 /* BankGothicBold.ttf */; };
 		C57C61141C751A3300B03657 /* ThumbnailGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57C61131C751A3300B03657 /* ThumbnailGraph.swift */; };
+		C57C61161C76EC0100B03657 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57C61151C76EC0100B03657 /* Utilities.swift */; };
 		C58453711C73CDB100EFD7CE /* ProcessCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58453701C73CDB100EFD7CE /* ProcessCell.swift */; };
 		C59C6FE21C27660A00B082F6 /* ServerListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59C6FE11C27660A00B082F6 /* ServerListTableViewController.swift */; };
 		C5A2A4961C27539C00439FE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A2A4951C27539C00439FE7 /* AppDelegate.swift */; };
@@ -332,6 +333,7 @@
 		C57C60F81C74C41D00B03657 /* ProcessDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessDetailViewController.swift; sourceTree = "<group>"; };
 		C57C61101C74F63600B03657 /* BankGothicBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BankGothicBold.ttf; sourceTree = "<group>"; };
 		C57C61131C751A3300B03657 /* ThumbnailGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThumbnailGraph.swift; sourceTree = "<group>"; };
+		C57C61151C76EC0100B03657 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		C58453701C73CDB100EFD7CE /* ProcessCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessCell.swift; sourceTree = "<group>"; };
 		C59C6FE11C27660A00B082F6 /* ServerListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerListTableViewController.swift; sourceTree = "<group>"; };
 		C5A2A4921C27539C00439FE7 /* sremote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sremote.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -487,6 +489,7 @@
 				C5653B9B1C3362D800087D48 /* UIColor+Colors.swift */,
 				C52311F31C404A4B001AD21A /* BadgeLabel.swift */,
 				C57C61131C751A3300B03657 /* ThumbnailGraph.swift */,
+				C57C61151C76EC0100B03657 /* Utilities.swift */,
 			);
 			path = sremote;
 			sourceTree = "<group>";
@@ -923,6 +926,7 @@
 				C52311F41C404A4B001AD21A /* BadgeLabel.swift in Sources */,
 				C52355C31C726B190090AD91 /* Process.swift in Sources */,
 				C56321601C500B6100BBE4BE /* Theme.swift in Sources */,
+				C57C61161C76EC0100B03657 /* Utilities.swift in Sources */,
 				C52355CB1C727F390090AD91 /* Persist.swift in Sources */,
 				C56321651C500C1900BBE4BE /* DarkTheme.swift in Sources */,
 				C56321691C502EEB00BBE4BE /* Themeable.swift in Sources */,
