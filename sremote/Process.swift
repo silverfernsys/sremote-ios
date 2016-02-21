@@ -120,8 +120,8 @@ class Process: JSONDecodable, CustomStringConvertible {
     var pid: Int64?
     var state: Int64
     var start: Double?
-    var cpu: [[Double]]?
-    var memory: [[Double]]?
+    var cpu: [CGPoint]?
+    var memory: [CGPoint]?
     var server_id: Int64?
     
     var server: Server {
@@ -134,7 +134,7 @@ class Process: JSONDecodable, CustomStringConvertible {
     }
     
     init(id: Int64?, sort_id: Int64?, group: String, name: String, pid: Int64?, state: Int64,
-        start: Double?, cpu:[[Double]]?, memory:[[Double]]?, server_id: Int64?) {
+        start: Double?, cpu:[CGPoint]?, memory:[CGPoint]?, server_id: Int64?) {
             self.id = id
             self.sort_id = sort_id
             self.group = group
@@ -160,8 +160,8 @@ class Process: JSONDecodable, CustomStringConvertible {
         self.pid = Int64(try value.int("pid"))
         self.state = Int64(try value.int("state"))
         self.start = try value.double("start")
-        self.cpu = try value.array("cpu").map(parse_time_series_array)
-        self.memory = try value.array("mem").map(parse_time_series_array)
+        self.cpu = try value.array("cpu").map(CGPoint.init)//parse_time_series_array)
+        self.memory = try value.array("mem").map(CGPoint.init)//parse_time_series_array)
     }
     
     func parse_time_series_array(json value: JSON) throws -> [Double] {

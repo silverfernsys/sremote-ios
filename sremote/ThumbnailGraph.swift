@@ -9,14 +9,14 @@
 import UIKit
 
 class ThumbnailGraph: UIView {
+    let lineWidth: CGFloat = 2.0
     var color: UIColor?
     var points: [CGPoint]?
-    
+
     init(frame: CGRect, color: UIColor) {
         super.init(frame: frame)
         self.color = color
         self.backgroundColor = UIColor.clearColor()
-//        self.backgroundColor = UIColor.yellowColor()
     }
     
     convenience init(color: UIColor) {
@@ -266,18 +266,44 @@ class ThumbnailGraph: UIView {
 */
     override func drawRect(rect: CGRect) {
         guard let graphColor = color else { return }
-        if let graphPoints = points {
-            let myLineWidth: CGFloat = 3.0
-            let context = UIGraphicsGetCurrentContext()
-            let path = CGPathCreateMutable()
+        if let ps = points {
+            if ps.count > 1 {
+                let minX = ps[0].x
+                let maxX = ps.last!.x
+                var minY = ps[0].y
+                var maxY = ps[0].y
+                
+                for p in ps {
+                    if p.y < minY {
+                        minY = p.y
+                    }
+                    if p.y > maxY {
+                        maxY = p.y
+                    }
+                }
+                
+                let min = CGPoint(x: minX, y:minY)
+                let scale = CGSize(width: (self.frame.width - 2.0 * lineWidth) / (maxX - minX), height: (self.frame.height - 2.0 * lineWidth) / (maxY - minY))
+                
+                var transformedPoints = [CGPoint]()
+                
+                for p in ps {
+                    let q = CGPoint(x: (p.x - min.x) * scale.width, y: (p.y - min.y) * scale.height)
+                    transformedPoints.append(q)
+                }
+                
+                let context = UIGraphicsGetCurrentContext()
+                let path = CGPathCreateMutable()
+                
+                CGPathAddLines(path, nil, transformedPoints, transformedPoints.count)
+                CGContextSetFillColorWithColor(context, graphColor.CGColor)
+                CGContextSetLineWidth(context, lineWidth)
+                CGContextSetLineCap(context, CGLineCap.Round)
+                CGContextAddPath(context, path)
+                CGContextReplacePathWithStrokedPath(context)
+                CGContextFillPath(context)
+            }
             
-            CGPathAddLines(path, nil, graphPoints, graphPoints.count)
-            CGContextSetFillColorWithColor(context, graphColor.CGColor)
-            CGContextSetLineWidth(context, myLineWidth)
-            CGContextSetLineCap(context, CGLineCap.Round)
-            CGContextAddPath(context, path)
-            CGContextReplacePathWithStrokedPath(context)
-            CGContextFillPath(context)
         }
     }
 }

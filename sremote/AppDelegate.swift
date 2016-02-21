@@ -9,6 +9,7 @@
 import UIKit
 import Starscream
 import SQLite
+import Freddy
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, WebSocketDelegate {
@@ -56,7 +57,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WebSocketDelegate {
 //            print(name)
 //            print(UIFont.fontNamesForFamilyName(name))
 //        }
-        
         return true
     }
 

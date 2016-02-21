@@ -120,11 +120,11 @@ class ServerCell: UITableViewCell, Themeable {
     
     // START OF LAYOUT CODE
     func layoutPortrait(size: CGSize) {
-        positionCountViews([stoppedView, startingView, runningView, backoffView, stoppingView, exitedView, fatalView, unknownView], size: size)
+        positionCountViews([startingView, runningView, stoppedView, stoppingView, backoffView, unknownView, exitedView, fatalView], size: size)
     }
     
     func layoutLandscape(size: CGSize) {
-        positionLandscapeCountViews([stoppedView, startingView, runningView, backoffView, stoppingView, exitedView, fatalView, unknownView], size: size)
+        positionLandscapeCountViews([startingView, runningView, backoffView, unknownView, stoppedView, stoppingView, exitedView, fatalView], size: size)
     }
     
     func positionCountViews(views: [UIView], size: CGSize) {

@@ -69,6 +69,9 @@ class ProcessCell: UITableViewCell, Themeable {
                 uptimeLabel.text = ""
             }
             
+            cpuGraph.points = process.cpu
+            memGraph.points = process.memory
+            
             layoutStatusView(statusView, title: statusLabel, subtitle: uptimeLabel, color: color, padding: padding)
             positionViews(self.frame.size)
         }
@@ -103,7 +106,7 @@ class ProcessCell: UITableViewCell, Themeable {
         let ms: Int64 = Int64(timestamp * 1000.0) % 1000
         let s: Int64 = Int64(timestamp) % 60
         let m: Int64 = Int64(timestamp) / 60 % 60
-        let h: Int64 = Int64(timestamp) / (60 * 60) % 60
+        let h: Int64 = Int64(timestamp) / (60 * 60) % 24
         let d: Int64 = Int64(timestamp) / (60 * 60 * 24)
         
         let msStr = paddedNumber(ms, digits: 3)
@@ -191,19 +194,19 @@ class ProcessCell: UITableViewCell, Themeable {
         let cpu = ThumbnailGraph(frame: CGRect(x: 0, y: 44, width: self.frame.width / 2, height: 44), color: UIColor.midBlue())
         let mem = ThumbnailGraph(frame: CGRect(x: self.frame.width / 2 + 1, y: 44, width: self.frame.width / 2, height: 44), color: UIColor.midRed())
         
-        var cpuPoints = [CGPoint]()
-        for i in 0..<200 {
-            cpuPoints.append(CGPoint(x: Double(i), y: 21.0 * sin(Double(i) * M_PI * 2.0 / 100.0) + 22.0))
-        }
-        
-        var memPoints = [CGPoint]()
-        for i in 0..<200 {
-            memPoints.append(CGPoint(x: Double(i), y: 21.0 * cos(Double(i) * M_PI * 2.0 / 100.0) + 22.0))
-        }
-        
-        cpu.points = cpuPoints
-        mem.points = memPoints
-        
+//        var cpuPoints = [CGPoint]()
+//        for i in 0..<200 {
+//            cpuPoints.append(CGPoint(x: Double(i), y: 21.0 * sin(Double(i) * M_PI * 2.0 / 100.0) + 22.0))
+//        }
+//        
+//        var memPoints = [CGPoint]()
+//        for i in 0..<200 {
+//            memPoints.append(CGPoint(x: Double(i), y: 21.0 * cos(Double(i) * M_PI * 2.0 / 100.0) + 22.0))
+//        }
+//        
+//        cpu.points = cpuPoints
+//        mem.points = memPoints
+//        
         self.addSubview(cpu)
         self.addSubview(mem)
         

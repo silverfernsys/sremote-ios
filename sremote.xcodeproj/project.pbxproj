@@ -31,6 +31,11 @@
 		C57C61111C74F63600B03657 /* BankGothicBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C57C61101C74F63600B03657 /* BankGothicBold.ttf */; };
 		C57C61141C751A3300B03657 /* ThumbnailGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57C61131C751A3300B03657 /* ThumbnailGraph.swift */; };
 		C57C61161C76EC0100B03657 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57C61151C76EC0100B03657 /* Utilities.swift */; };
+		C57C61271C78411600B03657 /* aapl.json in Resources */ = {isa = PBXBuildFile; fileRef = C57C61221C78411600B03657 /* aapl.json */; };
+		C57C61281C78411600B03657 /* crm.json in Resources */ = {isa = PBXBuildFile; fileRef = C57C61231C78411600B03657 /* crm.json */; };
+		C57C61291C78411600B03657 /* msft.json in Resources */ = {isa = PBXBuildFile; fileRef = C57C61241C78411600B03657 /* msft.json */; };
+		C57C612A1C78411600B03657 /* orcl.json in Resources */ = {isa = PBXBuildFile; fileRef = C57C61251C78411600B03657 /* orcl.json */; };
+		C57C612B1C78411600B03657 /* yhoo.json in Resources */ = {isa = PBXBuildFile; fileRef = C57C61261C78411600B03657 /* yhoo.json */; };
 		C58453711C73CDB100EFD7CE /* ProcessCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58453701C73CDB100EFD7CE /* ProcessCell.swift */; };
 		C59C6FE21C27660A00B082F6 /* ServerListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59C6FE11C27660A00B082F6 /* ServerListTableViewController.swift */; };
 		C5A2A4961C27539C00439FE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A2A4951C27539C00439FE7 /* AppDelegate.swift */; };
@@ -46,6 +51,7 @@
 		C5A66E7A1C6D5C6500473756 /* Freddy.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C5A66E481C6D5B3300473756 /* Freddy.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C5A66E7D1C6D5C8100473756 /* PKHUD.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C5A66E591C6D5B3E00473756 /* PKHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C5A66E7E1C6D5C8500473756 /* Starscream.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C5A66E641C6D5B4800473756 /* Starscream.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C5AB6DC81C78550900F6AA37 /* CGPoint+JSONDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AB6DC71C78550900F6AA37 /* CGPoint+JSONDecodable.swift */; };
 		C5CAE3911C6FC8BF00640FDB /* Locksmith.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5D5B42D1C6FC85A0079AF40 /* Locksmith.framework */; };
 		C5CAE3921C6FC8CD00640FDB /* Locksmith.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C5D5B42D1C6FC85A0079AF40 /* Locksmith.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C5F6867D1C276FF700FBC5DE /* ProcessTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F6867C1C276FF700FBC5DE /* ProcessTableViewController.swift */; };
@@ -334,6 +340,11 @@
 		C57C61101C74F63600B03657 /* BankGothicBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BankGothicBold.ttf; sourceTree = "<group>"; };
 		C57C61131C751A3300B03657 /* ThumbnailGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThumbnailGraph.swift; sourceTree = "<group>"; };
 		C57C61151C76EC0100B03657 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		C57C61221C78411600B03657 /* aapl.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = aapl.json; sourceTree = "<group>"; };
+		C57C61231C78411600B03657 /* crm.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = crm.json; sourceTree = "<group>"; };
+		C57C61241C78411600B03657 /* msft.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = msft.json; sourceTree = "<group>"; };
+		C57C61251C78411600B03657 /* orcl.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = orcl.json; sourceTree = "<group>"; };
+		C57C61261C78411600B03657 /* yhoo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = yhoo.json; sourceTree = "<group>"; };
 		C58453701C73CDB100EFD7CE /* ProcessCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessCell.swift; sourceTree = "<group>"; };
 		C59C6FE11C27660A00B082F6 /* ServerListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerListTableViewController.swift; sourceTree = "<group>"; };
 		C5A2A4921C27539C00439FE7 /* sremote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sremote.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -352,6 +363,7 @@
 		C5A66E391C6D5B3300473756 /* Freddy.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Freddy.xcodeproj; path = Freddy/Freddy.xcodeproj; sourceTree = "<group>"; };
 		C5A66E511C6D5B3D00473756 /* PKHUD.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PKHUD.xcodeproj; path = PKHUD/PKHUD.xcodeproj; sourceTree = "<group>"; };
 		C5A66E5A1C6D5B4800473756 /* Starscream.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Starscream.xcodeproj; path = Starscream/Starscream.xcodeproj; sourceTree = "<group>"; };
+		C5AB6DC71C78550900F6AA37 /* CGPoint+JSONDecodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+JSONDecodable.swift"; sourceTree = "<group>"; };
 		C5D5B41D1C6FC85A0079AF40 /* Locksmith.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Locksmith.xcodeproj; path = Locksmith/Locksmith.xcodeproj; sourceTree = "<group>"; };
 		C5F6867C1C276FF700FBC5DE /* ProcessTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessTableViewController.swift; sourceTree = "<group>"; };
 		C5F6867E1C27731B00FBC5DE /* ServerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerCell.swift; sourceTree = "<group>"; };
@@ -440,6 +452,18 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
+		C57C61211C783FE200B03657 /* json */ = {
+			isa = PBXGroup;
+			children = (
+				C57C61221C78411600B03657 /* aapl.json */,
+				C57C61231C78411600B03657 /* crm.json */,
+				C57C61241C78411600B03657 /* msft.json */,
+				C57C61251C78411600B03657 /* orcl.json */,
+				C57C61261C78411600B03657 /* yhoo.json */,
+			);
+			name = json;
+			sourceTree = "<group>";
+		};
 		C5A2A4891C27539C00439FE7 = {
 			isa = PBXGroup;
 			children = (
@@ -468,6 +492,8 @@
 		C5A2A4941C27539C00439FE7 /* sremote */ = {
 			isa = PBXGroup;
 			children = (
+				C5AB6DDF1C78555100F6AA37 /* extensions */,
+				C57C61211C783FE200B03657 /* json */,
 				C57C61121C74F64400B03657 /* Fonts */,
 				C52355C91C727F0F0090AD91 /* Persistence */,
 				C56321611C500BF900BBE4BE /* Themes */,
@@ -486,7 +512,6 @@
 				C55A02B61C6D949D002B68DA /* InputCell.swift */,
 				C5173EF81C2A642500D6C0CB /* Settings.bundle */,
 				C5653B991C335A3700087D48 /* Constants.swift */,
-				C5653B9B1C3362D800087D48 /* UIColor+Colors.swift */,
 				C52311F31C404A4B001AD21A /* BadgeLabel.swift */,
 				C57C61131C751A3300B03657 /* ThumbnailGraph.swift */,
 				C57C61151C76EC0100B03657 /* Utilities.swift */,
@@ -548,6 +573,15 @@
 				C5A66E6E1C6D5B4800473756 /* Starscream tvOSTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		C5AB6DDF1C78555100F6AA37 /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C5653B9B1C3362D800087D48 /* UIColor+Colors.swift */,
+				C5AB6DC71C78550900F6AA37 /* CGPoint+JSONDecodable.swift */,
+			);
+			name = extensions;
 			sourceTree = "<group>";
 		};
 		C5D5B41E1C6FC85A0079AF40 /* Products */ = {
@@ -893,8 +927,13 @@
 				C5173EF91C2A642500D6C0CB /* Settings.bundle in Resources */,
 				C5A2A4A01C27539C00439FE7 /* LaunchScreen.storyboard in Resources */,
 				C57C61111C74F63600B03657 /* BankGothicBold.ttf in Resources */,
+				C57C61291C78411600B03657 /* msft.json in Resources */,
 				C5A2A49D1C27539C00439FE7 /* Assets.xcassets in Resources */,
 				C5A2A49B1C27539C00439FE7 /* Main.storyboard in Resources */,
+				C57C612B1C78411600B03657 /* yhoo.json in Resources */,
+				C57C61271C78411600B03657 /* aapl.json in Resources */,
+				C57C612A1C78411600B03657 /* orcl.json in Resources */,
+				C57C61281C78411600B03657 /* crm.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -936,6 +975,7 @@
 				C5F6867D1C276FF700FBC5DE /* ProcessTableViewController.swift in Sources */,
 				C55A02B71C6D949D002B68DA /* InputCell.swift in Sources */,
 				C5653B9C1C3362D800087D48 /* UIColor+Colors.swift in Sources */,
+				C5AB6DC81C78550900F6AA37 /* CGPoint+JSONDecodable.swift in Sources */,
 				C5653B981C30BF1300087D48 /* SampleData.swift in Sources */,
 				C58453711C73CDB100EFD7CE /* ProcessCell.swift in Sources */,
 				C57C60F91C74C41D00B03657 /* ProcessDetailViewController.swift in Sources */,
