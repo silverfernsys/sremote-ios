@@ -54,6 +54,37 @@
 		C5AB6DC81C78550900F6AA37 /* CGPoint+JSONDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AB6DC71C78550900F6AA37 /* CGPoint+JSONDecodable.swift */; };
 		C5CAE3911C6FC8BF00640FDB /* Locksmith.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5D5B42D1C6FC85A0079AF40 /* Locksmith.framework */; };
 		C5CAE3921C6FC8CD00640FDB /* Locksmith.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C5D5B42D1C6FC85A0079AF40 /* Locksmith.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C5CD14941C7A3D4E00EC8FD9 /* adbe.json in Resources */ = {isa = PBXBuildFile; fileRef = C5CD148C1C7A3D4E00EC8FD9 /* adbe.json */; };
+		C5CD14951C7A3D4E00EC8FD9 /* amd.json in Resources */ = {isa = PBXBuildFile; fileRef = C5CD148D1C7A3D4E00EC8FD9 /* amd.json */; };
+		C5CD14961C7A3D4E00EC8FD9 /* armh.json in Resources */ = {isa = PBXBuildFile; fileRef = C5CD148E1C7A3D4E00EC8FD9 /* armh.json */; };
+		C5CD14971C7A3D4E00EC8FD9 /* asuuy.json in Resources */ = {isa = PBXBuildFile; fileRef = C5CD148F1C7A3D4E00EC8FD9 /* asuuy.json */; };
+		C5CD14981C7A3D4E00EC8FD9 /* atml.json in Resources */ = {isa = PBXBuildFile; fileRef = C5CD14901C7A3D4E00EC8FD9 /* atml.json */; };
+		C5CD14991C7A3D4E00EC8FD9 /* azddq.json in Resources */ = {isa = PBXBuildFile; fileRef = C5CD14911C7A3D4E00EC8FD9 /* azddq.json */; };
+		C5CD149A1C7A3D4E00EC8FD9 /* brcm.json in Resources */ = {isa = PBXBuildFile; fileRef = C5CD14921C7A3D4E00EC8FD9 /* brcm.json */; };
+		C5CD149B1C7A3D4E00EC8FD9 /* caj.json in Resources */ = {isa = PBXBuildFile; fileRef = C5CD14931C7A3D4E00EC8FD9 /* caj.json */; };
+		C5CD14A91C7A3D6400EC8FD9 /* ddaif.json in Resources */ = {isa = PBXBuildFile; fileRef = C5CD149C1C7A3D6300EC8FD9 /* ddaif.json */; };
+		C5CD14AA1C7A3D6400EC8FD9 /* emc.json in Resources */ = {isa = PBXBuildFile; fileRef = C5CD149D1C7A3D6300EC8FD9 /* emc.json */; };
+		C5CD14AB1C7A3D6400EC8FD9 /* fb.json in Resources */ = {isa = PBXBuildFile; fileRef = C5CD149E1C7A3D6300EC8FD9 /* fb.json */; };
+		C5CD14AC1C7A3D6400EC8FD9 /* ge.json in Resources */ = {isa = PBXBuildFile; fileRef = C5CD149F1C7A3D6300EC8FD9 /* ge.json */; };
+		C5CD14AD1C7A3D6400EC8FD9 /* gm.json in Resources */ = {isa = PBXBuildFile; fileRef = C5CD14A01C7A3D6300EC8FD9 /* gm.json */; };
+		C5CD14AE1C7A3D6400EC8FD9 /* gsit.json in Resources */ = {isa = PBXBuildFile; fileRef = C5CD14A11C7A3D6300EC8FD9 /* gsit.json */; };
+		C5CD14AF1C7A3D6400EC8FD9 /* hpq.json in Resources */ = {isa = PBXBuildFile; fileRef = C5CD14A21C7A3D6300EC8FD9 /* hpq.json */; };
+		C5CD14B01C7A3D6400EC8FD9 /* ibm.json in Resources */ = {isa = PBXBuildFile; fileRef = C5CD14A31C7A3D6300EC8FD9 /* ibm.json */; };
+		C5CD14B11C7A3D6400EC8FD9 /* intc.json in Resources */ = {isa = PBXBuildFile; fileRef = C5CD14A41C7A3D6300EC8FD9 /* intc.json */; };
+		C5CD14B21C7A3D6400EC8FD9 /* issi.json in Resources */ = {isa = PBXBuildFile; fileRef = C5CD14A51C7A3D6300EC8FD9 /* issi.json */; };
+		C5CD14B31C7A3D6400EC8FD9 /* lnvgy.json in Resources */ = {isa = PBXBuildFile; fileRef = C5CD14A61C7A3D6300EC8FD9 /* lnvgy.json */; };
+		C5CD14B41C7A3D6400EC8FD9 /* mu.json in Resources */ = {isa = PBXBuildFile; fileRef = C5CD14A71C7A3D6400EC8FD9 /* mu.json */; };
+		C5CD14B51C7A3D6400EC8FD9 /* nvda.json in Resources */ = {isa = PBXBuildFile; fileRef = C5CD14A81C7A3D6400EC8FD9 /* nvda.json */; };
+		C5CD14C01C7A3D7400EC8FD9 /* qcom.json in Resources */ = {isa = PBXBuildFile; fileRef = C5CD14B61C7A3D7400EC8FD9 /* qcom.json */; };
+		C5CD14C11C7A3D7400EC8FD9 /* race.json in Resources */ = {isa = PBXBuildFile; fileRef = C5CD14B71C7A3D7400EC8FD9 /* race.json */; };
+		C5CD14C21C7A3D7400EC8FD9 /* rmbs.json in Resources */ = {isa = PBXBuildFile; fileRef = C5CD14B81C7A3D7400EC8FD9 /* rmbs.json */; };
+		C5CD14C31C7A3D7400EC8FD9 /* sndk.json in Resources */ = {isa = PBXBuildFile; fileRef = C5CD14B91C7A3D7400EC8FD9 /* sndk.json */; };
+		C5CD14C41C7A3D7400EC8FD9 /* sne.json in Resources */ = {isa = PBXBuildFile; fileRef = C5CD14BA1C7A3D7400EC8FD9 /* sne.json */; };
+		C5CD14C51C7A3D7400EC8FD9 /* szkmy.json in Resources */ = {isa = PBXBuildFile; fileRef = C5CD14BB1C7A3D7400EC8FD9 /* szkmy.json */; };
+		C5CD14C61C7A3D7400EC8FD9 /* tsla.json in Resources */ = {isa = PBXBuildFile; fileRef = C5CD14BC1C7A3D7400EC8FD9 /* tsla.json */; };
+		C5CD14C71C7A3D7400EC8FD9 /* txn.json in Resources */ = {isa = PBXBuildFile; fileRef = C5CD14BD1C7A3D7400EC8FD9 /* txn.json */; };
+		C5CD14C81C7A3D7400EC8FD9 /* vz.json in Resources */ = {isa = PBXBuildFile; fileRef = C5CD14BE1C7A3D7400EC8FD9 /* vz.json */; };
+		C5CD14C91C7A3D7400EC8FD9 /* xrx.json in Resources */ = {isa = PBXBuildFile; fileRef = C5CD14BF1C7A3D7400EC8FD9 /* xrx.json */; };
 		C5F6867D1C276FF700FBC5DE /* ProcessTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F6867C1C276FF700FBC5DE /* ProcessTableViewController.swift */; };
 		C5F6867F1C27731B00FBC5DE /* ServerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F6867E1C27731B00FBC5DE /* ServerCell.swift */; };
 /* End PBXBuildFile section */
@@ -364,6 +395,37 @@
 		C5A66E511C6D5B3D00473756 /* PKHUD.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PKHUD.xcodeproj; path = PKHUD/PKHUD.xcodeproj; sourceTree = "<group>"; };
 		C5A66E5A1C6D5B4800473756 /* Starscream.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Starscream.xcodeproj; path = Starscream/Starscream.xcodeproj; sourceTree = "<group>"; };
 		C5AB6DC71C78550900F6AA37 /* CGPoint+JSONDecodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+JSONDecodable.swift"; sourceTree = "<group>"; };
+		C5CD148C1C7A3D4E00EC8FD9 /* adbe.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = adbe.json; sourceTree = "<group>"; };
+		C5CD148D1C7A3D4E00EC8FD9 /* amd.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = amd.json; sourceTree = "<group>"; };
+		C5CD148E1C7A3D4E00EC8FD9 /* armh.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = armh.json; sourceTree = "<group>"; };
+		C5CD148F1C7A3D4E00EC8FD9 /* asuuy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = asuuy.json; sourceTree = "<group>"; };
+		C5CD14901C7A3D4E00EC8FD9 /* atml.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = atml.json; sourceTree = "<group>"; };
+		C5CD14911C7A3D4E00EC8FD9 /* azddq.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = azddq.json; sourceTree = "<group>"; };
+		C5CD14921C7A3D4E00EC8FD9 /* brcm.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = brcm.json; sourceTree = "<group>"; };
+		C5CD14931C7A3D4E00EC8FD9 /* caj.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = caj.json; sourceTree = "<group>"; };
+		C5CD149C1C7A3D6300EC8FD9 /* ddaif.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ddaif.json; sourceTree = "<group>"; };
+		C5CD149D1C7A3D6300EC8FD9 /* emc.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = emc.json; sourceTree = "<group>"; };
+		C5CD149E1C7A3D6300EC8FD9 /* fb.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fb.json; sourceTree = "<group>"; };
+		C5CD149F1C7A3D6300EC8FD9 /* ge.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ge.json; sourceTree = "<group>"; };
+		C5CD14A01C7A3D6300EC8FD9 /* gm.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gm.json; sourceTree = "<group>"; };
+		C5CD14A11C7A3D6300EC8FD9 /* gsit.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gsit.json; sourceTree = "<group>"; };
+		C5CD14A21C7A3D6300EC8FD9 /* hpq.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = hpq.json; sourceTree = "<group>"; };
+		C5CD14A31C7A3D6300EC8FD9 /* ibm.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ibm.json; sourceTree = "<group>"; };
+		C5CD14A41C7A3D6300EC8FD9 /* intc.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = intc.json; sourceTree = "<group>"; };
+		C5CD14A51C7A3D6300EC8FD9 /* issi.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = issi.json; sourceTree = "<group>"; };
+		C5CD14A61C7A3D6300EC8FD9 /* lnvgy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lnvgy.json; sourceTree = "<group>"; };
+		C5CD14A71C7A3D6400EC8FD9 /* mu.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mu.json; sourceTree = "<group>"; };
+		C5CD14A81C7A3D6400EC8FD9 /* nvda.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nvda.json; sourceTree = "<group>"; };
+		C5CD14B61C7A3D7400EC8FD9 /* qcom.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = qcom.json; sourceTree = "<group>"; };
+		C5CD14B71C7A3D7400EC8FD9 /* race.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = race.json; sourceTree = "<group>"; };
+		C5CD14B81C7A3D7400EC8FD9 /* rmbs.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = rmbs.json; sourceTree = "<group>"; };
+		C5CD14B91C7A3D7400EC8FD9 /* sndk.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sndk.json; sourceTree = "<group>"; };
+		C5CD14BA1C7A3D7400EC8FD9 /* sne.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sne.json; sourceTree = "<group>"; };
+		C5CD14BB1C7A3D7400EC8FD9 /* szkmy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = szkmy.json; sourceTree = "<group>"; };
+		C5CD14BC1C7A3D7400EC8FD9 /* tsla.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tsla.json; sourceTree = "<group>"; };
+		C5CD14BD1C7A3D7400EC8FD9 /* txn.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = txn.json; sourceTree = "<group>"; };
+		C5CD14BE1C7A3D7400EC8FD9 /* vz.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = vz.json; sourceTree = "<group>"; };
+		C5CD14BF1C7A3D7400EC8FD9 /* xrx.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = xrx.json; sourceTree = "<group>"; };
 		C5D5B41D1C6FC85A0079AF40 /* Locksmith.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Locksmith.xcodeproj; path = Locksmith/Locksmith.xcodeproj; sourceTree = "<group>"; };
 		C5F6867C1C276FF700FBC5DE /* ProcessTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessTableViewController.swift; sourceTree = "<group>"; };
 		C5F6867E1C27731B00FBC5DE /* ServerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerCell.swift; sourceTree = "<group>"; };
@@ -455,6 +517,37 @@
 		C57C61211C783FE200B03657 /* json */ = {
 			isa = PBXGroup;
 			children = (
+				C5CD148C1C7A3D4E00EC8FD9 /* adbe.json */,
+				C5CD148D1C7A3D4E00EC8FD9 /* amd.json */,
+				C5CD148E1C7A3D4E00EC8FD9 /* armh.json */,
+				C5CD148F1C7A3D4E00EC8FD9 /* asuuy.json */,
+				C5CD14901C7A3D4E00EC8FD9 /* atml.json */,
+				C5CD14911C7A3D4E00EC8FD9 /* azddq.json */,
+				C5CD14921C7A3D4E00EC8FD9 /* brcm.json */,
+				C5CD14931C7A3D4E00EC8FD9 /* caj.json */,
+				C5CD149C1C7A3D6300EC8FD9 /* ddaif.json */,
+				C5CD149D1C7A3D6300EC8FD9 /* emc.json */,
+				C5CD149E1C7A3D6300EC8FD9 /* fb.json */,
+				C5CD149F1C7A3D6300EC8FD9 /* ge.json */,
+				C5CD14A01C7A3D6300EC8FD9 /* gm.json */,
+				C5CD14A11C7A3D6300EC8FD9 /* gsit.json */,
+				C5CD14A21C7A3D6300EC8FD9 /* hpq.json */,
+				C5CD14A31C7A3D6300EC8FD9 /* ibm.json */,
+				C5CD14A41C7A3D6300EC8FD9 /* intc.json */,
+				C5CD14A51C7A3D6300EC8FD9 /* issi.json */,
+				C5CD14A61C7A3D6300EC8FD9 /* lnvgy.json */,
+				C5CD14A71C7A3D6400EC8FD9 /* mu.json */,
+				C5CD14A81C7A3D6400EC8FD9 /* nvda.json */,
+				C5CD14B61C7A3D7400EC8FD9 /* qcom.json */,
+				C5CD14B71C7A3D7400EC8FD9 /* race.json */,
+				C5CD14B81C7A3D7400EC8FD9 /* rmbs.json */,
+				C5CD14B91C7A3D7400EC8FD9 /* sndk.json */,
+				C5CD14BA1C7A3D7400EC8FD9 /* sne.json */,
+				C5CD14BB1C7A3D7400EC8FD9 /* szkmy.json */,
+				C5CD14BC1C7A3D7400EC8FD9 /* tsla.json */,
+				C5CD14BD1C7A3D7400EC8FD9 /* txn.json */,
+				C5CD14BE1C7A3D7400EC8FD9 /* vz.json */,
+				C5CD14BF1C7A3D7400EC8FD9 /* xrx.json */,
 				C57C61221C78411600B03657 /* aapl.json */,
 				C57C61231C78411600B03657 /* crm.json */,
 				C57C61241C78411600B03657 /* msft.json */,
@@ -924,16 +1017,47 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5CD14AE1C7A3D6400EC8FD9 /* gsit.json in Resources */,
+				C5CD14C01C7A3D7400EC8FD9 /* qcom.json in Resources */,
+				C5CD14C41C7A3D7400EC8FD9 /* sne.json in Resources */,
+				C5CD14C61C7A3D7400EC8FD9 /* tsla.json in Resources */,
+				C5CD14941C7A3D4E00EC8FD9 /* adbe.json in Resources */,
+				C5CD14A91C7A3D6400EC8FD9 /* ddaif.json in Resources */,
+				C5CD14C11C7A3D7400EC8FD9 /* race.json in Resources */,
 				C5173EF91C2A642500D6C0CB /* Settings.bundle in Resources */,
+				C5CD14C51C7A3D7400EC8FD9 /* szkmy.json in Resources */,
+				C5CD149B1C7A3D4E00EC8FD9 /* caj.json in Resources */,
+				C5CD14B31C7A3D6400EC8FD9 /* lnvgy.json in Resources */,
+				C5CD14951C7A3D4E00EC8FD9 /* amd.json in Resources */,
 				C5A2A4A01C27539C00439FE7 /* LaunchScreen.storyboard in Resources */,
+				C5CD14B51C7A3D6400EC8FD9 /* nvda.json in Resources */,
+				C5CD14AB1C7A3D6400EC8FD9 /* fb.json in Resources */,
+				C5CD14B41C7A3D6400EC8FD9 /* mu.json in Resources */,
 				C57C61111C74F63600B03657 /* BankGothicBold.ttf in Resources */,
+				C5CD14961C7A3D4E00EC8FD9 /* armh.json in Resources */,
+				C5CD149A1C7A3D4E00EC8FD9 /* brcm.json in Resources */,
+				C5CD14991C7A3D4E00EC8FD9 /* azddq.json in Resources */,
+				C5CD14B01C7A3D6400EC8FD9 /* ibm.json in Resources */,
+				C5CD14C91C7A3D7400EC8FD9 /* xrx.json in Resources */,
 				C57C61291C78411600B03657 /* msft.json in Resources */,
+				C5CD14981C7A3D4E00EC8FD9 /* atml.json in Resources */,
+				C5CD14C81C7A3D7400EC8FD9 /* vz.json in Resources */,
 				C5A2A49D1C27539C00439FE7 /* Assets.xcassets in Resources */,
+				C5CD14AA1C7A3D6400EC8FD9 /* emc.json in Resources */,
+				C5CD14B21C7A3D6400EC8FD9 /* issi.json in Resources */,
+				C5CD14B11C7A3D6400EC8FD9 /* intc.json in Resources */,
 				C5A2A49B1C27539C00439FE7 /* Main.storyboard in Resources */,
 				C57C612B1C78411600B03657 /* yhoo.json in Resources */,
+				C5CD14AC1C7A3D6400EC8FD9 /* ge.json in Resources */,
+				C5CD14C21C7A3D7400EC8FD9 /* rmbs.json in Resources */,
 				C57C61271C78411600B03657 /* aapl.json in Resources */,
 				C57C612A1C78411600B03657 /* orcl.json in Resources */,
+				C5CD14C31C7A3D7400EC8FD9 /* sndk.json in Resources */,
 				C57C61281C78411600B03657 /* crm.json in Resources */,
+				C5CD14C71C7A3D7400EC8FD9 /* txn.json in Resources */,
+				C5CD14AD1C7A3D6400EC8FD9 /* gm.json in Resources */,
+				C5CD14AF1C7A3D6400EC8FD9 /* hpq.json in Resources */,
+				C5CD14971C7A3D4E00EC8FD9 /* asuuy.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
