@@ -180,9 +180,19 @@ class ServerCell: UITableViewCell, Themeable {
     
     func layoutCountView(view: UIView, title: UILabel, count: UILabel, color: UIColor, padding: CGFloat, size: CGSize, width: CGFloat) {
         title.font = UIFont(name: "BankGothicBold", size: 12.0)
+        title.textAlignment = .Center
         count.font = UIFont(name: "BankGothicBold", size: 24.0)
-        title.sizeToFit()
-        count.sizeToFit()
+        
+        title.frame.size.width = width
+        count.frame.size.width = width
+//        title.backgroundColor = UIColor.yellowColor()
+//        count.backgroundColor = UIColor.greenColor()
+        
+        count.adjustsFontSizeToFitWidth = true
+        count.minimumScaleFactor = 0.2
+        
+        title.adjustsFontSizeToFitWidth = true
+        title.minimumScaleFactor = 0.2
         
         // Remove UIImageViews from the view's heirarchy
         for subview in view.subviews {
