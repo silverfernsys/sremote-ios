@@ -76,16 +76,6 @@ class ServerCell: UITableViewCell, Themeable {
             exitedCountLabel.text = String(server.num_exited)
             fatalCountLabel.text = String(server.num_fatal)
             unknownCountLabel.text = String(server.num_unknown)
-            
-            let padding:CGFloat = 2.0
-            layoutCountView(stoppedView, title: stoppedLabel, count: stoppedCountLabel, color: UIColor(red: 1, green: 0, blue: 0, alpha: 0.5), padding: padding)
-            layoutCountView(startingView, title: startingLabel, count: startingCountLabel, color: UIColor.midBlue(), padding: padding)
-            layoutCountView(runningView, title: runningLabel, count: runningCountLabel, color: UIColor(red: 0, green: 1, blue: 0, alpha: 0.5), padding: padding)
-            layoutCountView(backoffView, title: backoffLabel, count: backoffCountLabel, color: UIColor(red: 0, green: 1, blue: 1, alpha: 0.5), padding: padding)
-            layoutCountView(stoppingView, title: stoppingLabel, count: stoppingCountLabel, color:  UIColor(red: 1, green: 0.5, blue: 0, alpha: 0.5), padding: padding)
-            layoutCountView(exitedView, title: exitedLabel, count: exitedCountLabel, color: UIColor(red: 1, green: 0, blue: 1, alpha: 0.5), padding: padding)
-            layoutCountView(fatalView, title: fatalLabel, count: fatalCountLabel, color: UIColor(red: (153.0 / 255.0), green: (50.0 / 255.0), blue: (204.0 / 255.0), alpha: 0.5), padding: padding)
-            layoutCountView(unknownView, title: unknownLabel, count: unknownCountLabel, color:  UIColor(red: (190.0 / 255.0), green: (190.0 / 255.0), blue: (190.0 / 255.0), alpha: 0.5), padding: padding)
         }
     }
     
@@ -94,21 +84,13 @@ class ServerCell: UITableViewCell, Themeable {
         self.clipsToBounds = true
         self.autoresizesSubviews = false
         self.layoutMargins.left = 0
-        let padding:CGFloat = 2.0
+        
         container = UIView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
         container.backgroundColor = UIColor.clearColor()
         container.addSubview(serverAddressLabel)
         container.addSubview(serverPortLabel)
         
         self.addSubview(container)
-        layoutCountView(stoppedView, title: stoppedLabel, count: stoppedCountLabel, color: UIColor(red: 1, green: 0, blue: 0, alpha: 0.5), padding: padding)
-        layoutCountView(startingView, title: startingLabel, count: startingCountLabel, color: UIColor.midBlue(), padding: padding)
-        layoutCountView(runningView, title: runningLabel, count: runningCountLabel, color: UIColor(red: 0, green: 1, blue: 0, alpha: 0.5), padding: padding)
-        layoutCountView(backoffView, title: backoffLabel, count: backoffCountLabel, color: UIColor(red: 0, green: 1, blue: 1, alpha: 0.5), padding: padding)
-        layoutCountView(stoppingView, title: stoppingLabel, count: stoppingCountLabel, color:  UIColor(red: 1, green: 0.5, blue: 0, alpha: 0.5), padding: padding)
-        layoutCountView(exitedView, title: exitedLabel, count: exitedCountLabel, color: UIColor(red: 1, green: 0, blue: 1, alpha: 0.5), padding: padding)
-        layoutCountView(fatalView, title: fatalLabel, count: fatalCountLabel, color: UIColor(red: (153.0 / 255.0), green: (50.0 / 255.0), blue: (204.0 / 255.0), alpha: 0.5), padding: padding)
-        layoutCountView(unknownView, title: unknownLabel, count: unknownCountLabel, color:  UIColor(red: (190.0 / 255.0), green: (190.0 / 255.0), blue: (190.0 / 255.0), alpha: 0.5), padding: padding)
         
         let deleteBtn : DeleteButton = DeleteButton(frame: CGRect(x: 0, y: 0, width: 80, height: self.frame.height))
         self.addSubview(deleteBtn)
@@ -120,36 +102,83 @@ class ServerCell: UITableViewCell, Themeable {
     
     // START OF LAYOUT CODE
     func layoutPortrait(size: CGSize) {
-        positionCountViews([startingView, runningView, stoppedView, stoppingView, backoffView, unknownView, exitedView, fatalView], size: size)
+        positionPortraitCountViews([startingView, runningView, stoppedView, stoppingView, backoffView, unknownView, exitedView, fatalView], size: size)
     }
     
     func layoutLandscape(size: CGSize) {
         positionLandscapeCountViews([startingView, runningView, backoffView, unknownView, stoppedView, stoppingView, exitedView, fatalView], size: size)
     }
     
-    func positionCountViews(views: [UIView], size: CGSize) {
-        let chunk = ceil(size.width / CGFloat(views.count / 2))
-        let halfChunk = ceil(chunk / 2.0)
-        
-        for i in 0..<(views.count / 2) {
-            views[i].center = CGPoint(x: halfChunk + CGFloat(i) * chunk, y: size.height / 2.0)// + 2.0)
-        }
-        
-        for i in 0..<(views.count / 2) {
-            views[views.count / 2 + i].center = CGPoint(x: halfChunk + CGFloat(i) * chunk, y: size.height / 2.0 + 46.0)
+    func positionPortraitCountViews(views: [UIView], size: CGSize) {
+        layoutComponents(size, width: countViewWidth(4, size: size))
+        let chunk = floor(size.width / CGFloat(views.count / 2))
+        if UIView.userInterfaceLayoutDirectionForSemanticContentAttribute(
+            self.semanticContentAttribute) == .RightToLeft {
+            // The view is shown in right-to-left mode right now.
+            for i in 0..<(views.count / 2) {
+                views[i].center = CGPoint(x: round(size.width - ((CGFloat(i) + 0.5) * chunk)), y: size.height / 2.0)
+            }
+            
+            for i in 0..<(views.count / 2) {
+                views[views.count / 2 + i].center = CGPoint(x: round(size.width - ((CGFloat(i) + 0.5) * chunk)), y: size.height / 2.0 + 46.0)
+            }
+                
+        } else {
+            for i in 0..<(views.count / 2) {
+                views[i].center = CGPoint(x: round((CGFloat(i) + 0.5) * chunk), y: size.height / 2.0)
+            }
+            
+            for i in 0..<(views.count / 2) {
+                views[views.count / 2 + i].center = CGPoint(x: round((CGFloat(i) + 0.5) * chunk), y: size.height / 2.0 + 46.0)
+            }
         }
     }
     
     func positionLandscapeCountViews(views: [UIView], size: CGSize) {
-        let chunk = ceil(size.width / CGFloat(views.count))
-        let halfChunk = ceil(chunk / 2.0)
-        
-        for i in 0..<views.count {
-            views[i].center = CGPoint(x: halfChunk + CGFloat(i) * chunk, y: size.height / 2.0 + 20.0)
+        layoutComponents(size, width: countViewWidth(8, size: size))
+        let chunk = floor(size.width / (CGFloat(views.count)))
+        if UIView.userInterfaceLayoutDirectionForSemanticContentAttribute(
+            self.semanticContentAttribute) == .RightToLeft {
+            // The view is shown in right-to-left mode right now.
+            for i in 0..<views.count {
+                views[i].center = CGPoint(x: round(size.width - (CGFloat(i) + 0.5) * chunk), y: size.height / 2.0 + 20.0)
+            }
+        } else {
+            for i in 0..<views.count {
+                views[i].center = CGPoint(x: round((CGFloat(i) + 0.5) * chunk), y: size.height / 2.0 + 20.0)
+            }
         }
     }
     
-    func layoutCountView(view: UIView, title: UILabel, count: UILabel, color: UIColor, padding: CGFloat) {
+    func layoutComponents(size: CGSize, width: CGFloat) {
+        let sX = serverAddressLabel.frame.origin.x
+        let sY = serverAddressLabel.frame.origin.y
+        let sH = serverAddressLabel.frame.size.height
+        serverAddressLabel.frame = CGRect(x: sX, y: sY, width: size.width - 2 * sX, height: sH)
+        
+        let pX = serverPortLabel.frame.origin.x
+        let pY = serverPortLabel.frame.origin.y
+        let pH = serverPortLabel.frame.size.height
+        serverPortLabel.frame = CGRect(x: pX, y: pY, width: size.width - 2 * pX, height: pH)
+        
+        let padding: CGFloat = 2.0
+        layoutCountView(stoppedView, title: stoppedLabel, count: stoppedCountLabel, color: UIColor(red: 1, green: 0, blue: 0, alpha: 0.5), padding: padding, size: size, width: width)
+        layoutCountView(startingView, title: startingLabel, count: startingCountLabel, color: UIColor.midBlue(), padding: padding, size: size, width: width)
+        layoutCountView(runningView, title: runningLabel, count: runningCountLabel, color: UIColor(red: 0, green: 1, blue: 0, alpha: 0.5), padding: padding, size: size, width: width)
+        layoutCountView(backoffView, title: backoffLabel, count: backoffCountLabel, color: UIColor(red: 0, green: 1, blue: 1, alpha: 0.5), padding: padding, size: size, width: width)
+        layoutCountView(stoppingView, title: stoppingLabel, count: stoppingCountLabel, color:  UIColor(red: 1, green: 0.5, blue: 0, alpha: 0.5), padding: padding, size: size, width: width)
+        layoutCountView(exitedView, title: exitedLabel, count: exitedCountLabel, color: UIColor(red: 1, green: 0, blue: 1, alpha: 0.5), padding: padding, size: size, width: width)
+        layoutCountView(fatalView, title: fatalLabel, count: fatalCountLabel, color: UIColor(red: (153.0 / 255.0), green: (50.0 / 255.0), blue: (204.0 / 255.0), alpha: 0.5), padding: padding, size: size, width: width)
+        layoutCountView(unknownView, title: unknownLabel, count: unknownCountLabel, color:  UIColor(red: (190.0 / 255.0), green: (190.0 / 255.0), blue: (190.0 / 255.0), alpha: 0.5), padding: padding, size: size, width: width)
+    }
+    
+    func countViewWidth(numPerRow: Int, size: CGSize) -> CGFloat {
+        let inset: CGFloat = 6.0
+        let spacing: CGFloat = 3.0
+        return floor((size.width - 2 * inset - CGFloat(numPerRow - 1) * spacing) / CGFloat(numPerRow))
+    }
+    
+    func layoutCountView(view: UIView, title: UILabel, count: UILabel, color: UIColor, padding: CGFloat, size: CGSize, width: CGFloat) {
         title.font = UIFont(name: "BankGothicBold", size: 12.0)
         count.font = UIFont(name: "BankGothicBold", size: 24.0)
         title.sizeToFit()
@@ -162,7 +191,6 @@ class ServerCell: UITableViewCell, Themeable {
             }
         }
         
-        let width: CGFloat = ceil(max(title.intrinsicContentSize().width, count.intrinsicContentSize().width) + padding * 2)
         view.frame.size.width = width
         title.center = CGPoint(x: floor(width / 2), y: 10)
         count.center = CGPoint(x: floor(width / 2), y: floor(view.frame.size.height / 2) + 6)

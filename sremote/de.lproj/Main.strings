@@ -1,0 +1,42 @@
+
+/* Class = "UILabel"; text = "Stopped"; ObjectID = "4DP-dt-QT0"; */
+"4DP-dt-QT0.text" = "Stopped";
+
+/* Class = "UILabel"; text = "Starting"; ObjectID = "8cc-sV-D9Y"; */
+"8cc-sV-D9Y.text" = "Starting";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "EV9-1N-RA1"; */
+"EV9-1N-RA1.text" = "Label";
+
+/* Class = "UILabel"; text = "Fatal"; ObjectID = "Fei-yv-4Ms"; */
+"Fei-yv-4Ms.text" = "Fatal";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "I3l-ek-7DK"; */
+"I3l-ek-7DK.text" = "Label";
+
+/* Class = "UINavigationItem"; title = "Server Entry"; ObjectID = "QkT-NM-r0V"; */
+"QkT-NM-r0V.title" = "Server Entry";
+
+/* Class = "UILabel"; text = "Running"; ObjectID = "Txg-Dr-bxH"; */
+"Txg-Dr-bxH.text" = "Running";
+
+/* Class = "UILabel"; text = "Unknown"; ObjectID = "YoK-uB-AdR"; */
+"YoK-uB-AdR.text" = "Unknown";
+
+/* Class = "UILabel"; text = "Stopping"; ObjectID = "ZzY-7A-RXY"; */
+"ZzY-7A-RXY.text" = "Stopping";
+
+/* Class = "UINavigationItem"; title = "Processes"; ObjectID = "aUA-ad-kS5"; */
+"aUA-ad-kS5.title" = "Processes";
+
+/* Class = "UILabel"; text = "Backoff"; ObjectID = "dmS-Kx-hvC"; */
+"dmS-Kx-hvC.text" = "Backoff";
+
+/* Class = "UINavigationItem"; title = "Servers"; ObjectID = "e4u-oo-5Qk"; */
+"e4u-oo-5Qk.title" = "Servers";
+
+/* Class = "UILabel"; text = "Exited"; ObjectID = "g2S-5m-Fgk"; */
+"g2S-5m-Fgk.text" = "Exited";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "wqK-v4-J6D"; */
+"wqK-v4-J6D.text" = "Label";

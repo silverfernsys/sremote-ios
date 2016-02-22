@@ -15,7 +15,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ServerCell" rowHeight="97" id="bjh-IY-qKV" customClass="ServerCell" customModule="sremote" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="375" height="97"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="97"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bjh-IY-qKV" id="Wfu-as-5X9">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="96.5"/>

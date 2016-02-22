@@ -426,6 +426,10 @@
 		C5CD14BD1C7A3D7400EC8FD9 /* txn.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = txn.json; sourceTree = "<group>"; };
 		C5CD14BE1C7A3D7400EC8FD9 /* vz.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = vz.json; sourceTree = "<group>"; };
 		C5CD14BF1C7A3D7400EC8FD9 /* xrx.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = xrx.json; sourceTree = "<group>"; };
+		C5CD14CA1C7A4E7400EC8FD9 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		C5CD14CB1C7A4E7400EC8FD9 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		C5CD14CC1C7A4E9D00EC8FD9 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		C5CD14CD1C7A4E9D00EC8FD9 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		C5D5B41D1C6FC85A0079AF40 /* Locksmith.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Locksmith.xcodeproj; path = Locksmith/Locksmith.xcodeproj; sourceTree = "<group>"; };
 		C5F6867C1C276FF700FBC5DE /* ProcessTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessTableViewController.swift; sourceTree = "<group>"; };
 		C5F6867E1C27731B00FBC5DE /* ServerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerCell.swift; sourceTree = "<group>"; };
@@ -758,6 +762,9 @@
 		C5A2A48A1C27539C00439FE7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					New,
+				);
 				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "SilverFern Systems, Inc";
@@ -1173,6 +1180,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				C5A2A49A1C27539C00439FE7 /* Base */,
+				C5CD14CA1C7A4E7400EC8FD9 /* de */,
+				C5CD14CC1C7A4E9D00EC8FD9 /* fr */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -1181,6 +1190,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				C5A2A49F1C27539C00439FE7 /* Base */,
+				C5CD14CB1C7A4E7400EC8FD9 /* de */,
+				C5CD14CD1C7A4E9D00EC8FD9 /* fr */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
