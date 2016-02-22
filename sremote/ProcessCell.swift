@@ -194,19 +194,6 @@ class ProcessCell: UITableViewCell, Themeable {
         let cpu = ThumbnailGraph(frame: CGRect(x: 0, y: 44, width: self.frame.width / 2, height: 44), color: UIColor.midBlue())
         let mem = ThumbnailGraph(frame: CGRect(x: self.frame.width / 2 + 1, y: 44, width: self.frame.width / 2, height: 44), color: UIColor.midRed())
         
-//        var cpuPoints = [CGPoint]()
-//        for i in 0..<200 {
-//            cpuPoints.append(CGPoint(x: Double(i), y: 21.0 * sin(Double(i) * M_PI * 2.0 / 100.0) + 22.0))
-//        }
-//        
-//        var memPoints = [CGPoint]()
-//        for i in 0..<200 {
-//            memPoints.append(CGPoint(x: Double(i), y: 21.0 * cos(Double(i) * M_PI * 2.0 / 100.0) + 22.0))
-//        }
-//        
-//        cpu.points = cpuPoints
-//        mem.points = memPoints
-//        
         self.addSubview(cpu)
         self.addSubview(mem)
         
@@ -220,10 +207,12 @@ class ProcessCell: UITableViewCell, Themeable {
         nameLabel.frame.size = CGSize(width:size.width - nameLabel.frame.origin.x - 6, height: nameLabel.frame.size.height)
         statusView.frame.origin = CGPoint(x: nameLabel.frame.origin.x, y: nameLabel.frame.origin.y + nameLabel.frame.size.height + padding + 2.0)
         let itemPadding: CGFloat = 6.0
-        cpuGraph.frame = CGRect(x: statusView.frame.origin.x + statusView.frame.size.width + itemPadding, y: statusView.frame.origin.y, width: size.width - (statusView.frame.origin.x + statusView.frame.size.width + 2 * itemPadding) , height: size.height - itemPadding - statusView.frame.origin.y)
+        let graphY = nameLabel.frame.origin.y + nameLabel.frame.size.height
+        cpuGraph.frame = CGRect(x: statusView.frame.origin.x + statusView.frame.size.width + itemPadding, y: graphY, width: size.width - (statusView.frame.origin.x + statusView.frame.size.width + 2 * itemPadding) , height: size.height - itemPadding - graphY)
         cpuGraph.setNeedsDisplay()
-        memGraph.frame = CGRect(x: statusView.frame.origin.x + statusView.frame.size.width + itemPadding, y: statusView.frame.origin.y, width: size.width - (statusView.frame.origin.x + statusView.frame.size.width + 2 * itemPadding) , height: size.height - itemPadding - statusView.frame.origin.y)
+        memGraph.frame = CGRect(x: statusView.frame.origin.x + statusView.frame.size.width + itemPadding, y: graphY, width: size.width - (statusView.frame.origin.x + statusView.frame.size.width + 2 * itemPadding) , height: size.height - itemPadding - graphY)
         memGraph.setNeedsDisplay()
+        statusView.frame.origin.y = cpuGraph.frame.origin.y - round((statusView.frame.height - cpuGraph.frame.height) / 2.0)
     }
     
     func theme() {
